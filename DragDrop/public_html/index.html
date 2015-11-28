@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag and Drop</title>
+    <style type="text/css">
+        #papel{
+            background-color: blue;
+            border: #dfbc6a 1px solid;
+            width: 100px;
+            height: 100px;
+            padding: 8px;
+            font-size: 18px;
+            text-align: center;  
+        }
+
+        #lapis{
+            background-color: chartreuse;
+            border: #dfbc6a 1px solid;
+            width: 100px;
+            height: 100px;
+            padding: 8px;
+            font-size: 18px;
+            text-align: center; 
+        }
+
+        #borracha{
+            background-color: gold;
+            border: #dfbc6a 1px solid;
+            width: 100px;
+            height: 100px;
+            padding: 8px;
+            font-size: 18px;
+            text-align: center; 
+        }
+
+        #lixeira{
+            background-color: skyblue;
+            min-width: 200px;
+            max-width: 2000px;
+            min-height: 200px;
+            max-height: 2000px;
+            padding: 8px;
+            font-size: 18px;
+            text-align: center; 
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        var largou = false;
+        //função que vai exibir as mensagens na div com id app_status
+        function appStatus(msg){
+            document.getElementById('app_status').innerHTML = msg + "<br/>";
+        }
+
+        //função que será ativada ao arrastar o objeto
+        function drag_start(ev){
+            appStatus("Arrastando o objeto " + ev.target.getAtribute('id'));
+            ev.dataTransfer.dropEffect = 'move'; //aplica efeito que estar movendo
+            ev.dataTransfer.setData("text/plain ", ev.target.getAtribute('id'));
+        }
+
+        function drag_enter(ev){
+            appStatus("Você está arrastando sobre a " + ev.target.getAtribute('id'));
+        }
+
+        function drag_leave(ev){
+            appStatus("Você deixou o " + ev.target.getAtribute('id'));
+        }
+
+        function drag_drop(ev){
+            var element = ev.dataTransfer.getData('Text');
+            appStatus("Largou o objeto " + element + "na" + ev.target.getAtribute('id'));
+            ev.target.appendChild(document.getElementById(element));
+            largou = true;
+            document.getElementById(element).removeAtribute("draggable");
+        }
+
+        function drag_end(ev){
+            if(largou === false){
+                appStatus("Você deixou o objeto " + ev.target.getAtribute('id') + "");
+            }
+        }
+
+        //guarda o id do objeto sendo arrastado
+        function drag_start(ev) {
+            ev.dataTransfer.setData("ID", ev.target.getAttribute('id'));
+        }
+
+        // para que o conteúdo seja selecionado.
+        function dragOver(ev) { return false; }
+
+        // Quando soltar o elemento, move o elemento, lendo seu id do dataset do evento
+        function drag_drop(ev) {
+            var idelt = ev.dataTransfer.getData("ID");
+            ev.target.appendChild(document.getElementById(idelt));
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <h3>Aqui mostra as corrências dos eventos</h3>
+    <div id="lixeira" ondragenter="drag_enter(event)" ondrop="drag_drop(event)" ondragover="return false" ondragleave="drag_leave(event)">
+        Lixeira
+    </div>
+
+    <div id="papel" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">
+        Papel
+    </div>
+
+    <div id="lapis" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">
+        Lápis
+    </div>
+
+    <div id="borracha" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">
+        Borracha
+    </div>
+</body>
+</html>

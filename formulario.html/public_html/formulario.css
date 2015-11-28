@@ -1,0 +1,54 @@
+/**
+ * Criado em: 28/09/2015, 09:55:44.
+ * Autor: WENES GOMES AQUINO
+ */
+#nome{
+    width: 50%;
+}
+#sexo{
+    width: 50%;
+}
+
+#bora_radio{
+    border-style: solid;
+    border-width: 1px;
+    width: 50%;
+}
+
+#xx{
+    width: 48%;
+}
+
+#obs{
+    width: 50%;
+}
+
+#seletor{
+    width: 24%;
+    float: left;
+}
+
+#cores{
+    border-style: solid;
+    border-width: 1px;
+    width: 24%;
+    height: 149px;
+    float: left;
+    margin-top: 10px;
+    color: white;
+    text-align: center;
+}
+
+#texto{
+    border-style: solid;
+    border-width: 1px;
+    width: 24%;
+    height: 94px;
+    float: left;
+    margin-top: 10px;
+}
+
+#item2{
+    width: 24%;
+    float: left;
+}

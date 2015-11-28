@@ -1,0 +1,44 @@
+PROGRAM EX18;
+USES CRT;
+TYPE vendedor = RECORD
+	codigo_vendedor: INTEGER;
+	nome_vendedor: STRING[20];
+	mes: INTEGER;
+	valor_venda: REAL;
+END;
+loja = FILE OF vendedor;
+VAR L: loja;
+         V: vendedor;
+         MES,K: INTEGER;
+         MAIOR: REAL;
+         NOME_VENDEDOR: STRING[20];
+BEGIN
+CLRSCR;
+MAIOR:=0;
+ASSIGN(L, 'C:\VENDAS.DAT');
+{$I-}
+RESET(L);
+{$I+}
+IF IORESULT = 2
+   THEN REWRITE(L);
+K:=FILESIZE(L);
+IF K = 0
+THEN WRITELN('ARQUIVO DE VENDAS VAZIO')
+ELSE BEGIN
+     WHILE NOT EOF(L) DO
+     BEGIN
+     READ(L, V);
+     IF (V.VALOR_VENDA > MAIOR)
+     THEN BEGIN
+	  MAIOR := V.VALOR_VENDA;
+	  NOME_VENDEDOR:=V.NOME_VENDEDOR;
+	  MES:=V.MES;
+          END;
+     END;
+     WRITELN('NOME DO VENDEDOR = ',NOME_VENDEDOR);
+     WRITELN('MÒS DA MAIOR VENDA = ',MES);
+     WRITELN('VALOR DA VENDA = ',MAIOR:7:2);
+     END;
+READLN;
+CLOSE(L);
+END.

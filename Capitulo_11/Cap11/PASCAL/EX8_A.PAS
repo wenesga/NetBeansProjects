@@ -1,0 +1,46 @@
+PROGRAM EX8;
+USES CRT;
+TYPE aluno = RECORD
+	numero : INTEGER;
+	nome : STRING[20];
+	curso: STRING[15];
+	nota1, nota2 : REAL;
+	END;
+classe = FILE OF aluno;
+VAR 	ALUNOS: classe;
+	A: aluno;
+	M,K,ACHOU: REAL;
+BEGIN
+CLRSCR;
+ASSIGN(ALUNOS, 'C:\ALUNOS.DAT');
+{$I-}
+RESET(ALUNOS);
+{$I+}
+IF IORESULT = 2
+   THEN REWRITE(ALUNOS);
+K:=FILESIZE(ALUNOS);
+IF K = 0
+THEN WRITELN('ARQUIVO DE ALUNOS VAZIO')
+ELSE BEGIN
+     ACHOU:=0;
+     WHILE NOT EOF(ALUNOS) DO
+	BEGIN
+	READ(ALUNOS, A);
+	M:= (A.NOTA1+A.NOTA2)/2;
+	IF M < 3
+	THEN BEGIN
+		WRITELN( 'NUMERO = ',A.NUMERO);
+		WRITELN( 'NOME = ',A.NOME);
+		WRITELN( 'CURSO = ', A.CURSO);
+                WRITELN( 'MEDIA = ', M:5:2);
+                WRITELN( 'Tecle enter...');
+                ACHOU:=1;
+		READLN;
+		END;
+	END;
+       IF ACHOU = 0
+       THEN WRITELN('NENHUM ALUNO REPROVADO');
+       END;
+READLN;
+CLOSE(ALUNOS);
+END.

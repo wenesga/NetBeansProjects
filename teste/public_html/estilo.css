@@ -1,0 +1,95 @@
+/**
+ * Criado em: 25/09/2015, 07:19:42
+ * Author     : WENES
+*/
+#div1 {
+    border-style:dotted;
+    border-style:dashed;
+    border-style:solid;
+    border-style:double;
+    border-style:groove;
+    border-style:ridge;
+    border-style:inset;
+    border-style:outset;
+    border-style: groove;
+    
+    /*
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 50px;
+    margin-left: 50px;
+    */
+    padding-top: 50px;
+    padding-bottom: 50px; 
+    padding-right: 50px;
+    padding-left: 50px;
+   
+    border-width: 5px;
+    border-color: red;
+    
+    /*
+    float: left;
+    width: 20%;
+    */
+    
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+
+
+
+.div2 {
+    border-style: outset;
+    border-width: 5px;
+    border-color: red;
+    /*
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 50px;
+    margin-left: 50px;
+    */
+    padding-top: 50px;
+    padding-bottom: 50px; 
+    padding-right: 50px;
+    padding-left: 50px;
+    /*
+    float: left;
+    width: 20%;
+    */
+    position: absolute;
+    top: 300px;
+    left: 0px;
+}
+.div3{
+    border-style: solid;
+    border-width: 5px;
+    border-color: red;
+    /*
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 50px;
+    margin-left: 50px;
+    */
+    padding-top: 50px;
+    padding-bottom: 50px; 
+    padding-right: 50px;
+    padding-left: 50px;
+    
+    /*
+    float: left;
+    width: 20%;
+    */
+    
+    position: absolute; /* posição das bordas */
+    top: 600px;         /* posição relativo ao top */
+    left: 0px;          /* posição relativo ao lado esquerdo */
+}
+
+.negrito{
+    font-weight: bold;
+    font-family: serif;
+}
+
+

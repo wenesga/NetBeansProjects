@@ -1,0 +1,45 @@
+PROGRAM EX6;
+USES CRT;
+TYPE aluno = RECORD
+	numero : INTEGER;
+	nome : STRING[20];
+	curso: STRING[15];
+	nota1, nota2 : REAL;
+	ativo: INTEGER;
+	END;
+classe = FILE OF aluno;
+VAR 	ALUNOS: classe;
+	A: aluno;
+	M,K, ACHOU: REAL;
+BEGIN
+CLRSCR;
+ASSIGN(ALUNOS, 'C:\ALUNOS.DAT');
+{$I-}
+RESET(ALUNOS);
+{$I+}
+IF IORESULT = 2
+   THEN REWRITE(ALUNOS);
+K:=FILESIZE(ALUNOS);
+ACHOU:=0;
+IF K = 0
+THEN WRITELN('ARQUIVO DE ALUNOS VAZIO')
+ELSE BEGIN
+     WHILE NOT EOF(ALUNOS) DO
+	BEGIN
+	READ(ALUNOS, A);
+	IF A.ATIVO = 1
+	THEN BEGIN
+		WRITELN('NUMERO = ',A.NUMERO);
+		WRITELN('NOME = ',A.NOME);
+		M:= (A.NOTA1+A.NOTA2)/2;
+		WRITELN('MêDIA = ', M:5:2);
+		READLN;
+                ACHOU:=1;
+		END;
+	END;
+    IF ACHOU = 0
+    THEN WRITELN('Nenhum aluno est† ativo no cadastro');
+    END;
+READLN;
+CLOSE(ALUNOS);
+END.

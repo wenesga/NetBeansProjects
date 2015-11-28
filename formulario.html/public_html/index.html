@@ -1,0 +1,139 @@
+<html>
+<head>
+    <title>Formulário</title>
+    <meta http-equiv="content-type"content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="formulario.css">
+    
+    <script>
+        function mudarCor(fundo){
+            //alert(fundo.value);
+            document.getElementById('cores').style.backgroundColor = fundo.value;
+            document.getElementById('cores').innerHTML = fundo.value;
+        }
+        
+        function selectCategoria(x){
+            //alert(fundo.value);
+            var tex = document.getElementById('texto').value;
+            
+            if(x.checked === true){
+                document.getElementById('texto').value = tex + x.value + "\n";
+            }else{
+                var res = tex.replace(x.value+"\n","");
+                document.getElementById('texto').value = res;
+            }
+        }
+        
+        function validaCampos() {
+            
+            if (document.getElementById('nome').value === "") {
+                alert('Preencha o campo nome');
+            
+            } else if ((document.getElementById('sexo').value === "Selecione seu sexo")){
+                alert('Preencha o campo sexo');
+            } else if (
+                (document.getElementById('sim').checked === false) && 
+                (document.getElementById('nao').checked === false)){
+                    alert('Preencha o campo filhos');
+            } else if (  
+                (document.getElementById('acao').checked === false) &&
+                (document.getElementById('romance').checked === false) &&
+                (document.getElementById('comedia').checked === false) &&
+                (document.getElementById('terror').checked === false)){
+                    alert('Preencha o campo filmes');
+            } else if ((document.getElementById('obs').value === "")){
+                alert('Preencha o campo observação');
+            } else if (
+                (document.getElementById('azul').checked === false) &&
+                (document.getElementById('vermelho').checked === false) &&
+                (document.getElementById('verde').checked === false) &&
+                (document.getElementById('amarelo').checked === false) &&
+                (document.getElementById('preto').checked === false) &&
+                (document.getElementById('rosa').checked === false)){
+                    alert('Preencha o campo de cores');
+            } else if (
+                (document.getElementById('fruta').checked === false) &&
+                (document.getElementById('fiat').checked === false) &&
+                (document.getElementById('professor').checked === false)){
+                    alert('Preencha o campo categorias');
+            } else {
+                alert('Campos validados com sucesso!');
+            }
+        }
+        
+        
+    </script>
+    
+    
+    
+</head>
+
+<body>
+    <form name="form1" id="form1" action="index.html" method="get">
+        <input type="text" name="nome" id="nome" value=""/>
+        
+        <br><br>
+        
+        <select name="sexo" id="sexo">
+            <option selected="selected">Selecione seu sexo</option>
+            <option> Masculino </option>
+            <option> Feminino </option>
+        </select>
+        
+        <br><br>
+        
+        Possui filhos? <b>
+        <div id="bora_radio">
+            Sim<input type="radio" name="filhos" id="sim" value="sim"/>
+            Não<input type="radio" name="filhos" id="nao" value="nao"/>
+        </div>
+        
+        <br>           
+        <fieldset id="xx"> 
+            <legend>Estilos de filme</legend>
+            <input type="checkbox" name="estilo" id="acao" value="acao" />
+            <label for="acao"> Ação </label>
+            <br>
+            <input type="checkbox" name="estilo" id="romance" value="acao" />
+            <label for="romance"> Ramance </label>
+            <br>
+            <input type="checkbox" name="estilo" id="comedia" value="acao" />
+            <label for="comedia"> Comédia </label>
+            <br>
+            <input type="checkbox" name="estilo" id="terror" value="acao" />
+            <label for="terror"> Terror </label>
+        </fieldset>   
+            
+        <br>
+        Observação: <br><br>
+        <textarea name="obs" id="obs" ></textarea>
+
+        <br><br>
+        <fieldset id="seletor"> 
+            <legend>Selecione a cor</legend>
+            <input type="radio" name="azul"     id="azul"     value="blue"   onclick="mudarCor(this)" /> Azul    <br>
+            <input type="radio" name="vermelho" id="vermelho" value="red"    onclick="mudarCor(this)" /> Vermelho<br>
+            <input type="radio" name="verde"    id="verde"    value="green"  onclick="mudarCor(this)" /> Verde   <br>
+            <input type="radio" name="amarelo"  id="amarelo"  value="yellow" onclick="mudarCor(this)" /> Amarelo <br>
+            <input type="radio" name="preto"    id="preto"    value="black"  onclick="mudarCor(this)" /> Preto   <br>
+            <input type="radio" name="rosa"     id="rosa"     value="pink"   onclick="mudarCor(this)" /> Rosa    <br>
+        </fieldset>  
+        <div id="cores"></div>
+        <div style="clear:both"></div>
+        
+        <fieldset id="item2"> 
+            <legend>Selecione uma categoria</legend>
+            <input type="checkbox" name="item" id="fruta" value="Frutas" onclick="selectCategoria(this)"   /> Alimentos<br>
+            <input type="checkbox" name="item" id="fiat" value="Fiat"    onclick="selectCategoria(this)" /> Veicúlos <br>
+            <input type="checkbox" name="item" id="professor" value="Professor" onclick="selectCategoria(this)" /> Profissão<br>
+        </fieldset>  
+        <textarea name="obs" id="texto"></textarea>
+        
+        <div style="clear:both"></div>  <!-- retira formataçao do float -->
+        
+        <br>
+        <input type="submit" name="enviar" id="enviar" value="Cadastrar" />
+        <input type="button" name="enviar2" id="enviar2" value="Cadastrar2" onclick="validaCampos()" />    
+    </form>
+      
+</body>
+</html>

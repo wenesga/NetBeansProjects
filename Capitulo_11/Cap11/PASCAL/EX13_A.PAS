@@ -1,0 +1,59 @@
+PROGRAM EX13;
+USES CRT;
+TYPE vendedor = RECORD
+	codigo_vendedor: INTEGER;
+	nome_vendedor: STRING[20];
+	mes: INTEGER;
+	valor_venda: REAL;
+END;
+loja = FILE OF vendedor;
+VAR L: loja;
+         V: vendedor;
+        CODIGO_VENDEDOR, MES: INTEGER;
+        NOME_VENDEDOR: STRING[20];
+         VALOR_VENDA: REAL;
+K, I, P, POSICAO: INTEGER;
+	ACHOU : BOOLEAN;
+BEGIN
+CLRSCR;
+ASSIGN(L, 'C:\VENDAS.DAT');
+{$I-}
+RESET(L);
+{$I+}
+IF IORESULT = 2
+   THEN REWRITE(L);
+K := FILESIZE(L);
+I := 0;
+ACHOU := FALSE;
+WRITE(' DIGITE O C‡DIGO DO VENDEDOR PARA ALTERAR ');
+READLN(CODIGO_VENDEDOR);
+WRITE(' DIGITE O M“S DA VENDA QUE SERµ ALTERADA ');
+READLN(MES);
+WHILE ( I <= K -1 ) DO
+	BEGIN
+	SEEK(L, I);
+	READ(L,V);
+	IF (V.CODIGO_VENDEDOR = CODIGO_VENDEDOR) AND
+  	     (V.MES = MES)
+		THEN BEGIN
+			POSICAO := I;
+			I := K + 1;
+			ACHOU := TRUE;
+			END
+		ELSE I := I + 1;
+	END;
+IF ACHOU = TRUE
+	THEN BEGIN
+                WRITELN('NOME VENDEDOR: ', V.NOME_VENDEDOR);
+                WRITELN('VALOR ATUAL DA VENDA: ', V.VALOR_VENDA:7:2);
+		WRITE('DIGITE O NOVO VALOR DAS VENDAS ');
+		READLN(VALOR_VENDA);
+                V.VALOR_VENDA := VALOR_VENDA;
+                SEEK(L, POSICAO);
+                WRITE(L, V);
+                WRITELN('ALTERAC«O EFETUADA ');
+                END
+            ELSE WRITELN('VENDA N«O CADASTRADA ');
+READLN;
+CLOSE(L);
+END.
