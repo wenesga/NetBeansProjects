@@ -36,22 +36,22 @@ public class Cadastro extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setTitle("Cadastro de Produto");
         addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 formAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
         });
 
         fcadastro.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 fcadastroAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
 
@@ -64,6 +64,12 @@ public class Cadastro extends javax.swing.JInternalFrame {
         fPrecoDeCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fPrecoDeCompraActionPerformed(evt);
+            }
+        });
+
+        fPercentualDeLucro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fPercentualDeLucroActionPerformed(evt);
             }
         });
 
@@ -213,6 +219,10 @@ public class Cadastro extends javax.swing.JInternalFrame {
     private void jcbcategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbcategoriaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbcategoriaActionPerformed
+
+    private void fPercentualDeLucroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fPercentualDeLucroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fPercentualDeLucroActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

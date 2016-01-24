@@ -141,6 +141,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fPercentualDeLucro">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fPercentualDeLucroActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="descricao">
           <Properties>
