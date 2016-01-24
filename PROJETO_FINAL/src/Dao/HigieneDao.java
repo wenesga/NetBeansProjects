@@ -3,7 +3,7 @@ import Entidade.Higiene;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.table.*;
+import javax.swing.table.*; //teste
 /**
  * @author WENES
  */
