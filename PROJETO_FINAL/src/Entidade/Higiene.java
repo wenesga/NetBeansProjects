@@ -1,6 +1,6 @@
 package Entidade;
 /**
- * @author WENES
+ * @author WENES GOMES
  */
 public class Higiene extends Produto {
     
