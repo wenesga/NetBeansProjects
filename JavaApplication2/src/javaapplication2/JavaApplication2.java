@@ -1,7 +1,7 @@
 package javaapplication2;
 
 /**
- * @author WENES GOMES AQUINO
+ * @author WENES GOMES AQUINOoooooooooooooooooooooooo
  */
 public class JavaApplication2 {
 
