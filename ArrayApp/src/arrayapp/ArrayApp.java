@@ -16,6 +16,7 @@ public class ArrayApp {
             Scanner ler = new Scanner(System.in);
 
             System.out.println("Entre com a primeira posiçoes: ");
+            
             int posicao = ler.nextInt();
 
             int[] A = new int[posicao];
@@ -40,6 +41,7 @@ public class ArrayApp {
         } 
         
         catch (Exception ex) {
+            
             System.out.printf("PRIMEIRA EXCESAO.\n");
         }
 
