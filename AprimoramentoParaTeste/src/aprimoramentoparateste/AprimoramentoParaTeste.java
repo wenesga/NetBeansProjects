@@ -16,7 +16,7 @@ public class AprimoramentoParaTeste {
             // adiciona o valor de cada elemento ao total
             for (int number : array) {
 
-                total += number;
+                totalsssssddddd += number;
             }
 
             System.out.printf("Total de elementos de array: %d\n", total);
