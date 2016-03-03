@@ -1,7 +1,7 @@
 package aprimoramentoparateste;
 
 /**
- * @Descrição: ATIVIDADE - PROFESSOR: CLAUDIOWWWWWWWWWW
+ * @Descrição: ATIVIDADE - PROFESSOR: CLAUDIOWWWWWWWWWWTTTTTT
  * @author WENES GOMES AQUINO <wenesga@gmail.com>
  * @date 01/03/2016 - @TIPO Classe AprimoramentoParaTeste
  */
