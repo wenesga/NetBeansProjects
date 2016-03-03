@@ -1,7 +1,7 @@
 package aprimoramentoparateste;
 
 /**
- * @Descrição: ATIVIDADE - PROFESSOR: CLAUDIO------------
+ * @Descrição: ATIVIDADE - PROFESSOR: CLAUDIO - WENES
  * @author WENES GOMES AQUINO <wenesga@gmail.com>
  * @date 01/03/2016 - @TIPO Classe AprimoramentoParaTeste
  */
@@ -16,7 +16,7 @@ public class AprimoramentoParaTeste {
             // adiciona o valor de cada elemento ao total
             for (int number : array) {
 
-                totalsssssddddd += number;
+                total += number;
             }
 
             System.out.printf("Total de elementos de array: %d\n", total);
