@@ -1,7 +1,7 @@
 package aprimoramentoparateste;
 
 /**
- * @Descrição: ATIVIDADE - PROFESSOR: CLAUDIOWWWWWWWWWWTTTTTT COMITEI DO NETEBEANS
+ * @Descrição: ATIVIDADE - PROFESSOR: CLAUDIOWWWWWWWWWWTTTTTT-COMITEI DO NETEBEANS
  * @author WENES GOMES AQUINO <wenesga@gmail.com>
  * @date 01/03/2016 - @TIPO Classe AprimoramentoParaTeste
  */
