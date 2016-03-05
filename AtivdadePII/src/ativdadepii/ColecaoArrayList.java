@@ -1,7 +1,7 @@
 package ativdadepii;
 import java.util.ArrayList;
 /*
- * @Descrição: Demonstração da coleção ArrayList genérica.
+ * @Descrição: Demonstração da coleção ArrayList genérica hhhhhhhhhhhh.
  * @author WENES GOMES AQUINO <wenesga@gmail.com>
  * @date 05/03/2016 - @TIPO Classe ColecaoArrayList
  */
