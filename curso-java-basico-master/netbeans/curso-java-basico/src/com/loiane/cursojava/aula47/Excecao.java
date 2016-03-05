@@ -12,6 +12,7 @@ public class Excecao {
 			vetor[4] = 1;
 			
 			System.out.println("Esse texto não será impresso");
+                        
 		} catch(ArrayIndexOutOfBoundsException exception){
 			System.out.println("Exceção ao acessar um índide do vetor que não existe");
 		}
