@@ -16,15 +16,16 @@ public class AprimoramentoParaTeste {
             // adiciona o valor de cada elemento ao total
             for (int number : array) {
 
-                total += number;
+                total = total + number;
             }
 
-            System.out.printf("Total de elementos de array: %d\n", total);
-
-        
-        } catch (Exception ex) {
+            System.out.printf("Total da somas dos elementos de array: %d\n", total);
             
-            System.out.println(" Wenes");
+            //total = 87/0;
+        
+        } catch (ArithmeticException ex) {
+            
+            System.out.println("Aconteceu um erro");
 
         }
     }
