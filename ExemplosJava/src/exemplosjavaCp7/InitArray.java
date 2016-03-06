@@ -1,11 +1,11 @@
-package exemplosjava;
+package exemplosjavaCp7;
 
 /**
  * @Descrição: Inicializando os elementos de um array como valores padrão de zero.
  * @author WENES GOMES AQUINO <wenesga@gmail.com>
  * @date 06/03/2016 - @TIPO Classe IntArrey
  */
-public class IntArrey {
+public class InitArray {
 
     public static void main(String[] args) {
 
@@ -16,7 +16,7 @@ public class IntArrey {
         // gera saída do valor de cada elemento do array              
         for (int i = 0; i < array.length; i++) {
             
-            System.out.printf("%5d%8d\n", i, array[i]);
+            System.out.printf("%4d%10d\n", i, array[i]);
             
         }
 

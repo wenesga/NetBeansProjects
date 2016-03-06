@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            html, body, #map-canvas {
+                height: 100%;
+                margin: 0px;
+                padding: 0px
+            }
+
+            .center {
+                margin-top: 20px;
+                margin-left: 2.0em;
+                margin-right: auto;
+                background-color: #fff;
+            }
+
+
+            #my-address{
+                height: 2.0em;
+                width: 350px;
+                font-size: 2.0em;
+            }
+
+            #getCords{
+                height: 2.0em;
+                font-size: 2.0em;
+                background: url('img/gmap.png') no-repeat;
+                border: none;
+            }
+
+        </style>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+        <script type="text/javascript">
+            function initialize() {
+
+                var latitude = 0;
+                var longitude = 0;
+
+                var address = (document.getElementById('my-address'));
+                var autocomplete = new google.maps.places.Autocomplete(address);
+                autocomplete.setTypes(['geocode']);
+                google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                    var place = autocomplete.getPlace();
+                    if (!place.geometry) {
+                        return;
+                    }
+
+                    var address = '';
+                    if (place.address_components) {
+                        address = [
+                            (place.address_components[0] && place.address_components[0].short_name || ''),
+                            (place.address_components[1] && place.address_components[1].short_name || ''),
+                            (place.address_components[2] && place.address_components[2].short_name || '')
+                        ].join(' ');
+                    }
+                });
+            }
+            function codeAddress() {
+                geocoder = new google.maps.Geocoder();
+                var address = document.getElementById("my-address").value;
+                geocoder.geocode({'address': address}, function (results, status) {
+                    if (status === google.maps.GeocoderStatus.OK) {
+
+                        latitude = results[0].geometry.location.lat();
+                        longitude = results[0].geometry.location.lng();
+
+
+
+
+                        var mapOptions = {
+                            zoom: 17,
+                            // Dhaka latt & longs
+                            center: new google.maps.LatLng(latitude, longitude)
+                        };
+                        map = new google.maps.Map(document.getElementById('map-canvas'),
+                                mapOptions);
+
+
+
+                    }
+
+                    else {
+                        alert("Geocode was not successful for the following reason: " + status);
+                    }
+                });
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+
+        </script>
+    </head>
+    <body>
+        <div>
+            <div class="center">
+                <input type="text" id="my-address" >
+                <button id="getCords" onClick="codeAddress();">Map</button>
+            </div>
+
+        </div>
+        <br><br><br>
+        <div id="map-canvas"></div>
+    </body>
+</html>
