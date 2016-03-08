@@ -15,13 +15,13 @@ public class RollDie {
         
         Random aleatorio = new Random();   // gerador de número aleatório
         
-        int[] frequencia = new int[7];      // array de contadores de frequência
+        int[] array = new int[7];      // array de contadores de frequência
 
         // lança o dados 6000 vezes; utiliza o valor do dado como índice de frequência 
         
         for (int i = 1; i <= 6000; i++) {
             
-            ++frequencia[1 + aleatorio.nextInt(6)];
+            ++array[1 + aleatorio.nextInt(6)];
             
         }
 
@@ -29,9 +29,9 @@ public class RollDie {
 
         // gera saída do valor de cada elemento do array
         
-        for (int j = 1; j < frequencia.length; j++) {
+        for (int j = 1; j < array.length; j++) {
             
-            System.out.printf("%4d%10d\n", j, frequencia[j]);
+            System.out.printf("%4d%10d\n", j, array[j]);
             
         }
     }
