@@ -25,7 +25,7 @@ public class Exercicio2 {
             palavra.add(scan.nextLine());
             palavra.add(scan.nextLine());
 
-            compararString(palavra, null);
+            compararString(palavra);
             System.out.println(palavra);
 
         } catch (IndexOutOfBoundsException exception) {
@@ -34,9 +34,9 @@ public class Exercicio2 {
 
     }
 
-    public static String compararString(ArrayList palavra, String msg) {
+    public static String compararString(ArrayList palavra) {
 
-        msg = "Já existe";
+        String msg = "Já existe";
 
         for (int i = 0; i < palavra.size(); i++) {
 
