@@ -32,8 +32,10 @@ public class Cores {
         
         if(cor.size() == 0) {
             System.out.println("Digite duas cores:");
+            
             cor.add(scan.nextLine());
             cor.add(scan.nextLine());
+            
             System.out.println("------");
             System.out.println(cor);
         }
