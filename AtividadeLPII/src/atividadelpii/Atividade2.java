@@ -1,14 +1,12 @@
 package atividadelpii;
-
 import java.util.ArrayList;
 import java.util.Scanner;
-
 /*
  * @Descrição:
  * @author WENES GOMES AQUINO <wenesga@gmail.com>
  * @date 09/03/2016 - @TIPO Classe NovoClass
  */
-public class NovoClass {
+public class Atividade2 {
 
     public static void main(String[] args) {
 
@@ -27,13 +25,15 @@ public class NovoClass {
         }
     }
 
-    public static void compara(ArrayList lista, String temp, int x) {
+    public static ArrayList compara(ArrayList lista, String temp, int x) {
 
         if (lista.contains(temp)) {
             lista.clear();
             x = -1;
             System.err.println("Já existe um nome \"" + temp + "\" \nVamos tentar novamente?");
-        } else 
+        } 
+        else
             lista.add(temp);
+        return lista;
     }
 }
