@@ -1,8 +1,6 @@
 package atividadelpii;
 import java.util.ArrayList;
 import java.util.Scanner;
-import javafx.beans.binding.Bindings;
-
 /*
  * @Descrição:
  * @author WENES GOMES AQUINO <wenesga@gmail.com> 
@@ -15,39 +13,20 @@ public class Exercicio2 {
         ArrayList<String> palavra = new ArrayList<>();
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Digite 5 palavras: ");
+        for (int x = 0; x < 5; x++) {
 
-        try {
-
-            palavra.add(scan.nextLine());
-            palavra.add(scan.nextLine());
-            palavra.add(scan.nextLine());
-            palavra.add(scan.nextLine());
-            palavra.add(scan.nextLine());
-
-            compararString(palavra);
-            System.out.println(palavra);
-
-        } catch (IndexOutOfBoundsException exception) {
-            System.out.println("Ocorreu um erro!");
-        }
-
-    }
-
-    public static String compararString(ArrayList palavra) {
-
-        String msg = "Já existe";
-
-        for (int i = 0; i < palavra.size(); i++) {
-
-            if (palavra.get(0) == palavra.get(i + 1)) {
-
-                System.out.println(msg);
+            System.out.print("Digite a palavras " + (x+1) + ": ");
+            String temp = scan.nextLine();
+            
+            if (palavra.contains(temp)) {
+                x = -1;
                 palavra.clear();
+                System.err.println("Já existe um palavra \""+temp+"\"! \nVamos tentar novamente?");
+                
+            } else {
+                palavra.add(temp);
             }
         }
-
-        System.out.println("Digite 5 palavras: ");
-        return msg;
+        System.out.println(palavra);
     }
 }
