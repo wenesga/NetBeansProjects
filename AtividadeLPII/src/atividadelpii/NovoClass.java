@@ -25,23 +25,15 @@ public class NovoClass {
         for (String imprimir : lista) {
             System.err.println(imprimir);
         }
-
-        
-        
-        
-        
-        
     }
 
     public static void compara(ArrayList lista, String temp, int x) {
-        
+
         if (lista.contains(temp)) {
             lista.clear();
             x = -1;
-            System.err.println("Já existe um nome \""+temp+"\" \nVamos tentar novamente?");
-        } else {
+            System.err.println("Já existe um nome \"" + temp + "\" \nVamos tentar novamente?");
+        } else 
             lista.add(temp);
-        }
-
     }
 }
