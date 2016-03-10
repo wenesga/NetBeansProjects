@@ -2,7 +2,7 @@ package atividadelpii;
 import java.util.ArrayList;
 import java.util.Scanner;
 /*
- * @Descrição: Atividade 2 de Linguagem de Programação
+ * @Descrição: Atividade 2 de Linguagem de Programação 
  * @author WENES GOMES AQUINO <wenesga@gmail.com> 
  * @date 07/03/2016 - @TIPO Classe Exercicio2
  */
