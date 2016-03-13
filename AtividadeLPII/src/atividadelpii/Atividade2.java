@@ -28,7 +28,7 @@ public class Atividade2 {
                 System.err.println(imprimir);
             }
             
-        } catch (NullPointerException exception) {
+        } catch (Exception ex) {
 
             System.out.println("Ocorreu um erro a String não pode se nula");
         }
