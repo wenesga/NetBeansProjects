@@ -9,7 +9,8 @@ public class Main {
 
     public static void main(String[] args) {
         
-        PieChart demo = new PieChart("Janela de Estatística", "Teste de Gráfico em Java - Por Wenes Gomes Aquino");
+        PieChart demo = new PieChart("Janela de Estatística", 
+                "Teste de Gráfico em Java - Por Wenes Gomes Aquino");
         
         demo.pack();
         

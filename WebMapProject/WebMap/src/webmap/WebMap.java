@@ -30,9 +30,11 @@ import javafx.util.Duration;
  * @author Jasper Potts
  */
 public class WebMap extends Application {
+
     private Timeline locationUpdateTimeline;
 
-    @Override public void start(Stage stage) {
+    @Override
+    public void start(Stage stage) {
         // create web engine and view
         final WebEngine webEngine = new WebEngine(getClass().getResource("googlemap.html").toString());
         final WebView webView = new WebView(webEngine);
@@ -91,25 +93,31 @@ public class WebMap extends Application {
         searchBox.rawTextProperty().addListener(new ChangeListener<String>() {
             public void changed(ObservableValue<? extends String> observableValue, String s, String s1) {
                 // delay location updates to we don't go too fast file typing
-                if (locationUpdateTimeline!=null) locationUpdateTimeline.stop();
+                if (locationUpdateTimeline != null) {
+                    locationUpdateTimeline.stop();
+                }
                 locationUpdateTimeline = new Timeline();
                 locationUpdateTimeline.getKeyFrames().add(
-                    new KeyFrame(new Duration(400), new EventHandler<ActionEvent>() {
-                        public void handle(ActionEvent actionEvent) {
-                            webEngine.executeScript("document.goToLocation(\""+searchBox.getRawText()+"\")");
-                        }
-                    })
+                        new KeyFrame(new Duration(400), new EventHandler<ActionEvent>() {
+                            public void handle(ActionEvent actionEvent) {
+                                webEngine.executeScript("document.goToLocation(\"" + searchBox.getRawText() + "\")");
+                            }
+                        })
                 );
                 locationUpdateTimeline.play();
             }
         });
         Button zoomIn = new Button("Zoom In");
         zoomIn.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent actionEvent) { webEngine.executeScript("document.zoomIn()"); }
+            public void handle(ActionEvent actionEvent) {
+                webEngine.executeScript("document.zoomIn()");
+            }
         });
         Button zoomOut = new Button("Zoom Out");
         zoomOut.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent actionEvent) { webEngine.executeScript("document.zoomOut()"); }
+            public void handle(ActionEvent actionEvent) {
+                webEngine.executeScript("document.zoomOut()");
+            }
         });
         // create toolbar
         ToolBar toolBar = new ToolBar();
@@ -127,7 +135,7 @@ public class WebMap extends Application {
         root.setTop(toolBar);
         // create scene
         stage.setTitle("Web Map");
-        Scene scene = new Scene(root,1000,700, Color.web("#666970"));
+        Scene scene = new Scene(root, 1000, 700, Color.web("#666970"));
         stage.setScene(scene);
         scene.getStylesheets().add("/webmap/WebMap.css");
         // show stage
@@ -139,12 +147,12 @@ public class WebMap extends Application {
         HBox.setHgrow(spacer, Priority.ALWAYS);
         return spacer;
     }
-    
+
     static { // use system proxy settings when standalone application    
         System.setProperty("java.net.useSystemProxies", "true");
     }
-    
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         Application.launch(args);
     }
 }
