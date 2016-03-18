@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 public abstract class Conexao {
     private static final String URL = "jdbc:mysql://localhost:3306/farmacia";
     private static final String USUARIO = "root";
-    private static final String SENHA = "070900";
+    private static final String SENHA = "";
     
     private Connection connect;
     private PreparedStatement adiciona;
