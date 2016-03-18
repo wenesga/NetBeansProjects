@@ -37,7 +37,7 @@ public class WebMap extends Application {
     public void start(Stage stage) {
         // create web engine and view
         final WebEngine webEngine = new WebEngine(getClass().getResource("googlemap.html").toString());
-        final WebView webView = new WebView(webEngine);
+        final WebView webView = new WebView();
         // create map type buttons
         final ToggleGroup mapTypeGroup = new ToggleGroup();
         final ToggleButton road = new ToggleButton("Road");
