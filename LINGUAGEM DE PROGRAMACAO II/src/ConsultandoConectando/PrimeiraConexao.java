@@ -8,7 +8,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 /**
- * @Cometario: Consultando e conectando-se a um banco de dados
+ * @Cometario: Consultando e conectando-se a um banco de dados........................
  * @author Wenes Gomes Aquino <wenesga@gmail.com>
  * @date 21/03/2016 - Classe: DisplayAuthors
  */
