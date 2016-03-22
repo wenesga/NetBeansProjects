@@ -1,4 +1,4 @@
-// Figura 28.25: ResultSetTableModel.java - WENES GOMES AQUINO
+// Figura 28.25: ResultSetTableModel.java - WENES GOMES AQUINO - ARRAIAS - TOCANTINS.
 package ResultSet;
 
 import java.sql.Connection;
