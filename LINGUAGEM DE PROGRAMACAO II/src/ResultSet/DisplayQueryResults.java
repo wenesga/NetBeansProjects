@@ -1,4 +1,3 @@
-// Figura 28.28: DisplayQueryResults.java
 package ResultSet;
 
 import java.awt.BorderLayout;
