@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <groupId>no.tornado</groupId>
+  <artifactId>kobalt-copy-dependencies</artifactId>
+  <version>0.2</version>
+  <name>kobalt-copy-dependencies</name>
+  <description>Copy the dependencies of your project to a directory</description>
+  <url>https:/github.com/edvin/kobalt-copy-dependencies</url>
+  <licenses>
+    <license>
+      <name>Apache 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>edvin</name>
+    </developer>
+  </developers>
+  <scm>
+    <connection>https://github.com/edvin/kobalt-copy-dependencies.git</connection>
+    <developerConnection>git@github.com:edvin/kobalt-copy-dependencies.git</developerConnection>
+    <url>http://github.com/edvin/kobalt-copy-dependencies</url>
+  </scm>
+  <dependencies>
+    <dependency>
+      <groupId>com.beust</groupId>
+      <artifactId>kobalt</artifactId>
+      <version>0.329</version>
+    </dependency>
+  </dependencies>
+</project>

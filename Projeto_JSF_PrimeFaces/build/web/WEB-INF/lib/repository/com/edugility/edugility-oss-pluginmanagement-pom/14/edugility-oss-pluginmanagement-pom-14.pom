@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Xlint="urn:javac" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <prerequisites>
+    <maven>3.3.3</maven>
+  </prerequisites>
+
+  <groupId>com.edugility</groupId>
+  <artifactId>edugility-oss-pluginmanagement-pom</artifactId>
+  <version>14</version>
+  <packaging>pom</packaging>
+
+  <parent>
+    <groupId>com.edugility</groupId>
+    <artifactId>edugility-oss-corporate-pom</artifactId>
+    <version>13</version>
+  </parent>
+
+  <name>Edugility Open Source Plugin Management POM</name>
+  <description>Edugility Open Source Plugin Management POM</description>
+  <inceptionYear>2013</inceptionYear>
+  <url>${project.scm.url}</url>
+
+  <scm>
+    <connection>scm:git:git@github.com:ljnelson/${project.artifactId}.git</connection>
+    <developerConnection>scm:git:git@github.com:ljnelson/${project.artifactId}.git</developerConnection>
+    <url>https://github.com/ljnelson/${project.artifactId}/</url>
+    <tag>edugility-oss-pluginmanagement-pom-14</tag>
+  </scm>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>1.8</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>2.5.5</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>2.6.1</version>
+          <configuration>
+            <filesets>
+              <fileset>
+                <directory>${basedir}</directory>
+                <includes>
+                  <include>src/**/*~</include>
+                  <include>*~</include>
+                </includes>
+              </fileset>
+            </filesets>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.3</version>
+          <configuration>
+            <compilerArguments>
+              <Xlint:all />
+            </compilerArguments>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>2.10</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-ear-plugin</artifactId>
+          <version>2.10.1</version>
+          <configuration>
+            <version>6</version>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-ejb-plugin</artifactId>
+          <version>2.5.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>1.4.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>2.6</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-plugin-plugin</artifactId>
+          <version>3.4</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>2.7</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.18.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>2.6</version>
+        </plugin>
+        <plugin>
+          <groupId>com.github.github</groupId>
+          <artifactId>site-maven-plugin</artifactId>
+          <version>0.12</version>
+          <configuration>
+            <message>Building site for ${project.artifactId} ${project.version}</message>
+          </configuration>
+          <executions>
+            <execution>
+              <id>Deploy site to Github</id>
+              <goals>
+                <goal>site</goal>
+              </goals>
+              <phase>site-deploy</phase>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>2.2</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  
+  <properties>
+
+    <!-- maven-ejb-plugin properties -->
+    <ejb.ejbVersion>3.1</ejb.ejbVersion>
+
+    <!-- maven-compiler-plugin properties -->
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+
+    <!-- maven-javadoc-plugin properties -->
+    <bottom><![CDATA[Copyright &copy; ${project.inceptionYear}&ndash;{currentYear}, <a href="http://about.me/lairdnelson" target="_parent">Laird Nelson</a>. All rights reserved.]]></bottom>
+    <detectLinks>false</detectLinks>
+    <sourcetab>2</sourcetab>
+
+    <!-- maven-site-plugin properties -->
+    <maven.site.deploy.skip>true</maven.site.deploy.skip>
+
+    <!-- maven-surefire-plugin properties -->
+    <surefire.useFile>false</surefire.useFile>
+
+    <!-- site-github-plugin properties -->
+    <github.global.server>github</github.global.server>
+
+  </properties>
+
+</project>

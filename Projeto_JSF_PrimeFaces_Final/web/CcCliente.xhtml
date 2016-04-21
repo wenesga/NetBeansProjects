@@ -1,0 +1,258 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title></title>        
+    </h:head>
+    <h:body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name="content">
+                
+                <p:focus for="frmTblccCliente:tblccCliente:acCliente" />                  
+                
+                <p:panel header="Conta corrente do cliente..." style="width: 767px">
+                    
+                    <h:form id="frmMsgErro">                                            
+                        <h:panelGroup id="pnlMsgErros">
+                            <p:messages id="msgErros" rendered="#{ccClienteMB.showMsgErros}" />
+                        </h:panelGroup>                        
+                    </h:form>        
+                    
+                    <h:form id="frmTblccCliente">                        
+                        <p:dataTable 
+                                id="tblccCliente"
+                                value="#{ccClienteMB.listar}" var="p" 
+                                emptyMessage="Nenhum registro encontrado..."
+                                widgetVar="ccClienteTable"                                    
+                                rowKey="#{p.codLcto}" selectionMode="single" 
+                                resizableColumns="true" scrollRows="10" scrollable="true" liveScroll="true" scrollHeight="300"> 
+
+                            <f:facet name="header">  
+                                <p:outputPanel>  
+                                    <p:panel style="text-align: left">                                        
+                                        <h:outputLabel for="acCliente" value="Buscar cliente: " /> 
+                                        
+                                        <p:autoComplete id="acCliente" completeMethod="#{ccClienteMB.completeCliente}"                                                         
+                                                        minQueryLength="3" effect="fade" size="78">  
+                                            <p:ajax event="itemSelect" listener="#{ccClienteMB.handleClienteSel}" update=":frmMsgErro,tblccCliente,focusAC,cliSelNm" />                                              
+                                        </p:autoComplete>  
+                                        
+                                        <p:focus id="focusAC" for="acCliente" />
+                                    </p:panel>
+                                    
+                                    <p:separator />
+                                    
+                                    <div style="text-align: left; float: left">
+                                        <h:outputLabel id="cliSelNm" style="font-size: 20px" value="#{ccClienteMB.clienteSel} #{ccClienteMB.nmClienteSel}" />
+                                    </div>
+                                    
+                                    <div style="text-align: right; float: right"> 
+                                        <p:commandButton id="btnNovo" value="Novo" image="ui-icon-document" title="Novo lançamento"       
+                                                         disabled="#{ccClienteMB.disableBtnNovo()}"
+                                                         oncomplete="dialogCcCliente.show();"
+                                                         update=":frmCcClienteModal,:frmMsgErro">
+                                            <f:setPropertyActionListener target="#{ccClienteMB.addNewReg}" value="true" />
+                                            <f:setPropertyActionListener target="#{ccClienteMB.ccCliente}" value="#{null}" />
+                                        </p:commandButton>
+                                        
+                                    </div>   
+                                </p:outputPanel>  
+                            </f:facet>    
+                            
+                            <p:columnGroup type="header">
+                                <p:row>
+                                    <p:column rowspan="2" headerText="Lcto" style="text-align: center" width="30" />                                
+                                    <p:column rowspan="2" headerText="Descrição" style="text-align: left" width="150" />
+                                    <p:column rowspan="2" headerText="Data" style="text-align: left" width="50" />
+                                    <p:column colspan="3" headerText="Movimentos na conta corrente" />  
+                                    <p:column colspan="2" headerText="Ações" />  
+                                </p:row>
+                                
+                                <p:row>
+                                    <p:column headerText="Crédito" style="text-align: right; font-style: italic" width="52" />
+                                    <p:column headerText="Débito" style="text-align: right; font-style: italic" width="52" /> 
+                                    <p:column headerText="Saldo" style="text-align: right; font-style: italic" width="60" />                                    
+                                    <p:column headerText="Alterar" style="text-align: center; font-style: italic" width="80" />
+                                    <p:column headerText="Excluir" style="text-align: center; font-style: italic" width="80" />
+                                </p:row>                               
+                            </p:columnGroup>                           
+                            
+                            <p:column style="text-align: center" width="30">
+                                <h:outputLabel value="#{p.codLcto}" />                    
+                            </p:column>
+
+                            <p:column style="text-align: left" width="150">
+                                <h:outputLabel value="#{p.descricao}" />                    
+                            </p:column>                                 
+                            
+                            <p:column style="text-align: left" width="50">
+                                <h:outputLabel value="#{p.data}">
+                                    <f:convertDateTime type="date" pattern="dd/MM/yy" dateStyle="medium" locale="pt_BR" timeZone="GMT-3"/> 
+                                </h:outputLabel>                    
+                            </p:column>                                                             
+                            
+                            <p:column style="text-align: right" width="52">
+                                <h:outputLabel value="#{p.credito}">
+                                    <f:convertNumber locale="pt_BR" pattern="#,##0.00"/>
+                                </h:outputLabel>                    
+                            </p:column>                                                             
+                            
+                            <p:column style="text-align: right" width="52">
+                                <h:outputLabel value="#{p.debito}">
+                                    <f:convertNumber locale="pt_BR" pattern="#,##0.00"/>
+                                </h:outputLabel>                    
+                            </p:column>                                                             
+                            
+                            <p:column style="text-align: right; #{ccClienteMB.colorSaldo(p)}" width="60">
+                                <h:outputLabel value="#{p.saldo_dia}">
+                                    <f:convertNumber locale="pt_BR" pattern="#,##0.00"/>                                    
+                                </h:outputLabel>                                                    
+                            </p:column>                                        
+                            
+                            <p:column style="text-align: center" width="80">
+                                <p:commandButton value="Alterar" image="ui-icon-pencil" title="Alterar lançamento" 
+                                                 oncomplete="dialogCcCliente.show();"
+                                                 update=":frmCcClienteModal,:frmMsgErro">
+                                    <f:setPropertyActionListener target="#{ccClienteMB.addNewReg}" value="false" />
+                                    <f:setPropertyActionListener target="#{ccClienteMB.ccCliente}" value="#{p}" />                                                                        
+                                </p:commandButton>                                
+                            </p:column>                                 
+
+                            <p:column style="text-align: center" width="80">
+                                <p:commandButton value="Excluir" image="ui-icon-trash" title="Excluir lançamento"
+                                                 onclick="confirmation.show();"
+                                                 update=":frmRemoveCcCliente,:frmMsgErro">
+                                    <f:setPropertyActionListener target="#{ccClienteMB.addNewReg}" value="false" />
+                                    <f:setPropertyActionListener target="#{ccClienteMB.ccCliente}" value="#{p}" />
+                                </p:commandButton> 
+                            </p:column>                               
+                            
+                            <f:facet name="footer">    
+                                <div style="width: 701px">
+                                <div style="text-align: left; float: left">
+                                    <p:ajaxStatus id="ajaxStatusPanel">  
+                                        <f:facet name="start">  
+                                            <div style="background-color: white; color: black; vertical-align: middle">
+                                                Carregando...
+                                            </div>
+                                        </f:facet> 
+                                        <f:facet name="complete">  
+                                            <h:outputText value="" />  
+                                        </f:facet>  
+                                    </p:ajaxStatus>
+                                </div>
+                                <div style="text-align: right; float: right">                                    
+                                    <h:outputLabel value="Quantidade: " />
+                                    <h:outputText value="#{ccClienteMB.totalCcCliente()}"/>
+                                </div>                                                       
+                                </div>
+                            </f:facet>                              
+
+                        </p:dataTable>                        
+                    </h:form>  
+                    
+                    <p:dialog id="dialog" header="Conta corrente" widgetVar="dialogCcCliente" 
+                              appendToBody="true" resizable="true" closable="false"
+                              modal="true" showEffect="fade" hideEffect="fade" width="540">             
+                    
+                        <h:form id="frmCcClienteModal">
+                            
+                              <h:panelGrid id="infosCcCliente" columns="3" style="margin-bottom:10px">
+                                  
+                                    <p:outputLabel for="codLcto" value="Lcto:" />
+                                    <p:inputText id="codLcto" value="#{ccClienteMB.ccCliente.codLcto}" disabled="true" size="5"/>
+                                    <p:message for="codLcto" display="text"/> 
+                              
+                                    <p:outputLabel for="nmClienteSel" value="Cliente:" />
+                                    <p:inputText id="nmClienteSel" value="#{ccClienteMB.nmClienteSel}" disabled="true" size="35"/>
+                                    <p:message for="nmClienteSel" display="text"/> 
+                                    
+                                    <p:outputLabel for="descricao" value="Descrição:" />
+                                    <p:inputText id="descricao" value="#{ccClienteMB.ccCliente.descricao}" size="40" maxlength="50"
+                                                 required="true" requiredMessage="Valor inválido."/>
+                                    <p:message for="descricao" display="text"/>                                     
+                                    
+                                    <p:outputLabel for="dc" value="Lcto de:" />
+                                    <p:selectOneRadio id="dc" value="#{ccClienteMB.ccCliente.dc}">  
+                                        <f:selectItem itemLabel="Crédito" itemValue="C" />  
+                                        <f:selectItem itemLabel="Débito" itemValue="D" />  
+                                    </p:selectOneRadio>                                      
+                                    <p:message for="dc" display="text"/> 
+                                                          
+                                    <p:outputLabel for="data" value="Data:" />
+                                    <p:calendar id="data" size="10" maxlength="10"
+                                                pattern="dd/MM/yyyy" navigator="true" value="#{ccClienteMB.ccCliente.data}"
+                                                required="true" requiredMessage="Valor inválido." 
+                                                validatorMessage="Valor inválido." converterMessage="Valor inválido."> 
+                                        <f:convertDateTime type="date" pattern="dd/MM/yyyy" dateStyle="medium" locale="pt_BR" timeZone="GMT-3"/> 
+                                    </p:calendar>
+                                    <p:message for="data" display="text"/> 
+                                    
+                                    <p:outputLabel for="valor" value="Valor:" />
+                                    <p:inputText id="valor" value="#{ccClienteMB.ccCliente.valor}" size="15" style="text-align: right"
+                                                 required="true" requiredMessage="Valor inválido." 
+                                                 validatorMessage="Valor inválido." converterMessage="Valor inválido."> 
+                                        <f:validateDoubleRange minimum="0.01" />                                        
+                                        <f:convertNumber locale="pt_BR" pattern="#,##0.00"/>
+                                        
+                                        <h:outputScript name="jquery.maskMoney.js" library="js" target="head"/>
+                                        <script language="javascript" type="text/javascript">                                        
+                                            jQuery(function() 
+                                            {
+                                                jQuery('#frmCcClienteModal\\:valor').maskMoney({thousands:'.', decimal:','});
+                                            });
+                                        </script>                                        
+                                    </p:inputText>
+                                    <p:message for="valor" display="text"/>                                     
+                                    
+                              </h:panelGrid>
+                                
+                              <p:separator />
+                              
+                              <p:commandButton value="Salvar" image="ui-icon-disk" title="Salvar"
+                                               actionListener="#{ccClienteMB.salvar}" 
+                                               update="infosCcCliente,:frmTblccCliente,:frmMsgErro"
+                                               oncomplete="handleRequest(xhr, status, args);"/>
+                              <script type="text/javascript">  
+                                    function handleRequest(xhr, status, args) 
+                                    {  
+                                        if (!args.validationFailed)
+                                        {                                            
+                                            dialogCcCliente.hide();  
+                                        }
+                                        else
+                                            {
+                                                jQuery('#dialog').effect("shake", { times:3 }, 100);
+                                            }                                        
+                                    }  								  
+                              </script>                                  
+                              
+                              <p:commandButton value="Cancelar" title="Cancelar" 
+                                               immediate="true" oncomplete="dialogCcCliente.hide();" 
+                                               image="ui-icon-close" />
+                        </h:form>  
+                   </p:dialog>                           
+                    
+                    <p:confirmDialog id="confirmDialog" message="Confirma exclusão do lançamento?"  
+                                    header="Confirme" severity="alert" widgetVar="confirmation" appendToBody="true" >                    
+                       
+                        <h:form id="frmRemoveCcCliente">                               
+                            <p:commandButton value="Sim"
+                                             oncomplete="confirmation.hide()" image="ui-icon-trash"                                                 
+                                             update=":frmTblccCliente,:frmMsgErro"                                                      
+                                             actionListener="#{ccClienteMB.remover}"/>  
+                            <p:commandButton immediate="true" value="Não" 
+                                             image="ui-icon-cancel"
+                                             onclick="confirmation.hide()" />                                         
+                        </h:form>                  
+                   </p:confirmDialog>                                          
+                    
+                </p:panel>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

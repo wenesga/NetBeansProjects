@@ -1,0 +1,4 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Wed Mar 30 21:52:43 BRT 2016
+default-http\://repo.maven.apache.org/maven2/.lastUpdated=1459385563519
+http\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.apache.maven.plugins\:maven-source-plugin\:pom\:2.0 from/to central (http\://repo.maven.apache.org/maven2)\: repo.maven.apache.org

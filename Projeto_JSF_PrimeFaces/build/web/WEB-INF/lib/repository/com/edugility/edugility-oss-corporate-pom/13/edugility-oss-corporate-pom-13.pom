@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Xlint="urn:javac" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <prerequisites>
+    <maven>3.3.3</maven>
+  </prerequisites>
+
+  <groupId>com.edugility</groupId>
+  <artifactId>edugility-oss-corporate-pom</artifactId>
+  <version>13</version>
+  <packaging>pom</packaging>
+
+  <name>Edugility Open Source Corporate POM</name>
+  <description>Edugility Open Source Corporate POM</description>
+  <inceptionYear>2013</inceptionYear>
+  <url>http://ljnelson.github.io/${project.artifactId}/</url>
+  
+  <organization>
+    <name>Edugility</name>
+    <url>http://www.edugility.com/</url>
+  </organization>
+
+  <licenses>
+    <license>
+      <comments>The MIT License</comments>
+      <distribution>repo</distribution>
+      <name>MIT</name>
+      <url>http://www.opensource.org/licenses/MIT</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git@github.com:ljnelson/${project.artifactId}.git</connection>
+    <developerConnection>scm:git:git@github.com:ljnelson/${project.artifactId}.git</developerConnection>
+    <url>https://github.com/ljnelson/${project.artifactId}/</url>
+    <tag>edugility-oss-corporate-pom-13</tag>
+  </scm>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>sonatype-oss-repository-hosting</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+  
+  <developers>
+    <developer>
+      <id>ljnelson</id>
+      <name>Laird Nelson</name>
+      <email>ljnelson@gmail.com</email>
+      <url>http://about.me/lairdnelson</url>
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+      <timezone>-8</timezone>
+    </developer>
+  </developers>
+
+  <issueManagement>
+    <system>Github</system>
+    <url>https://github.com/ljnelson/${project.artifactId}/issues</url>
+  </issueManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>2.6.1</version>
+          <configuration>
+            <filesets>
+              <fileset>
+                <directory>${basedir}</directory>
+                <includes>
+                  <include>src/**/*~</include>
+                  <include>*~</include>
+                </includes>
+              </fileset>
+            </filesets>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>1.6</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>${mavenProjectInfoReportsPluginVersion}</version>
+        </plugin> 
+        <plugin>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.4</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>2.4</version>
+          <executions>
+            <execution>
+              <id>attach-sources</id>
+              <goals>
+                <goal>jar-no-fork</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>${mavenJavadocPluginVersion}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.sonatype.plugins</groupId>
+          <artifactId>nexus-staging-maven-plugin</artifactId>
+          <version>1.6.6</version>
+          <extensions>true</extensions>
+          <configuration>
+            <serverId>sonatype-oss-repository-hosting</serverId>
+            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+  
+  <properties>
+
+    <!-- Versions -->
+    <mavenJavadocPluginVersion>2.10.3</mavenJavadocPluginVersion>
+    <mavenProjectInfoReportsPluginVersion>2.8.1</mavenProjectInfoReportsPluginVersion>
+
+    <!-- maven-compiler-plugin properties -->
+    <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
+    <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
+
+    <!-- maven-release-plugin properties -->
+    <goals>deploy</goals>
+    <!-- See http://central.sonatype.org/pages/apache-maven.html#performing-a-release-deployment-with-the-maven-release-plugin -->
+    <releaseProfiles>release</releaseProfiles>
+    <useReleaseProfile>false</useReleaseProfile>
+    
+    <!-- maven-resource-plugin properties -->
+    <maven.resource.escapeString>\</maven.resource.escapeString>
+
+    <!-- Other properties -->
+    <project.build.sourceEncoding>UTF8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF8</project.reporting.outputEncoding>
+
+  </properties>
+
+  <profiles>
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>2.4</version>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+</project>
