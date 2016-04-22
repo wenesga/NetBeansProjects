@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-shared-configuration>
+    <!--
+    Este arquivo contém configuração adicional escrito por módulos no NetBeans IDE.
+    A configuração se destina a ser compartilhado entre todos os usuários do projeto e
+    portanto, presume-se para fazer parte da verificação geral de controle de versão.
+    Sem essa configuração actual, algumas funcionalidades no IDE pode ser limitada ou falhar por completo.
+    -->
+    <properties xmlns="http://www.netbeans.org/ns/maven-properties-data/1">
+        <!--
+        Propriedades que influenciam várias partes do IDE, especialmente formatação de código e assim por diante.
+        Você pode copiar e colar as propriedades individuais, para o arquivo pom.xml e o IDE irá buscá-las.
+        Dessa forma, vários projetos podem compartilhar as mesmas configurações (úteis para a formatação de regras, por exemplo).
+        Qualquer valor definido aqui vai substituir o valor do arquivo pom.xml, mas só é aplicável ao projeto atual.
+        -->
+        <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>1.7-web</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_j2eeVersion>
+        <org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>Tomcat</org-netbeans-modules-maven-j2ee.netbeans_2e_hint_2e_deploy_2e_server>
+        <org-netbeans-modules-projectapi.jsf_2e_language>JSP</org-netbeans-modules-projectapi.jsf_2e_language>
+    </properties>
+</project-shared-configuration>
