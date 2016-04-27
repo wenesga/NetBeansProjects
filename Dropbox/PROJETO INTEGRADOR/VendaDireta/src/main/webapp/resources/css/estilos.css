@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+
+.ui-widget, .ui-widget .ui-widget {
+    font-size: 100% !important;
+}
+
+.imagemCentralizada {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.divTopo {
+    background-color: #AED2D9;
+    border-radius:5px
+}
+
+.divCabecalho {
+    padding-bottom: 4px;
+}
+

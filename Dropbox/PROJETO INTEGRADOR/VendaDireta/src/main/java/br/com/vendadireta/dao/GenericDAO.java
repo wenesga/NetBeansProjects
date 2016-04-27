@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 /**
@@ -15,9 +16,9 @@ import org.hibernate.criterion.Restrictions;
  * @date 04/04/2016 - Classe: GenericDAO
  */
 public class GenericDAO<Entidade> {
-
     private Class<Entidade> classe;
 
+    @SuppressWarnings("unchecked")
     public GenericDAO() {
         this.classe = (Class<Entidade>) ((ParameterizedType) getClass().getGenericSuperclass())
                 .getActualTypeArguments()[0];
@@ -46,6 +47,21 @@ public class GenericDAO<Entidade> {
 
         try {
             Criteria consulta = sessao.createCriteria(classe);
+            List<Entidade> resultado = consulta.list();
+            return resultado;
+        } catch (RuntimeException erro) {
+            throw erro;
+        } finally {
+            sessao.close();
+        }
+    }
+    
+    public List<Entidade> listar(String campoOrdenacao) {
+        Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
+
+        try {
+            Criteria consulta = sessao.createCriteria(classe);
+            consulta.addOrder(Order.asc(campoOrdenacao));
             List<Entidade> resultado = consulta.list();
             return resultado;
         } catch (RuntimeException erro) {
@@ -123,5 +139,4 @@ public class GenericDAO<Entidade> {
             sessao.close();
         }
     }
-
 }

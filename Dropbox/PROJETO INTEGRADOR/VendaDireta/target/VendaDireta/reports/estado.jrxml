@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="estado" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="20bffa53-1071-4b0b-91aa-61103be9facb">
+	<property name="ireport.zoom" value="1.331000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     estado.`sigla` AS estado_sigla,
+     estado.`nome` AS estado_nome
+FROM
+     `estado` estado]]>
+	</queryString>
+	<field name="estado_sigla" class="java.lang.String"/>
+	<field name="estado_nome" class="java.lang.String"/>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="103" y="0" width="347" height="79" uuid="da97547e-a77f-4369-a9c5-9487f3362432"/>
+				<imageExpression><![CDATA["D:\\PROJETO INTEGRADOR\\VendaDireta\\src\\main\\webapp\\resources\\images\\banner2.png"]]></imageExpression>
+			</image>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement x="0" y="0" width="100" height="20" uuid="de6c0b0e-9e9e-41c6-9a72-2ca168e664f5"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="0" y="20" width="92" height="50" uuid="9c6829b1-82ac-4280-ade1-55a608651bfb"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code39 (Extended)" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA["1234"]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="-11" width="555" height="35" uuid="29c5b9b4-0d48-407f-8f54-37ca76e22287"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Serif" size="16" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Relatório de Estados]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="20" width="555" height="1" uuid="9a8b04dc-895d-4ff3-83d8-dace454604ff"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="122" y="0" width="119" height="20" uuid="4d56f997-3e20-4be1-aada-9c3444327137"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="384" y="0" width="129" height="20" uuid="f4bdb9ed-b699-418a-84f2-78acfb0244e4"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sigla]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="122" y="0" width="149" height="20" uuid="358970a6-7e49-4e85-8412-8e9356051772"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estado_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="384" y="0" width="129" height="20" uuid="798dfbed-8881-4848-be74-a16af07d6691"/>
+				<textElement>
+					<font fontName="DejaVu Serif" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estado_sigla}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="41">
+			<staticText>
+				<reportElement x="60" y="10" width="435" height="20" uuid="8b9b43ad-54bd-4417-a821-03d00d7b0005"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Serif" size="10" isBold="false" isUnderline="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<text><![CDATA[Rua 02, Bairro Arnaldo Prieto, CEP: 77330-000, Arraias - TO.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="10" width="555" height="1" uuid="0c59563c-cc04-4385-8905-0ce53807f609"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="21" width="100" height="20" uuid="4bea83aa-ef56-4903-a6ea-5887803f87fe"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

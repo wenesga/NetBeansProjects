@@ -11,10 +11,10 @@ import javax.persistence.Entity;
 @Entity
 public class Estado extends GenericEntidade {
 
-    @Column(length = 2, nullable = false, name = "Sigla")
+    @Column(length = 2, nullable = false)
     private String sigla;
 
-    @Column(length = 50, nullable = false, name = "Nome_Estado")
+    @Column(length = 50, nullable = false)
     private String nome;
 
     public String getSigla() {

@@ -2,6 +2,7 @@ package br.com.vendadireta.dao;
 
 import br.com.vendadireta.entidade.Usuario;
 import java.util.List;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -17,9 +18,12 @@ public class UsuarioDAOTest {
     public void salvar() {
 
         Usuario usuario = new Usuario();
-        usuario.setNome("Joattann Gomes Aquino");
+        usuario.setNome("xxxxxx Gomes Aquino");
         usuario.setCpf("11111111111");
-        usuario.setSenha("123");
+        
+        usuario.setSenhaSemCriptografia("1");
+        SimpleHash hash = new SimpleHash("md5", usuario.getSenhaSemCriptografia());
+        usuario.setSenha(hash.toHex());
 
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.salvar(usuario);
@@ -119,5 +123,17 @@ public class UsuarioDAOTest {
             System.out.println("CPF: " + usuario.getCpf());
             System.out.println("SENHA: " + usuario.getSenha());
         }
+    }
+    
+    @Test
+    @Ignore
+    public void autenticar(){
+        String cpf = "123456789";
+        String senha = "12l3";
+        
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        Usuario usuario = usuarioDAO.autenticar(cpf, senha);
+        
+        System.out.println("Usuário atenticado: " + usuario);
     }
 }

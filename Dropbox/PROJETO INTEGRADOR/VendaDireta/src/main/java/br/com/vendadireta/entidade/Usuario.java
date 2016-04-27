@@ -2,6 +2,7 @@ package br.com.vendadireta.entidade;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 /**
  * @Cometario:
@@ -11,15 +12,28 @@ import javax.persistence.Entity;
 @Entity
 public class Usuario extends GenericEntidade {
 
-    @Column(length = 50, nullable = false, name = "Usuário")
+    @Column(length = 50, nullable = false)
     private String nome;
 
-    @Column(length = 11, name = "CPF")
+    @Column(length = 14)
     private String cpf;
 
-    @Column(length = 50, nullable = false, name = "Senha")
+    @Column(length = 32, nullable = false)
     private String senha;
+    
+    @Transient
+    private String senhaSemCriptografia;
 
+    
+    
+    public String getSenhaSemCriptografia() {
+        return senhaSemCriptografia;
+    }
+
+    public void setSenhaSemCriptografia(String senhaSemCriptografia) {
+        this.senhaSemCriptografia = senhaSemCriptografia;
+    }
+    
     public String getNome() {
         return nome;
     }

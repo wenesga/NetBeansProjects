@@ -11,13 +11,13 @@ import javax.persistence.Entity;
 @Entity
 public class FormaPagamento extends GenericEntidade {
 
-    @Column(nullable = false, name = "Entrada")
+    @Column(nullable = false)
     private Byte entrada;
 
-    @Column(nullable = false, name = "Parcelas")
+    @Column(nullable = false)
     private Byte parcela;
 
-    @Column(length = 20, nullable = false, name = "Tipo_Pagamento")
+    @Column(length = 20, nullable = false)
     private String tipo;
 
     public Byte getEntrada() {
@@ -43,5 +43,4 @@ public class FormaPagamento extends GenericEntidade {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
 }

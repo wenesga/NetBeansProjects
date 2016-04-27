@@ -48,6 +48,8 @@
         <mapping class="br.com.vendadireta.entidade.Estado" />
         <mapping class="br.com.vendadireta.entidade.Cidade" />
         <mapping class="br.com.vendadireta.entidade.Fornecedor" />
+        <mapping class="br.com.vendadireta.entidade.ItemVenda" />
+        <mapping class="br.com.vendadireta.entidade.Venda" />
         
     </session-factory>
 </hibernate-configuration>

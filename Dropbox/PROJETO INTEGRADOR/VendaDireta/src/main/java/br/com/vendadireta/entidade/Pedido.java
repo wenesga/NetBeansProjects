@@ -17,20 +17,20 @@ import javax.persistence.TemporalType;
 public class Pedido extends GenericEntidade {
 
     @ManyToOne
-    @JoinColumn(nullable = false, name = "Código_Cliente")
+    @JoinColumn(nullable = false)
     private Cliente cliente;
 
     @ManyToOne
-    @JoinColumn(nullable = false, name = "Código_Forma_Pagamento")
-    private FormaPagamento forma_de_agamento;
+    @JoinColumn(nullable = false)
+    private FormaPagamento forma_pagamento;
 
-    @Column(nullable = false, name = "Data_do_Pedito")
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     private Date data_pedido;
 
-    @Column(nullable = false, name = "Prazo_de_Pagamento")
+    @Column(nullable = false)
     @Temporal(TemporalType.DATE)
-    private Date prazo_de_pagamento;
+    private Date prazo_pagamento;
 
     public Cliente getCliente() {
         return cliente;
@@ -41,11 +41,11 @@ public class Pedido extends GenericEntidade {
     }
 
     public FormaPagamento getFormaPagamento() {
-        return forma_de_agamento;
+        return forma_pagamento;
     }
 
     public void setFormaPagamento(FormaPagamento formaPagamento) {
-        this.forma_de_agamento = formaPagamento;
+        this.forma_pagamento = formaPagamento;
     }
 
     public Date getData_pedido() {
@@ -57,11 +57,11 @@ public class Pedido extends GenericEntidade {
     }
 
     public Date getPrazo_pagamento() {
-        return prazo_de_pagamento;
+        return prazo_pagamento;
     }
 
     public void setPrazo_pagamento(Date prazo_pagamento) {
-        this.prazo_de_pagamento = prazo_pagamento;
+        this.prazo_pagamento = prazo_pagamento;
     }
 
 }

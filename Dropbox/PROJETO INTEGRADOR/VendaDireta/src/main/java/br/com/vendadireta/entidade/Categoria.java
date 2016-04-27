@@ -11,7 +11,7 @@ import javax.persistence.Entity;
 @Entity
 public class Categoria extends GenericEntidade {
 
-    @Column(length = 50, nullable = false, name = "Nome_Categoria")
+    @Column(length = 100, nullable = false)
     private String nome;
 
     public String getNome() {

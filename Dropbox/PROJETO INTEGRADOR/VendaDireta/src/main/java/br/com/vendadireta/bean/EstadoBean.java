@@ -44,7 +44,7 @@ public class EstadoBean implements Serializable {
             EstadoDAO estadoDAO = new EstadoDAO();
             estados = estadoDAO.listar();
         } catch (RuntimeException erro) {
-            Messages.addGlobalError("Ocorreu um erro ao tentar listar os estado");
+            Messages.addGlobalError("Ocorreu um erro ao tentar listar os Estado");
             erro.printStackTrace();
         }
     }
@@ -59,10 +59,10 @@ public class EstadoBean implements Serializable {
             estadoDAO.merge(estado);
             estado = new Estado();
             estados = estadoDAO.listar();
-            
+
             Messages.addGlobalInfo("Estado salvo com sucesso!");
         } catch (RuntimeException erro) {
-            Messages.addGlobalError("Ocorreu um erro ao tentar salvar o estado");
+            Messages.addGlobalError("Ocorreu um erro ao tentar salvar o Estado");
             erro.printStackTrace();
         }
     }
@@ -72,16 +72,16 @@ public class EstadoBean implements Serializable {
             estado = (Estado) evento.getComponent().getAttributes().get("estadoSelecionado");
             EstadoDAO estadoDAO = new EstadoDAO();
             estadoDAO.excluir(estado);
-            estados =estadoDAO.listar();
-            
+            estados = estadoDAO.listar();
+
             Messages.addGlobalInfo("Estado removido com sucesso");
         } catch (RuntimeException erro) {
-            Messages.addGlobalError("Ocorreu um erro ao tentar excluir o estado");
+            Messages.addGlobalError("Ocorreu um erro ao tentar remover o Estado");
             erro.printStackTrace();
         }
     }
-    
-    public void editar(ActionEvent evento){
+
+    public void editar(ActionEvent evento) {
         estado = (Estado) evento.getComponent().getAttributes().get("estadoSelecionado");
     }
 }

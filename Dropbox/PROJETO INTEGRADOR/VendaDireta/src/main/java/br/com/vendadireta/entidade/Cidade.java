@@ -13,11 +13,11 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Cidade extends GenericEntidade {
 
-    @Column(length = 50, nullable = false, name = "Nome_Cidade")
+    @Column(length = 50, nullable = false)
     private String nome;
 
     @ManyToOne
-    @JoinColumn(nullable = false, name = "Código_Estado")
+    @JoinColumn(nullable = false)
     private Estado estado;
 
     public String getNome() {

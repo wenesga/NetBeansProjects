@@ -56,54 +56,27 @@ public class Conexao {
         }
     }
 
-    
-    
-//    public int Inserir(String sql) throws Exception, IllegalAccessException {
-//        
-//        if (this.conn.isClosed()) {
-//            throw new IllegalStateException("Conexão com banco está fechada");
-//        }
-//        try{
-//            this.statement = this.conn.createStatement();
-//            this.statement.executeUpdate(sql, columnNames);
-//        
-//        }catch(Exception ex){
-//            
-//        }
-//    }
-    
-    
-
     public DefaultTableModel ConfiguraConsulata(String consulta)
             throws SQLException, IllegalStateException {
-
         if (this.conn.isClosed()) {
             throw new IllegalStateException("Conexão com banco está fechada");
         }
-
         Vector<String> nomeColunas = new Vector<String>();
         Vector<Vector<Object>> linhas = new Vector<Vector<Object>>();
-
         try {
             this.statement = this.conn.createStatement(
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY
             );
-
             this.resultSet = this.statement.executeQuery(consulta);
-
             this.metaData = resultSet.getMetaData();
-
             int numeroColunas = metaData.getColumnCount();
-
             for (int indiceColuna = 1; indiceColuna <= numeroColunas; indiceColuna++) {
                 nomeColunas.add(metaData.getColumnName(indiceColuna));
             }
 
             while (resultSet.next()) {
-
                 Vector<Object> vetor = new Vector<Object>();
-
                 for (int indiceColuna = 1; indiceColuna <= numeroColunas; indiceColuna++) {
                     vetor.add(resultSet.getObject(indiceColuna));
                 }
@@ -114,19 +87,15 @@ public class Conexao {
             ex.printStackTrace();
         }
         DefaultTableModel dtm = new DefaultTableModel(linhas, nomeColunas);
-
         return dtm;
     }
 
     public void FecharConexao() {
-
         try {
             if (!this.conn.isClosed()) {
-
                 this.conn.close();
                 this.statement.close();
                 this.resultSet.close();
-
             }
         } catch (SQLException ex) {
 

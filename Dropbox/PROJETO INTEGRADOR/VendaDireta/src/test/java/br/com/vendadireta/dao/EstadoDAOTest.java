@@ -92,8 +92,9 @@ public class EstadoDAOTest {
     @Ignore 
     public void merge() {
         EstadoDAO estadoDAO = new EstadoDAO();
-        Estado estado = estadoDAO.buscar(1);
+        Estado estado = estadoDAO.buscar(74);
         estado.setNome("Estado Teste");
+        estado.setSigla("TT");
         estadoDAO.merge(estado);
     }
 

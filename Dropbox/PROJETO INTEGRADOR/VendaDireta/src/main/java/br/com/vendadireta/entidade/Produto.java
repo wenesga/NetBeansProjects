@@ -14,30 +14,94 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Produto extends GenericEntidade {
 
-    @Column(length = 100, nullable = false, name = "Decrição")
-    private String decricao;
+    @Column(length = 100, nullable = false)
+    private String nome;
 
-    @Column(nullable = false, precision = 6, scale = 2, name = "Valor_de_Compra")
-    private BigDecimal valor_de_compra;
+    @Column(nullable = false, precision = 7, scale = 2)
+    private BigDecimal valor_compra;
 
-    @Column(nullable = false, precision = 6, scale = 2, name = "Valor_de_Venda")
-    private BigDecimal valor_de_venda;
+    @Column(nullable = false, precision = 7, scale = 2)
+    private BigDecimal valor_venda;
 
     @ManyToOne
-    @JoinColumn(nullable = false, name = "Código_Marca")
+    @JoinColumn(nullable = false)
     private Marca marca;
 
-    @Column(length = 4, nullable = false, name = "Estoque")
-    private short estoque;
+    @Column(nullable = false)
+    private Short estoque;
 
-    @Column(length = 4, nullable = false, name = "Estoque_Minimo")
-    private short estoque_minimo;
+    @Column(nullable = false)
+    private Short estoque_minimo;
 
     @ManyToOne
-    @JoinColumn(nullable = false, name = "Código_Categoria")
+    @JoinColumn(nullable = false)
     private Categoria categoria;
 
     @ManyToOne
-    @JoinColumn(nullable = false, name = "Código_Fornecedor")
+    @JoinColumn(nullable = false)
     private Fornecedor fornecedor;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public BigDecimal getValor_compra() {
+        return valor_compra;
+    }
+
+    public void setValor_compra(BigDecimal valor_compra) {
+        this.valor_compra = valor_compra;
+    }
+
+    public BigDecimal getValor_venda() {
+        return valor_venda;
+    }
+
+    public void setValor_venda(BigDecimal valor_venda) {
+        this.valor_venda = valor_venda;
+    }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
+
+    public Short getEstoque() {
+        return estoque;
+    }
+
+    public void setEstoque(Short estoque) {
+        this.estoque = estoque;
+    }
+
+    public Short getEstoque_minimo() {
+        return estoque_minimo;
+    }
+
+    public void setEstoque_minimo(Short estoque_minimo) {
+        this.estoque_minimo = estoque_minimo;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Fornecedor getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(Fornecedor fornecedor) {
+        this.fornecedor = fornecedor;
+    }
 }

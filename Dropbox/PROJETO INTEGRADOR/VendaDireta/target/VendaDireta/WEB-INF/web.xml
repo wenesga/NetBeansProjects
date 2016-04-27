@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-Para alterar este cabeçalho de licença, escolha cabeçalhos de Licenciamento em Propriedades do projeto.
-Para alterar esse arquivo de modelo, escolha Ferramentas | Modelos
-e abra o modelo no editor.
--->
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
@@ -28,5 +23,16 @@ e abra o modelo no editor.
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+    
+    <!-- Carregamento do Hibernate -->
+    <listener>
+        <listener-class>br.com.vendadireta.util.HibernateContexto</listener-class>
+    </listener>
+    
+    <!-- Tema do PrimeFaces-->
+    <context-param>  
+        <param-name>primefaces.THEME</param-name>  
+        <param-value>hot-sneaks</param-value>  
+    </context-param> 
 </web-app>
 

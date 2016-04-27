@@ -13,27 +13,82 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Cliente extends GenericEntidade {
 
-    @Column(length = 100, nullable = false, name = "Nome_Cliente")
+    @Column(length = 100, nullable = false)
     private String nome;
 
-    @Column(length = 11, nullable = false, name = "CPF")
+    @Column(length = 14, nullable = false)
     private String cpf;
 
-    @Column(length = 15, nullable = false, name = "RG")
-    private Long rg;
+//    @Column(length = 12, nullable = false)
+//    private String rg;
 
-    @Column(length = 12, nullable = false, name = "Telefone")
+    @Column(length = 14, nullable = false)
     private String telefone;
 
-    @Column(length = 100, nullable = false, name = "Endereço")
+    @Column(length = 100, nullable = false)
     private String endereco;
 
-    @ManyToOne
-    @JoinColumn(nullable = false, name = "Código_Estado")
-    private Estado estado;
+//    @ManyToOne
+//    @JoinColumn(nullable = false)
+//    private Estado estado;
 
     @ManyToOne
-    @JoinColumn(nullable = false, name = "Código_Cidade")
+    @JoinColumn(nullable = false)
     private Cidade cidade;
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+//    public String getRg() {
+//        return rg;
+//    }
+//
+//    public void setRg(String rg) {
+//        this.rg = rg;
+//    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+//    public Estado getEstado() {
+//        return estado;
+//    }
+//
+//    public void setEstado(Estado estado) {
+//        this.estado = estado;
+//    }
+
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    } 
 }

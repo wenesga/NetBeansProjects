@@ -13,23 +13,71 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Fornecedor extends GenericEntidade {
 
-    @Column(length = 100, nullable = false, name = "Nome_Fornecedor")
+    @Column(length = 100, nullable = false)
     private String nome;
 
-    @Column(length = 100, nullable = false, name = "Tipo_Fornecedor")
+    @Column(length = 100, nullable = false)
     private String tipo;
 
-    @Column(length = 100, nullable = false, name = "Endereço")
+    @Column(length = 100, nullable = false)
     private String endereco;
 
-    @Column(length = 12, nullable = false, name = "Telefone")
+    @Column(length = 14, nullable = false)
     private String telefone;
 
-    @ManyToOne
-    @JoinColumn(nullable = false, name = "Código_Estado")
-    private Estado estado;
+//    @ManyToOne
+//    @JoinColumn(nullable = false)
+//    private Estado estado;
 
     @ManyToOne
-    @JoinColumn(nullable = false, name = "Código_Cidade")
+    @JoinColumn(nullable = false)
     private Cidade cidade;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+//    public Estado getEstado() {
+//        return estado;
+//    }
+//
+//    public void setEstado(Estado estado) {
+//        this.estado = estado;
+//    }
+
+    public Cidade getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
+    }
 }
