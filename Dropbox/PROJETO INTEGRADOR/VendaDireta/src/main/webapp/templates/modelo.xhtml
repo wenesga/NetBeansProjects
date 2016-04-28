@@ -15,7 +15,7 @@
 
     <h:body>
         <p:growl id="mensagem" />
-        
+
         <div id="geral">
             <div id="topo" class="divTopo">
                 <p:graphicImage library="images" name="banner2.png" 
@@ -23,7 +23,7 @@
             </div>
 
             <div id="cabecalho" class="divCabecalho">
-                
+
                 <h:form id="formMenu" class="form">
                     <p:menubar>
                         <p:submenu label="Arquivo" icon="ui-icon-document">
@@ -47,6 +47,10 @@
                         <p:submenu label="Relatórios" icon="ui-icon-script">
                             <p:menuitem value="Venda" />
                             <p:menuitem value="Compra" />
+                        </p:submenu>
+
+                        <p:submenu label="Movimentações">
+                            <p:menuitem value="Venda" url="/pages/venda.xhtml" />
                         </p:submenu>
 
                         <p:submenu label="Ajuda" icon="ui-icon-help">
