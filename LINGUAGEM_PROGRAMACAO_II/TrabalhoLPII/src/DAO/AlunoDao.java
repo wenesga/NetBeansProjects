@@ -11,7 +11,9 @@ import javax.swing.table.TableModel;
  * @date 29/03/2016 - Classe: AlunoDao
  */
 public class AlunoDao {
+    
     Conexao c = new Conexao();
+    
     public TableModel ListaAlunos() {
         DefaultTableModel tm = new DefaultTableModel();
         try {
