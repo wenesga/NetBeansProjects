@@ -38,7 +38,7 @@ public class Tabela extends JFrame {
                 JTable jt = (JTable) evt.getSource();
 
                 int linha = jt.getSelectedRow();
-                int coluna = jt.getSelectedColumn();
+               
                 if ((linha != -1)) {
                     Object matriculaLinha = jt.getValueAt(linha, 0);
                     matricula = matriculaLinha.toString();
@@ -65,6 +65,14 @@ public class Tabela extends JFrame {
                     JOptionPane.showMessageDialog(null, "Elemento excluido com sucesso");
                     resultTable.setModel(alunoDao.ListaAlunos());
                 }
+            }
+        });
+        
+         btnSalvar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                
             }
         });
 
