@@ -6,8 +6,8 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="/templates/modelo.xhtml">
-
     <ui:define name="conteudo">
+
         <h:form id="formListagem">
             <p:panel header="Lista de Categorias">
                 <p:dataTable id="tabela" 
@@ -15,7 +15,7 @@
                              paginator="true" 
                              value="#{categoriaBean.categoiras}" 
                              var="categoria"
-                             rows="5" paginatorPosition="top">
+                             rows="7" paginatorPosition="top">
 
                     <f:facet name="header">
                         <p:commandButton value="Novo" 
@@ -26,13 +26,13 @@
                         </p:commandButton>
                     </f:facet>
 
-                    <p:column headerText="Nome"
+                    <p:column headerText="Nome" style="width: 20%;" filterMatchMode="contains"
                               sortBy="#{categoria.nome}"
                               filterBy="#{categoria.nome}">
                         <h:outputText value="#{categoria.nome}"/>
                     </p:column>
 
-                    <p:column headerText="Opções" >
+                    <p:column headerText="Opções" style="width: 17%;" class="opcoes">
                         <p:commandButton icon="ui-icon-trash"
                                          actionListener="#{categoriaBean.excluir}" 
                                          update="mensagem :formListagem:tabela" >

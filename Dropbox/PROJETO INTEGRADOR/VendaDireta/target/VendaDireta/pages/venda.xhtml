@@ -6,7 +6,8 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="/templates/modelo.xhtml">
-    <ui:define name="conteudo">       
+    <ui:define name="conteudo">      
+        
         <h:form id="formulario">
             <p:panel header="Produtos">    
                 <p:dataTable id="tabelaProduto"
@@ -16,34 +17,34 @@
                              var="produto" 
                              rows="3" paginatorPosition="top">
 
-                    <p:column headerText="Nome"
+                    <p:column headerText="Nome" filterMatchMode="contains"
                               filterBy="#{produto.nome}"
                               sortBy="#{produto.nome}">
                         <h:outputText value="#{produto.nome}"/>
                     </p:column>            
 
-                    <p:column headerText="Fornecedor"
+                    <p:column headerText="Fornecedor" filterMatchMode="contains" style="width: 20%;"
                               filterBy="#{produto.fornecedor.nome}"
                               sortBy="#{produto.fornecedor.nome}">
                         <h:outputText value="#{produto.fornecedor.nome}"/>
                     </p:column>
 
-                    <p:column headerText="Valor de Venda"
+                    <p:column headerText="Preço" style="width: 10%;"
                               sortBy="#{produto.valor_venda}">
                         <h:outputText value="#{produto.valor_venda}">
                             <f:convertNumber locale="pt_BR" minFractionDigits="2"/>
                         </h:outputText>
                     </p:column>
 
-                    <p:column headerText="Estoque"
+                    <p:column headerText="Estoque" style="width: 10%;"
                               sortBy="#{produto.estoque}">
                         <h:outputText value="#{produto.estoque}"/>
                     </p:column>
 
-                    <p:column headerText="Opções">
+                    <p:column headerText="Opções" class="opcoes" style="width: 10%;">
                         <p:commandButton icon="ui-icon-plus"
                                          actionListener="#{vendaBean.adicionar}"
-                                         update=":formulario:tebelaCesta :formulario:painelFinalizacao">
+                                         update=":formulario:tabelaCesta :formulario:painelFinalizacao">
                             <f:attribute name="produtoSelecionado" value="#{produto}"/>
                         </p:commandButton>
                     </p:column>
@@ -51,55 +52,54 @@
             </p:panel>
 
             <p:panel header="Cesta de Compras">   
-                <p:dataTable id="tebelaCesta"
+                <p:dataTable id="tabelaCesta"
                              emptyMessage="Nenhum produto da cesta de compras." 
                              paginator="true"
                              value="#{vendaBean.itensVenda}"
                              var="itemVenda" 
-                             rows="3" paginatorPosition="top">
+                             rows="5" paginatorPosition="top">
 
                     <p:column headerText="Nome">
                         <h:outputText value="#{itemVenda.produto.nome}"/>
                     </p:column>            
 
-                    <p:column headerText="Valor Unitário.">
+                    <p:column headerText="Preço Unitário." style="width: 10%;">
                         <h:outputText value="#{itemVenda.produto.valor_venda}">
                             <f:convertNumber locale="pt_BR" minFractionDigits="2"/>
                         </h:outputText>
                     </p:column>
 
-                    <p:column headerText="Quantidade">
+                    <p:column headerText="Quantidade" style="width: 10%;">
                         <h:outputText value="#{itemVenda.quantidade}"/>
                     </p:column>
 
-                    <p:column headerText="Valor Parcial">
+                    <p:column headerText="Preço Parcial" style="width: 10%;">
                         <h:outputText value="#{itemVenda.valorParcial}">
                             <f:convertNumber locale="pt_BR" minFractionDigits="2"/>
                         </h:outputText>
                     </p:column>
 
-                    <p:column headerText="Opções">
+                    <p:column headerText="Opções" class="opcoes" style="width: 10%;">
                         <p:commandButton icon="ui-icon-minus"
                                          actionListener="#{vendaBean.remover}"
-                                         update=":formulario:tebelaCesta :formulario:painelFinalizacao">
+                                         update=":formulario:tabelaCesta :formulario:painelFinalizacao">
                             <f:attribute name="itemSelecionado" value="#{itemVenda}" />                       
                         </p:commandButton>
                     </p:column>
                 </p:dataTable>
             </p:panel>
 
-            <p:panel header="Finalização">
-                <p:outputPanel id="painelFinalizacao" style=" text-align:center; font-weight: bold;">
-                    <p:outputLabel  value="TOTAL: R$ " />
-                    <h:outputText value="#{vendaBean.venda.valorTotal} ">
-                        <f:convertNumber locale="pt_BR" minFractionDigits="2" />
-                    </h:outputText>
-                    <p:commandButton value="Finalizar"
-                                     actionListener="#{vendaBean.finalizar}"
-                                     update=":mensagem :formularioFinalizar:painelFinalizar"
-                                     oncomplete="PF('dialogo').show();"/>
-                </p:outputPanel>
-            </p:panel>
+            <p:outputPanel id="painelFinalizacao" style=" text-align:center; font-weight: bold;">
+                <p:outputLabel  value="Total:" style=" font-size: 150% !important;"/>
+                <h:outputText value="#{vendaBean.venda.valorTotal}" style=" font-size: 150% !important;">
+                    <f:convertNumber locale="pt_BR" type="currency" currencySymbol="  R$" />
+                </h:outputText>
+                <br/>
+                <p:commandButton value="Finalizar"
+                                 actionListener="#{vendaBean.finalizar}"
+                                 update=":mensagem :formularioFinalizar:painelFinalizar"
+                                 oncomplete="PF('dialogo').show();"/>
+            </p:outputPanel>
         </h:form>   
 
 
@@ -108,7 +108,7 @@
                   resizable="false" 
                   modal="true" 
                   closable="false">
-            <h:form id="formularioFinalizar">
+            <h:form id="formularioFinalizar" class="x">
                 <h:panelGrid id="painelFinalizar" columns="2">
 
                     <p:outputLabel value="Horário: "/>
@@ -116,14 +116,16 @@
                         <f:convertDateTime pattern="dd/MM/yyyy HH:mm" locale="pt_BR" timeZone="America/Sao_Paulo"/>
                     </h:outputText>
 
-
-                    <p:outputLabel  value="Total:R$"/>
-                    <h:outputText value="#{vendaBean.venda.valorTotal} ">
-                        <f:convertNumber locale="pt_BR" minFractionDigits="2" />
+                    <p:outputLabel  value="Total:"/>
+                    <h:outputText value="#{vendaBean.venda.valorTotal}">
+                        <f:convertNumber locale="pt_BR" type="currency" currencySymbol="R$" />
                     </h:outputText>
+                    
+                    <h:outputLabel value="Usuário:"/>
+                    <h:outputText value="#{autenticacaoBean.usuarioLogado.nome}"/>
 
                     <p:outputLabel value="Cliente:" />
-                    <p:selectOneMenu value="#{vendaBean.venda.cliente}"
+                    <p:selectOneMenu value="#{vendaBean.venda.cliente}" style="width:400px"
                                      converter="omnifaces.SelectItemsConverter" 
                                      filter="true" filterMatchMode="contains">
                         <f:selectItem noSelectionOption="true"
@@ -133,11 +135,12 @@
                                        itemValue="#{cliente}" 
                                        itemLabel="#{cliente.nome} - Cod.#{cliente.codigo}" />
                     </p:selectOneMenu>
-
                 </h:panelGrid>
 
                 <p:outputPanel style=" text-align:center">
-                    <p:commandButton value="Salvar" />
+                    <p:commandButton value="Salvar" actionListener="#{vendaBean.salvar}"
+                                     update=":mensagem :formulario:tabelaProduto :formulario:tabelaCesta :formulario:painelFinalizacao" 
+                                     oncomplete="PF('dialogo').hide();" />
                     <p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
                 </p:outputPanel>
             </h:form>

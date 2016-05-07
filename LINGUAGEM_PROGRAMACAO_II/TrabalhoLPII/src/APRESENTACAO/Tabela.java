@@ -13,24 +13,32 @@ import javax.swing.JButton;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import DAO.AlunoDao;
 import DAO.Conexao;
+import java.awt.Container;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Tabela extends JFrame {
 
+    public static void main(String args[]) {
+        new Tabela(); //Chamando construtor no metodo main
+    }
+
     AlunoDao alunoDao = new AlunoDao();
     Conexao c = new Conexao();
-    
     String matricula;
     JTable resultTable;
 
-    public Tabela() {
-        super("Conslutar Resultado");
+    public Tabela() {  //Construtoru
+
+        super("Tabela de Alunos"); // Tituto da janela
+
         resultTable = new JTable(alunoDao.ListaAlunos());
         resultTable.setRowSelectionAllowed(true);
-
         resultTable.addPropertyChangeListener(new PropertyChangeListener() {
 
             @Override
@@ -38,7 +46,7 @@ public class Tabela extends JFrame {
                 JTable jt = (JTable) evt.getSource();
 
                 int linha = jt.getSelectedRow();
-               
+
                 if ((linha != -1)) {
                     Object matriculaLinha = jt.getValueAt(linha, 0);
                     matricula = matriculaLinha.toString();
@@ -46,15 +54,30 @@ public class Tabela extends JFrame {
             }
         });
 
-        JPanel jp = new JPanel(new GridLayout(1, 2));
-        JButton btnExcluir = new JButton("Excluir");
-        btnExcluir.setSize(50, 30);
+        JPanel jp = new JPanel(new GridLayout(5, 2));
+        
+        
+        jp.add(new JLabel("Nome:"));
+        jp.add(new JTextField());
+
+        jp.add(new JLabel("Idade:"));
+        jp.add(new JTextField());
+        
+        jp.add(new JLabel("Matricula:"));
+        jp.add(new JTextField());
+        
 
         JButton btnSalvar = new JButton("salvar");
-        btnSalvar.setSize(50, 30);
-
-        jp.add(btnExcluir, BorderLayout.EAST);
+        btnSalvar.setSize(1,1);
         jp.add(btnSalvar, BorderLayout.WEST);
+
+        JButton btnEditar = new JButton("Editar");
+        btnEditar.setSize(50, 30);
+        jp.add(btnEditar, BorderLayout.CENTER);
+
+        JButton btnExcluir = new JButton("Excluir");
+        btnExcluir.setSize(50, 30);
+        jp.add(btnExcluir, BorderLayout.EAST);
 
         btnExcluir.addActionListener(new ActionListener() {
             @Override
@@ -67,33 +90,28 @@ public class Tabela extends JFrame {
                 }
             }
         });
-        
-         btnSalvar.addActionListener(new ActionListener() {
+
+        btnSalvar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-                
+
             }
         });
-
 
         add(new JScrollPane(resultTable), BorderLayout.CENTER);
         add(jp, BorderLayout.SOUTH);
         add(new JScrollPane(resultTable), BorderLayout.CENTER);
-        setSize(500, 250);
-        setVisible(true);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setSize(500, 400); //Define do tamanho da janela
+        setVisible(true); //Define se a janela é visivel
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE); //Operação pandrão de fechamento
 
         addWindowListener(new WindowAdapter() {
             public void windowClosed(WindowEvent event) {
                 System.exit(0);
             }
         });
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); //Centralizar jenela
+
     }
 
-    public static void main(String args[]) {
-        new Tabela();
-        
-    }
 }

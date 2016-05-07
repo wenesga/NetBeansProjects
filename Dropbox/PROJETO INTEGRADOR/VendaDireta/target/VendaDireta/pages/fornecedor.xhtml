@@ -15,7 +15,7 @@
                              paginator="true"
                              value="#{fornecedorBean.fornecedores}"
                              var="fornecedor" 
-                             rows="5" paginatorPosition="top">
+                             rows="7" paginatorPosition="top">
 
                     <f:facet name="header">
                         <p:commandButton value="Novo" 
@@ -26,25 +26,25 @@
                         </p:commandButton>
                     </f:facet>
 
-                    <p:column headerText="Nome" 
+                    <p:column headerText="Nome" filterMatchMode="contains"
                               filterBy="#{fornecedor.nome}"
                               sortBy="#{fornecedor.nome}">
                         <h:outputText value="#{fornecedor.nome}" />
                     </p:column>
 
-                    <p:column headerText="Tipo"
+                    <p:column headerText="Tipo" style="width: 12%;"
                               filterBy="#{fornecedor.tipo}"
                               sortBy="#{fornecedor.tipo}">
                         <h:outputText value="#{fornecedor.tipo}"/>
                     </p:column>
 
-                    <p:column headerText="Telefone"
+                    <p:column headerText="Telefone" style="width: 12%;"
                               filterBy="#{fornecedor.telefone}"
                               sortBy="#{fornecedor.telefone}">
                         <h:outputText value="#{fornecedor.telefone}"/>
                     </p:column>
 
-                    <p:column headerText="Cidade"
+                    <p:column headerText="Cidade" style="width: 15%;"
                               filterBy="#{fornecedor.cidade.nome}"
                               sortBy="#{fornecedor.cidade.nome}">
                         <h:outputText value="#{fornecedor.cidade.nome}"/>
@@ -52,13 +52,13 @@
                         <h:outputText value="#{fornecedor.cidade.estado.sigla}"/>
                     </p:column>
 
-                    <p:column headerText="Endereço"
+                    <p:column headerText="Endereço" filterMatchMode="contains"
                               filterBy="#{fornecedor.endereco}"
                               sortBy="#{fornecedor.endereco}">
                         <h:outputText value="#{fornecedor.endereco}"/>
                     </p:column>
 
-                    <p:column headerText="Opções">
+                    <p:column headerText="Opções" class="opcoes" style="width: 17%;">
                         <p:commandButton icon="ui-icon-trash" 
                                          actionListener="#{fornecedorBean.excluir}" 
                                          update=":mensagem :formListagem:tabela">
@@ -114,7 +114,7 @@
                                  requiredMessage="O campo 'Telefone' é obrigatório"/>
 
                     <p:outputLabel for="estado" value="Estado:" />
-                    <p:selectOneMenu id="estado" filter="true" 
+                    <p:selectOneMenu id="estado" filter="true" style="width:210px"
                                      converter="omnifaces.SelectItemsConverter" 
                                      value="#{fornecedorBean.estado}">
                         <f:selectItem noSelectionOption="true" itemLabel="Selecione um estado" />
@@ -124,7 +124,7 @@
                     </p:selectOneMenu>
 
                     <p:outputLabel for="cidade" value="Cidade:" />
-                    <p:selectOneMenu id="cidade" filter="true"
+                    <p:selectOneMenu id="cidade" filter="true" style="width:210px"
                                      converter="omnifaces.SelectItemsConverter" 
                                      required="true"
                                      requiredMessage="O campo 'Cidade' é obrigatório"

@@ -15,66 +15,68 @@
                              paginator="true"
                              value="#{produtoBean.produtos}"
                              var="produto" 
-                             rows="3" paginatorPosition="top">
+                             rows="7" paginatorPosition="top">
 
                     <f:facet name="header">
-                        <p:commandButton value="Novo" 
+                        <p:commandButton icon="ui-icon-plusthick" 
                                          actionListener="#{produtoBean.novo}"
                                          oncomplete="PF('dialogo').show();"
                                          update=":mensagem :formCadastro:painel">
                             <f:actionListener type="org.omnifaces.eventlistener.ResetInputAjaxActionListener"/>
                         </p:commandButton>  
+                        
+                        <p:commandButton icon="ui-icon-print" actionListener="#{produtoBean.imprimir}"/>
                     </f:facet>
 
-                    <p:column headerText="Nome"
+                    <p:column headerText="Nome" filterMatchMode="contains"
                               filterBy="#{produto.nome}"
                               sortBy="#{produto.nome}">
                         <h:outputText value="#{produto.nome}"/>
                     </p:column>            
 
-                    <p:column headerText="Fornecedor"
+                    <p:column headerText="Fornecedor" style="width: 15%;" filterMatchMode="contains"
                               filterBy="#{produto.fornecedor.nome}"
                               sortBy="#{produto.fornecedor.nome}">
                         <h:outputText value="#{produto.fornecedor.nome}"/>
                     </p:column>
 
-                    <p:column headerText="Marca"
+                    <p:column headerText="Marca" style="width: 10%;"
                               filterBy="#{produto.marca.nome}"
                               sortBy="#{produto.marca.nome}">
                         <h:outputText value="#{produto.marca.nome}"/>
                     </p:column>
 
-                    <p:column headerText="Categoria"
+                    <p:column headerText="Categoria" style="width: 10%;"
                               filterBy="#{produto.categoria.nome}"
                               sortBy="#{produto.categoria.nome}">
                         <h:outputText value="#{produto.categoria.nome}"/>
                     </p:column>
 
-                    <p:column headerText="Valor de Compra" 
+                    <p:column headerText="Valor Compra" style="width: 7%;"
                               sortBy="#{produto.valor_compra}">
                         <h:outputText value="#{produto.valor_compra}">
-                            <f:convertNumber locale="pt_BR" minFractionDigits="2" />
+                            <f:convertNumber locale="pt_BR" minFractionDigits="2"/>
                         </h:outputText>
                     </p:column>
 
-                    <p:column headerText="Valor de Venda"
+                    <p:column headerText="Valor Venda" style="width: 5%;"
                               sortBy="#{produto.valor_venda}">
                         <h:outputText value="#{produto.valor_venda}">
                             <f:convertNumber locale="pt_BR" minFractionDigits="2"/>
                         </h:outputText>
                     </p:column>
 
-                    <p:column headerText="Estoque"
+                    <p:column headerText="Estoque" style="width: 6%;"
                               sortBy="#{produto.estoque}">
                         <h:outputText value="#{produto.estoque}"/>
                     </p:column>
 
-                    <p:column headerText="Estoque Minimo"
+                    <p:column headerText="Estoque Minimo" style="width: 7%;"
                               sortBy="#{produto.estoque_minimo}">
                         <h:outputText value="#{produto.estoque_minimo}"/>
                     </p:column>
 
-                    <p:column headerText="Opções">
+                    <p:column headerText="Opções" class="opcoes" style="width: 12%;">
                         <p:commandButton icon="ui-icon-trash" 
                                          actionListener="#{produtoBean.excluir}" 
                                          update=":mensagem :formListagem:tabela">
@@ -115,7 +117,7 @@
 
 
                     <p:outputLabel for="fornecedor" value="Fornecedor:" />
-                    <p:selectOneMenu id="fornecedor" filter="true" 
+                    <p:selectOneMenu id="fornecedor" filter="true" style="width:230px"
                                      value="#{produtoBean.produto.fornecedor}" 
                                      converter="omnifaces.SelectItemsConverter" 
                                      required="true" 
@@ -130,7 +132,7 @@
 
 
                     <p:outputLabel for="categoria" value="Categoria:" />
-                    <p:selectOneMenu id="categoria" filter="true" 
+                    <p:selectOneMenu id="categoria" filter="true" style="width:230px"
                                      value="#{produtoBean.produto.categoria}" 
                                      converter="omnifaces.SelectItemsConverter" 
                                      required="true" 
@@ -145,7 +147,7 @@
 
 
                     <p:outputLabel for="marca" value="Marca:" />
-                    <p:selectOneMenu id="marca" filter="true" 
+                    <p:selectOneMenu id="marca" filter="true" style="width:230px"
                                      value="#{produtoBean.produto.marca}" 
                                      converter="omnifaces.SelectItemsConverter" 
                                      required="true" 
@@ -166,7 +168,7 @@
                                  requiredMessage="O campo 'Valor de Compra' é obrigatório"
                                  converterMessage="O valor informado no campo 'Valor de Compra' é  inválido"
                                  validatorMessage="Informe um valor entre 0,01 e 9999,99 no campo 'Valor de Compra'">
-                        <f:validateDoubleRange minimum="0.01" maximum="9999.99"/>
+                        <f:validateDoubleRange minimum="0.01" maximum="9999.99"/>            
                         <f:convertNumber locale="pt_BR" minFractionDigits="2"/>
                     </p:inputText>
 

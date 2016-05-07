@@ -50,6 +50,7 @@
         <mapping class="br.com.vendadireta.entidade.Fornecedor" />
         <mapping class="br.com.vendadireta.entidade.ItemVenda" />
         <mapping class="br.com.vendadireta.entidade.Venda" />
+        <mapping class="br.com.vendadireta.entidade.Local" />
         
     </session-factory>
 </hibernate-configuration>

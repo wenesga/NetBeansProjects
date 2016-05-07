@@ -13,6 +13,7 @@ import org.hibernate.criterion.Restrictions;
  * @date 07/04/2016 - Classe: CidadeDAO
  */
 public class CidadeDAO extends GenericDAO<Cidade> {
+    
     public List<Cidade> buscarPorEstado(Integer estadoCodigo){
         Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
 

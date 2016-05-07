@@ -15,7 +15,7 @@
                              paginator="true"
                              value="#{produtoPedidoBean.produtoPedidos}"
                              var="produtoPedido" 
-                             rows="5" paginatorPosition="top">
+                             rows="7" paginatorPosition="top">
 
                     <f:facet name="header">
                         <p:commandButton value="Novo"
@@ -26,25 +26,29 @@
                         </p:commandButton>
                     </f:facet>
 
-                    <p:column headerText="Pedido"
+                    <p:column headerText="Pedido" filterMatchMode="contains"
                               filterBy="#{produtoPedido.pedido.cliente.nome}"
                               sortBy="#{produtoPedido.pedido.cliente.nome}">
                         <h:outputText value="#{produtoPedido.pedido.cliente.nome} - Código: #{produtoPedido.pedido.cliente.codigo}"/>
                     </p:column>
 
-                    <p:column headerText="Produto"
+                    <p:column headerText="Produto" filterMatchMode="contains"
                               filterBy="#{produtoPedido.produto.nome}"
                               sortBy="#{produtoPedido.produto.nome}">
-                        <h:outputText value="#{produtoPedido.produto.nome} - R$#{produtoPedido.produto.valor_venda}"/>
+                        <h:outputText value="#{produtoPedido.produto.nome}"/>
+                        <h:outputText value=" - "/>
+                        <h:outputText value="#{produtoPedido.produto.valor_venda}">
+                            <f:convertNumber locale="pt_BR" minFractionDigits="2"/>
+                        </h:outputText>           
                     </p:column>
 
-                    <p:column headerText="Quantidade"
+                    <p:column headerText="Quantidade" style="width: 8%;"
                               filterBy="#{produtoPedido.quantidade_produto}"
                               sortBy="#{produtoPedido.quantidade_produto}">
                         <h:outputText value="#{produtoPedido.quantidade_produto}"/>
                     </p:column>
 
-                    <p:column headerText="Opções">
+                    <p:column headerText="Opções" class="opcoes" style="width: 17%;">
                         <p:commandButton icon="ui-icon-trash" 
                                          actionListener="#{produtoPedidoBean.excluir}" 
                                          update=":mensagem :formListagem:tabela">
@@ -80,26 +84,26 @@
 
 
                     <p:outputLabel for="pedido" value="Pedido:" />
-                    <p:selectOneMenu id="pedido" filter="true"
+                    <p:selectOneMenu id="pedido" filter="true" style="width:350px"
                                      value="#{produtoPedidoBean.produtoPedido.pedido}"
                                      converter="omnifaces.SelectItemsConverter" 
-                                     required="true" 
+                                     required="true" filterMatchMode="contains"
                                      requiredMessage="O campo 'Pedido' é obrigatório">
                         <f:selectItem noSelectionOption="true" 
                                       itemLabel="Selecione um pedito" />
                         <f:selectItems value="#{produtoPedidoBean.pedidos}"
                                        var="pedido"
                                        itemValue="#{pedido}"
-                                       itemLabel="#{pedido.cliente.nome} - #{pedido.cliente.codigo}"/>
+                                       itemLabel="#{pedido.cliente.nome} - Codigo: #{pedido.cliente.codigo}"/>
                     </p:selectOneMenu>
 
 
 
                     <p:outputLabel for="produto" value="Produto:" />
-                    <p:selectOneMenu id="produto" filter="true"
+                    <p:selectOneMenu id="produto" filter="true" style="width:350px" 
                                      value="#{produtoPedidoBean.produtoPedido.produto}"
                                      converter="omnifaces.SelectItemsConverter" 
-                                     required="true" 
+                                     required="true" filterMatchMode="contains"
                                      requiredMessage="O campo 'Produto' é obrigatório">
                         <f:selectItem noSelectionOption="true" 
                                       itemLabel="Selecione um produto" />
@@ -107,6 +111,7 @@
                                        var="produto"
                                        itemValue="#{produto}"
                                        itemLabel="#{produto.nome} - #{produto.valor_venda}"/>
+                                       
                     </p:selectOneMenu>
                     
                     <p:outputLabel for="quantidade" value="Quantidade:"/>

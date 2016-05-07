@@ -16,12 +16,10 @@ public class UsuarioDAO extends GenericDAO<Usuario> {
         Session sessao = HibernateUtil.getFabricaDeSessoes().openSession();
         
         try{
-            Criteria consulta = sessao.createCriteria(Usuario.class);
-            
+            Criteria consulta = sessao.createCriteria(Usuario.class);         
             consulta.add(Restrictions.eq("cpf", cpf));
-            
-            SimpleHash hash =new SimpleHash("md5", senha);
-            consulta.add(Restrictions.eq("senha", hash.toHex()));
+            //SimpleHash hash =new SimpleHash("md5", senha);
+            consulta.add(Restrictions.eq("senha", senha));
             
             Usuario resultado = (Usuario) consulta.uniqueResult();
             

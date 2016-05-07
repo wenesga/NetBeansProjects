@@ -19,3 +19,24 @@
     padding-bottom: 4px;
 }
 
+.opcoes{
+    text-align: center;
+}
+
+.principal{
+    background-color: #AED2D9;
+    border-width: 0px;
+    height: 450px;
+    margin-top: -4px;    
+    border-radius:5px;
+    margin-left: auto;
+    margin-right: auto;
+    text-orientation: sideways;
+    position: relative; 
+}
+
+.principalTexto{
+    position: relative; 
+}
+    
+

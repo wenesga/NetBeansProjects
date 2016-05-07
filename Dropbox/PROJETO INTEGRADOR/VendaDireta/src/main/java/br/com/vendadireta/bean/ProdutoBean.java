@@ -8,13 +8,23 @@ import br.com.vendadireta.entidade.Categoria;
 import br.com.vendadireta.entidade.Fornecedor;
 import br.com.vendadireta.entidade.Marca;
 import br.com.vendadireta.entidade.Produto;
+import br.com.vendadireta.util.HibernateUtil;
 import java.io.Serializable;
+import java.sql.Connection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
+import org.primefaces.component.datatable.DataTable;
 
 /**
  * @Cometario:
@@ -108,11 +118,11 @@ public class ProdutoBean implements Serializable {
 
             ProdutoDAO produtoDAO = new ProdutoDAO();
             produtoDAO.merge(produto);
-            
+
             produto = new Produto();
-            
+
             produtos = produtoDAO.listar("nome");
-            
+
             MarcaDAO marcaDAO = new MarcaDAO();
             CategoriaDAO categoriaDAO = new CategoriaDAO();
             FornecedorDAO fornecedorDAO = new FornecedorDAO();
@@ -128,14 +138,14 @@ public class ProdutoBean implements Serializable {
             erro.printStackTrace();
         }
     }
-    
+
     public void excluir(ActionEvent evento) {
         try {
             produto = (Produto) evento.getComponent().getAttributes().get("produtoSelecionado");
-            
+
             ProdutoDAO produtoDAO = new ProdutoDAO();
             produtoDAO.excluir(produto);
-            
+
             produtos = produtoDAO.listar("nome");
 
             Messages.addGlobalInfo("Produto removido com sucesso");
@@ -144,11 +154,11 @@ public class ProdutoBean implements Serializable {
             erro.printStackTrace();
         }
     }
-    
-     public void editar(ActionEvent evento) {
+
+    public void editar(ActionEvent evento) {
         try {
             produto = (Produto) evento.getComponent().getAttributes().get("produtoSelecionado");
-            
+
             MarcaDAO marcaDAO = new MarcaDAO();
             CategoriaDAO categoriaDAO = new CategoriaDAO();
             FornecedorDAO fornecedorDAO = new FornecedorDAO();
@@ -156,9 +166,44 @@ public class ProdutoBean implements Serializable {
             marcas = marcaDAO.listar("nome");
             categorias = categoriaDAO.listar("nome");
             fornecedores = fornecedorDAO.listar("nome");
-            
+
         } catch (RuntimeException erro) {
             Messages.addGlobalError("Ocorreu um erro ao tentar selecionar um Produto");
+            erro.printStackTrace();
+        }
+    }
+
+    public void imprimir() {
+        try {
+            DataTable tabela = (DataTable) Faces.getViewRoot().findComponent("formListagem:tabela");
+            Map<String, Object> filtros = tabela.getFilters();
+            String proNome = (String) filtros.get("nome");
+            String fornNome = (String) filtros.get("fornecedor.nome");
+
+            String caminho = Faces.getRealPath("/relatorio/produto.jasper");
+
+            Map<String, Object> parametros = new HashMap<>();
+
+            if (proNome == null) {
+                parametros.put("PRODUTO_NOME", "%%");
+            } else {
+                parametros.put("PRODUTO_NOME", "%" + proNome + "%");
+            }
+
+            if (fornNome == null) {
+                parametros.put("FORNECEDOR_NOME", "%%");
+            } else {
+                parametros.put("FORNECEDOR_NOME", "%" + fornNome + "%");
+            }
+
+            Connection conexao = HibernateUtil.getConexao();
+
+            JasperPrint relatorio = JasperFillManager.fillReport(caminho, parametros, conexao);
+
+            JasperViewer.viewReport(relatorio, true);
+
+        } catch (JRException erro) {
+            Messages.addGlobalError("Ocorreu um erro ao tentar gerar o relatório");
             erro.printStackTrace();
         }
     }

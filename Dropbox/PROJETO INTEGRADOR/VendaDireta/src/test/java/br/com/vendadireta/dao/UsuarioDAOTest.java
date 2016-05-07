@@ -18,10 +18,10 @@ public class UsuarioDAOTest {
     public void salvar() {
 
         Usuario usuario = new Usuario();
-        usuario.setNome("xxxxxx Gomes Aquino");
-        usuario.setCpf("11111111111");
+        usuario.setNome("aquino");
+        usuario.setCpf("444.444.444-44");
         
-        usuario.setSenhaSemCriptografia("1");
+        usuario.setSenhaSemCriptografia("1111");
         SimpleHash hash = new SimpleHash("md5", usuario.getSenhaSemCriptografia());
         usuario.setSenha(hash.toHex());
 

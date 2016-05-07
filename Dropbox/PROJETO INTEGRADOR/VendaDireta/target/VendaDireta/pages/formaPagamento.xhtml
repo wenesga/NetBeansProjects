@@ -15,7 +15,7 @@
                              paginator="true"
                              value="#{formaPagamentoBean.formaPagamentos}"
                              var="formaPagamento"
-                             rows="5" paginatorPosition="top">
+                             rows="7" paginatorPosition="top">
 
                     <f:facet name="header">
                         <p:commandButton value="Novo" 
@@ -26,13 +26,13 @@
                         </p:commandButton>
                     </f:facet>
 
-                    <p:column headerText="Entrada"
+                    <p:column headerText="Entrada" style="width: 10%;"
                               sortBy="#{formaPagamento.entrada}"
                               filterBy="#{formaPagamento.entrada}">
                         <h:outputText value="#{formaPagamento.entrada}"/>
                     </p:column>
 
-                    <p:column headerText="Parcela"
+                    <p:column headerText="Parcela" style="width: 10%;"
                               sortBy="#{formaPagamento.parcela}"
                               filterBy="#{formaPagamento.parcela}">
                         <h:outputText value="#{formaPagamento.parcela}"/>
@@ -43,7 +43,7 @@
                               filterBy="#{formaPagamento.tipo}">
                         <h:outputText value="#{formaPagamento.tipo}"/>
                     </p:column>
-                    <p:column headerText="Opções">
+                    <p:column headerText="Opções" class="opcoes" style="width: 17%;">
                         <p:commandButton icon="ui-icon-trash"
                                          actionListener="#{formaPagamentoBean.excluir}" 
                                          update="mensagem :formListagem:tabela" >

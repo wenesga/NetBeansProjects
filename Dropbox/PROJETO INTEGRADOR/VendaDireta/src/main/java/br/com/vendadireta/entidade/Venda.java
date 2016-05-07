@@ -4,9 +4,11 @@ import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 /**
  * @Cometario:
  * @author Wenes Gomes Aquino <wenesga@gmail.com>
@@ -24,6 +26,18 @@ public class Venda extends GenericEntidade {
 
     @ManyToOne
     private Cliente cliente;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public Date getHorario() {
         return horario;

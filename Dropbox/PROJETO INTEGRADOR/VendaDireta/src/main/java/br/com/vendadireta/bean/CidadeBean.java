@@ -65,8 +65,7 @@ public class CidadeBean implements Serializable {
     
     public void novo() {
         try {
-            cidade = new Cidade();
-            
+            cidade = new Cidade();            
             EstadoDAO estadoDAO = new EstadoDAO();
             estados = estadoDAO.listar("nome");
             

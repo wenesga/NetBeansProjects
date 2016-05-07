@@ -15,7 +15,7 @@
                              paginator="true" 
                              value="#{usuarioBean.usuarios}" 
                              var="usuario"
-                             rows="5" paginatorPosition="top">
+                             rows="7" paginatorPosition="top">
 
                     <f:facet name="header">
                         <p:commandButton value="Novo" 
@@ -26,19 +26,19 @@
                         </p:commandButton>
                     </f:facet>
 
-                    <p:column headerText="Usuário" 
+                    <p:column headerText="Usuário" style="width: 20%;" filterMatchMode="contains"
                               sortBy="#{usuario.nome}"
                               filterBy="#{usuario.nome}">
                         <h:outputText value="#{usuario.nome}"/>
                     </p:column>
 
-                    <p:column headerText="CPF" 
+                    <p:column headerText="CPF"  style="width: 15%;"
                               sortBy="#{usuario.cpf}"
                               filterBy="#{usuario.cpf}">
                         <h:outputText value="#{usuario.cpf}"/>
                     </p:column>                   
 
-                    <p:column headerText="Opções">
+                    <p:column headerText="Opções" class="opcoes" style="width: 17%;">
                         <p:commandButton icon="ui-icon-trash"
                                          actionListener="#{usuarioBean.excluir}" 
                                          update="mensagem :formListagem:tabela" >

@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.omnifaces.util.Messages;
 
 /**
@@ -56,6 +57,7 @@ public class UsuarioBean implements Serializable {
     public void salvar() {
         try {
             UsuarioDAO usuarioDAO = new UsuarioDAO();
+            //usuario.setSenha(DigestUtils.md5Hex(usuario.getSenha()));
             usuarioDAO.merge(usuario);
 
             novo();
@@ -75,17 +77,17 @@ public class UsuarioBean implements Serializable {
 
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             usuarioDAO.excluir(usuario);
-            
+
             usuarios = usuarioDAO.listar();
-            
+
             Messages.addGlobalInfo("Usuário removido com sucesso");
         } catch (RuntimeException erro) {
             Messages.addGlobalError("Ocorreu um erro ao tentar remover o Usuario");
             erro.printStackTrace();
         }
     }
-    
-    public void editar(ActionEvent evento){
-        usuario = (Usuario) evento.getComponent().getAttributes().get("usuarioSelecionado");
+
+    public void editar(ActionEvent evento) {
+        usuario = (Usuario) evento.getComponent().getAttributes().get("usuarioSelecionado");  
     }
 }

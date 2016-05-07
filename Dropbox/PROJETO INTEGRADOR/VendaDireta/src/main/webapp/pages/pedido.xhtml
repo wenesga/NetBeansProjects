@@ -15,7 +15,7 @@
                              paginator="true"
                              value="#{pedidoBean.pedidos}"
                              var="pedido"
-                             rows="5" paginatorPosition="top">
+                             rows="7" paginatorPosition="top">
 
                     <f:facet name="header">
                         <p:commandButton value="Novo" 
@@ -26,7 +26,7 @@
                         </p:commandButton>
                     </f:facet>
 
-                    <p:column headerText="Cliente"
+                    <p:column headerText="Cliente" filterMatchMode="contains"
                               filterBy="#{pedido.cliente.nome}"
                               sortBy="#{pedido.cliente.nome}">
                         <h:outputText value="#{pedido.cliente.nome}"/>
@@ -38,19 +38,23 @@
                         <h:outputText value="#{pedido.formaPagamento.tipo}"/>
                     </p:column>
 
-                    <p:column headerText="Data do Pedito"
+                    <p:column headerText="Data do Pedito" style="width: 10%;" filterMatchMode="contains"
                               filterBy="#{pedido.data_pedido}"
                               sortBy="#{pedido.data_pedido}">
-                        <h:outputText value="#{pedido.data_pedido}"/>
+                        <h:outputText value="#{pedido.data_pedido}">
+                            <f:convertDateTime locale="pt_BR" />
+                        </h:outputText>
                     </p:column>
 
-                    <p:column headerText="Prazo de Pagamento"
+                    <p:column headerText="Vencimento" style="width: 10%;"
                               filterBy="#{pedido.prazo_pagamento}"
                               sortBy="#{pedido.prazo_pagamento}">
-                        <h:outputText value="#{pedido.prazo_pagamento}"/>
+                        <h:outputText value="#{pedido.prazo_pagamento}">
+                            <f:convertDateTime locale="pt_BR" />
+                        </h:outputText>
                     </p:column>
 
-                    <p:column headerText="Opções">
+                    <p:column headerText="Opções" class="opcoes" style="width: 17%;">
                         <p:commandButton icon="ui-icon-trash" 
                                          actionListener="#{pedidoBean.excluir}" 
                                          update=":mensagem :formListagem:tabela">
@@ -84,10 +88,10 @@
             <h:form id="formCadastro">
                 <h:panelGrid id="painel" columns="2">
                     <p:outputLabel for="cliente" value="Cliente:" />
-                    <p:selectOneMenu id="cliente" filter="true"
+                    <p:selectOneMenu id="cliente" filter="true" style="width:290px"
                                      value="#{pedidoBean.pedido.cliente}"
                                      converter="omnifaces.SelectItemsConverter" 
-                                     required="true" 
+                                     required="true" filterMatchMode="contains"
                                      requiredMessage="O campo 'Cliente' é obrigatório">
                         <f:selectItem noSelectionOption="true" 
                                       itemLabel="Selecione um cliente" />
@@ -98,7 +102,7 @@
                     </p:selectOneMenu>
 
                     <p:outputLabel for="formaPagamento" value="Forma de pagamento:" />
-                    <p:selectOneMenu id="formaPagamento" filter="true"
+                    <p:selectOneMenu id="formaPagamento" filter="true" style="width:290px"
                                      value="#{pedidoBean.pedido.formaPagamento}"
                                      converter="omnifaces.SelectItemsConverter" 
                                      required="true" 
@@ -118,7 +122,7 @@
                                 requiredMessage="O campo 'Data do Pedido' é obrigatório"
                                 readonlyInput="true"
                                 mindate="0" maxdate="0" size="10"/>
-                    
+
                     <p:outputLabel for="prazoPedido" value="Data de Vencimento:" />
                     <p:calendar id="prazoPedido"  locale="pt_BR"
                                 value="#{pedidoBean.pedido.prazo_pagamento}"

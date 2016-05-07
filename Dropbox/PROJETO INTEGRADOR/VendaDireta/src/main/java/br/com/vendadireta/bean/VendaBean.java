@@ -2,6 +2,8 @@ package br.com.vendadireta.bean;
 
 import br.com.vendadireta.dao.ClienteDAO;
 import br.com.vendadireta.dao.ProdutoDAO;
+import br.com.vendadireta.dao.UsuarioDAO;
+import br.com.vendadireta.dao.VendaDAO;
 import br.com.vendadireta.entidade.Cliente;
 import br.com.vendadireta.entidade.ItemVenda;
 import br.com.vendadireta.entidade.Produto;
@@ -14,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 import org.omnifaces.util.Messages;
@@ -31,7 +34,17 @@ public class VendaBean implements Serializable {
     private List<ItemVenda> itensVenda;
     private Venda venda;
     private List<Cliente> clientes;
-    private List<Usuario> usuarios;
+
+    @ManagedProperty(value = "#{autenticacaoBean}")
+    private AutenticacaoBean autenticacaoBean;
+
+    public AutenticacaoBean getAutenticacaoBean() {
+        return autenticacaoBean;
+    }
+
+    public void setAutenticacaoBean(AutenticacaoBean autenticacaoBean) {
+        this.autenticacaoBean = autenticacaoBean;
+    }
 
     public List<Cliente> getClientes() {
         return clientes;
@@ -103,7 +116,7 @@ public class VendaBean implements Serializable {
             itemVenda.setQuantidade(new Short(itemVenda.getQuantidade() + 1 + ""));
             itemVenda.setValorParcial(produto.getValor_venda().multiply(new BigDecimal(itemVenda.getQuantidade())));
         }
-        
+
         calcular();
     }
 
@@ -124,7 +137,7 @@ public class VendaBean implements Serializable {
         } else {
             itensVenda.remove(achou);
         }
-        
+
         calcular();
     }
 
@@ -136,16 +149,41 @@ public class VendaBean implements Serializable {
             venda.setValorTotal(venda.getValorTotal().add(itemVenda.getValorParcial()));
         }
     }
-    
-    public void finalizar(){
-        try{
+
+    public void finalizar() {
+        try {
             venda.setHorario(new Date());
+            venda.setCliente(null);
+            venda.setUsuario(autenticacaoBean.getUsuarioLogado());
+
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            Usuario usuario = usuarioDAO.buscar(autenticacaoBean.getUsuarioLogado().getCodigo());
+
             ClienteDAO clienteDAO = new ClienteDAO();
             clientes = clienteDAO.listar("nome");
-        //Messages.addGlobalInfo("Finalizada com sucesso");
+
         } catch (RuntimeException erro) {
             Messages.addGlobalError("Ocorreu um erro ao tentar finalizar a venda");
             erro.printStackTrace();
+        }
+    }
+
+    public void salvar() {
+        try {
+            if (venda.getValorTotal().signum() == 0) {
+                Messages.addGlobalError("Informe pelo menos um item para a venda");
+                return;
+            }
+
+            VendaDAO vendaDAO = new VendaDAO();
+            vendaDAO.salvar(venda, itensVenda);
+            novo();
+            Messages.addGlobalInfo("Venda realizada com sucesso");
+
+        } catch (RuntimeException erro) {
+            Messages.addGlobalError("Ocorreu um erro ao tentar salvar a venda");
+            erro.printStackTrace();
+            novo();
         }
     }
 }

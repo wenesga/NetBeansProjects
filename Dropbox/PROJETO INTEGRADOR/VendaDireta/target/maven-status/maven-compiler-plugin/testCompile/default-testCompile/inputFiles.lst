@@ -1,12 +1,13 @@
 D:\PROJETO INTEGRADOR\VendaDireta\src\test\java\br\com\vendadireta\dao\CidadeDAOTest.java
 D:\PROJETO INTEGRADOR\VendaDireta\src\test\java\br\com\vendadireta\dao\UsuarioDAOTest.java
 D:\PROJETO INTEGRADOR\VendaDireta\src\test\java\br\com\vendadireta\dao\ProdutoDAOTest.java
-D:\PROJETO INTEGRADOR\VendaDireta\src\test\java\br\com\vendadireta\dao\FormaPagamentoDAOTest.java
-D:\PROJETO INTEGRADOR\VendaDireta\src\test\java\br\com\vendadireta\dao\PedidoDAOTest.java
 D:\PROJETO INTEGRADOR\VendaDireta\src\test\java\br\com\vendadireta\dao\FornecedorDAOTest.java
-D:\PROJETO INTEGRADOR\VendaDireta\src\test\java\br\com\vendadireta\dao\ClienteDAOTest.java
-D:\PROJETO INTEGRADOR\VendaDireta\src\test\java\br\com\vendadireta\dao\CategoriaDAOTest.java
 D:\PROJETO INTEGRADOR\VendaDireta\src\test\java\br\com\vendadireta\dao\EstadoDAOTest.java
 D:\PROJETO INTEGRADOR\VendaDireta\src\test\java\br\com\vendadireta\dao\ProdutoPeditoDAOTest.java
 D:\PROJETO INTEGRADOR\VendaDireta\src\test\java\br\com\vendadireta\dao\MarcaDAOTest.java
 D:\PROJETO INTEGRADOR\VendaDireta\src\test\java\br\com\vendadireta\util\HibernateUtilTest.java
+D:\PROJETO INTEGRADOR\VendaDireta\src\test\java\br\com\vendadireta\dao\FormaPagamentoDAOTest.java
+D:\PROJETO INTEGRADOR\VendaDireta\src\test\java\br\com\vendadireta\dao\LocalDAOTest.java
+D:\PROJETO INTEGRADOR\VendaDireta\src\test\java\br\com\vendadireta\dao\PedidoDAOTest.java
+D:\PROJETO INTEGRADOR\VendaDireta\src\test\java\br\com\vendadireta\dao\ClienteDAOTest.java
+D:\PROJETO INTEGRADOR\VendaDireta\src\test\java\br\com\vendadireta\dao\CategoriaDAOTest.java

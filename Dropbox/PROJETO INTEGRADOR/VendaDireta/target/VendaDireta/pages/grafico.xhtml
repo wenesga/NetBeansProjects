@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/modelo.xhtml">
+    <ui:define name="conteudo">
+
+
+        <h:form>
+            <p:growl id="growl" showDetail="true" />
+
+            <h:panelGrid columns="2" columnClasses="left,right" style="width:100%">
+                <p:chart type="pie" model="#{graficoBean.pieModel1}" style="width:500px;height:400px; float: right">
+                    <p:ajax event="itemSelect" listener="#{graficoBean.itemSelect}" update="growl" />
+                </p:chart>
+
+                <p:chart type="bar" model="#{graficoBean.barModel}" style="width:500px;height:400px; float: left">
+                    <p:ajax event="itemSelect" listener="#{graficoBean.itemSelect}" update="growl" />
+                </p:chart>  
+            </h:panelGrid>
+
+        </h:form>
+
+
+    </ui:define>
+</ui:composition>

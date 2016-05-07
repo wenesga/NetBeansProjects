@@ -57,5 +57,4 @@ public class Usuario extends GenericEntidade {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
 }
