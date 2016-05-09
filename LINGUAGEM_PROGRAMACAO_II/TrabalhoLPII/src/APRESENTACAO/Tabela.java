@@ -29,7 +29,7 @@ public class Tabela extends JFrame {
     }
 
     AlunoDao alunoDao = new AlunoDao();
-    Conexao c = new Conexao();
+    Conexao conn = new Conexao();
     String matricula;
     JTable resultTable;
 
@@ -48,36 +48,32 @@ public class Tabela extends JFrame {
                 int linha = jt.getSelectedRow();
 
                 if ((linha != -1)) {
-                    Object matriculaLinha = jt.getValueAt(linha, 0);
+                    Object matriculaLinha = jt.getValueAt(linha, 2);
                     matricula = matriculaLinha.toString();
                 }
             }
         });
 
-        JPanel jp = new JPanel(new GridLayout(5, 2));
-        
-        
+        JPanel jp = new JPanel(new GridLayout(4, 2));
+
         jp.add(new JLabel("Nome:"));
         jp.add(new JTextField());
 
         jp.add(new JLabel("Idade:"));
         jp.add(new JTextField());
-        
+
         jp.add(new JLabel("Matricula:"));
         jp.add(new JTextField());
         
-
         JButton btnSalvar = new JButton("salvar");
-        btnSalvar.setSize(1,1);
+        btnSalvar.setSize(1, 1);
         jp.add(btnSalvar, BorderLayout.WEST);
-
-        JButton btnEditar = new JButton("Editar");
-        btnEditar.setSize(50, 30);
-        jp.add(btnEditar, BorderLayout.CENTER);
-
+        
         JButton btnExcluir = new JButton("Excluir");
         btnExcluir.setSize(50, 30);
         jp.add(btnExcluir, BorderLayout.EAST);
+
+        
 
         btnExcluir.addActionListener(new ActionListener() {
             @Override
@@ -88,13 +84,13 @@ public class Tabela extends JFrame {
                     JOptionPane.showMessageDialog(null, "Elemento excluido com sucesso");
                     resultTable.setModel(alunoDao.ListaAlunos());
                 }
+
             }
         });
 
         btnSalvar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
             }
         });
 
@@ -111,7 +107,5 @@ public class Tabela extends JFrame {
             }
         });
         this.setLocationRelativeTo(null); //Centralizar jenela
-
     }
-
 }

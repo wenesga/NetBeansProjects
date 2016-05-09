@@ -12,16 +12,16 @@ import javax.swing.table.TableModel;
  */
 public class AlunoDao {
     
-    Conexao c = new Conexao();
+    Conexao conn = new Conexao();
     
     public TableModel ListaAlunos() {
         DefaultTableModel tm = new DefaultTableModel();
         try {
-            tm = c.ConfiguraConsulata("Select * from Aluno");
+            tm = conn.ConfiguraConsulata("Select * from Aluno");
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {
-            c.FecharConexao();
+            conn.FecharConexao();
         }
         return tm;
     }
@@ -34,8 +34,8 @@ public class AlunoDao {
             sb.append("Insert into aluno");
             sb.append("matricula, nome, idade");
             sb.append("?,?,?");
-            Connection conn = c.getConn();
-            PreparedStatement comando = c.getConn().prepareStatement(sb.toString());
+            Connection conn = this.conn.getConn();
+            PreparedStatement comando = this.conn.getConn().prepareStatement(sb.toString());
             comando.setString(1, aluno.getMatricula());
             comando.setString(2, aluno.getNome());
             comando.setInt(3, aluno.getIdade());
@@ -53,10 +53,10 @@ public class AlunoDao {
 
         try {
             StringBuilder sb = new StringBuilder();
-            sb.append("Delete from aluno");
+            sb.append("Delete from aluno ");
             sb.append("where matricula = ?");
-            Connection conn = c.getConn();
-            PreparedStatement comando = c.getConn().prepareStatement(sb.toString());
+            Connection conn = this.conn.getConn();
+            PreparedStatement comando = this.conn.getConn().prepareStatement(sb.toString());
             comando.setString(1, matricula);
             result = comando.executeUpdate();
         } catch (SQLException ex) {
@@ -72,8 +72,8 @@ public class AlunoDao {
             StringBuilder sb = new StringBuilder();
             sb.append("UPDATE aluno ");
             sb.append("set nome = ?,  Set idade = ?");
-            Connection conn = c.getConn();
-            PreparedStatement comando = c.getConn().prepareStatement(sb.toString());
+            Connection conn = this.conn.getConn();
+            PreparedStatement comando = this.conn.getConn().prepareStatement(sb.toString());
             comando.setString(1, aluno.getNome());
             comando.setInt(2, aluno.getIdade());
             comando.setString(3, aluno.getMatricula());
