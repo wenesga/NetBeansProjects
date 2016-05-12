@@ -1,7 +1,7 @@
 package frame;
 
-import bean.ChatMessage;
-import bean.ChatMessage.Action;
+import bean.ChatMensagem;
+import bean.ChatMensagem.Action;
 import service.ClienteService;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -19,7 +19,7 @@ import javax.swing.*;
 public class ClienteFrame extends javax.swing.JFrame {
 
     private Socket socket;
-    private ChatMessage message;
+    private ChatMensagem message;
     private ClienteService service;
 
     public ClienteFrame() {
@@ -40,18 +40,18 @@ public class ClienteFrame extends javax.swing.JFrame {
 
         @Override
         public void run() {
-            ChatMessage message = null;
+            ChatMensagem message = null;
             try {
-                while ((message = (ChatMessage) input.readObject()) != null) {
+                while ((message = (ChatMensagem) input.readObject()) != null) {
                     Action action = message.getAction();
 
-                    if (action.equals(Action.CONNECT)) {
+                    if (action.equals(Action.CONECTAR)) {
                         connected(message);
-                    } else if (action.equals(Action.DISCONNECT)) {
+                    } else if (action.equals(Action.DESCONECTAR)) {
                         disconnected();
                         socket.close();
-                    } else if (action.equals(Action.SEND_ONE)) {
-                        System.out.println("::: " + message.getText() + " :::");
+                    } else if (action.equals(Action.ENVIAR_PARA_UM)) {
+                        System.out.println("::: " + message.getTexto() + " :::");
                         receive(message);
                     } else if (action.equals(Action.USERS_ONLINE)) {
                         refreshOnlines(message);
@@ -65,8 +65,8 @@ public class ClienteFrame extends javax.swing.JFrame {
         }
     }
 
-    private void connected(ChatMessage message) {
-        if (message.getText().equals("NO")) {
+    private void connected(ChatMensagem message) {
+        if (message.getTexto().equals("NO")) {
             this.txtName.setText("");
             JOptionPane.showMessageDialog(this, "Conexão não realizada!\nTente novamente com um novo nome.");
             return;
@@ -102,16 +102,16 @@ public class ClienteFrame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Você saiu do chat!");
     }
 
-    private void receive(ChatMessage message) {
-        this.txtAreaReceive.append(message.getName() + " diz: " + message.getText() + "\n");
+    private void receive(ChatMensagem message) {
+        this.txtAreaReceive.append(message.getNome() + " diz: " + message.getTexto() + "\n");
     }
 
-    private void refreshOnlines(ChatMessage message) {
+    private void refreshOnlines(ChatMensagem message) {
         System.out.println(message.getSetOnlines().toString());
         
         Set<String> names = message.getSetOnlines();
         
-        names.remove(message.getName());
+        names.remove(message.getNome());
         
         String[] array = (String[]) names.toArray(new String[names.size()]);
         
@@ -309,9 +309,9 @@ public class ClienteFrame extends javax.swing.JFrame {
         String name = this.txtName.getText();
 
         if (!name.isEmpty()) {
-            this.message = new ChatMessage();
-            this.message.setAction(Action.CONNECT);
-            this.message.setName(name);
+            this.message = new ChatMensagem();
+            this.message.setAction(Action.CONECTAR);
+            this.message.setNome(name);
 
             this.service = new ClienteService();
             this.socket = this.service.connect();
@@ -323,9 +323,9 @@ public class ClienteFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConnectarActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        ChatMessage message = new ChatMessage();
-        message.setName(this.message.getName());
-        message.setAction(Action.DISCONNECT);
+        ChatMensagem message = new ChatMensagem();
+        message.setNome(this.message.getNome());
+        message.setAction(Action.DESCONECTAR);
         this.service.send(message);
         disconnected();
     }//GEN-LAST:event_btnSairActionPerformed
@@ -336,21 +336,21 @@ public class ClienteFrame extends javax.swing.JFrame {
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
         String text = this.txtAreaSend.getText();
-        String name = this.message.getName();
+        String name = this.message.getNome();
         
-        this.message = new ChatMessage();
+        this.message = new ChatMensagem();
         
         if (this.listOnlines.getSelectedIndex() > -1) {
-            this.message.setNameReserved((String) this.listOnlines.getSelectedValue());
-            this.message.setAction(Action.SEND_ONE);
+            this.message.setNomeReservado((String) this.listOnlines.getSelectedValue());
+            this.message.setAction(Action.ENVIAR_PARA_UM);
             this.listOnlines.clearSelection();
         } else {
-            this.message.setAction(Action.SEND_ALL);
+            this.message.setAction(Action.ENVIAR_PARA_TODOS);
         }
         
         if (!text.isEmpty()) {
-            this.message.setName(name);
-            this.message.setText(text);
+            this.message.setNome(name);
+            this.message.setTexto(text);
 
             this.txtAreaReceive.append("Você disse: " + text + "\n");
             

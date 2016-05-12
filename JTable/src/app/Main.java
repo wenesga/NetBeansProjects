@@ -1,11 +1,11 @@
 package app;
 
-import dao.DBConnection;
-import form.LivroForm;
+import dao.Conexao;
+import form.AlunoForm;
 
 public class Main {
     public static void main(String[] args) {
-        DBConnection.createTable();
-        new LivroForm();
+        Conexao.createTable();
+        new AlunoForm();
     }
 }
