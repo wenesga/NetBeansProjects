@@ -1,6 +1,6 @@
 package service;
 
-import bean.ChatMensagem;
+import bean.ChatMessage;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -31,7 +31,7 @@ public class ClienteService {
         return socket;
     }
     
-    public void send(ChatMensagem message) {
+    public void send(ChatMessage message) {
         try {
             output.writeObject(message);
         } catch (IOException ex) {
