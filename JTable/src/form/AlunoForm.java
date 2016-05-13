@@ -11,8 +11,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import dao.Conexao;
+import form.AlunoForm;
+
 public class AlunoForm extends JFrame {
 
+    public static void main(String[] args) {
+        Conexao.createTable();
+        new AlunoForm();
+    }
+    
     private JLabel lbNome, lbIdade, lbMatricula;
     private JTextField txtNome, txtIdade, txtMatricula;
     private JPanel panelAdd, panelTable, panelButtons;
@@ -59,7 +67,7 @@ public class AlunoForm extends JFrame {
         panelButtons = new JPanel(new MigLayout());
         panelButtons.setBorder(BorderFactory.createEtchedBorder());
         panelButtons.setBounds(5, 105, 480, 45);
-        
+
         btnNew = new JButton("Novo");
         btnSave = new JButton("Salvar");
         btnCancel = new JButton("Cancelar");
@@ -88,10 +96,8 @@ public class AlunoForm extends JFrame {
         add(panelAdd);
         add(panelButtons);
         add(panelTable);
-        setMinimumSize(new Dimension(500,420));
+        setMinimumSize(new Dimension(500, 420));
         setVisible(true);
-        
-        
 
         btnSave.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

@@ -4,11 +4,10 @@ import dao.AlunoDAO;
 import entidade.Aluno;
 
 import java.util.List;
-import dao.IAlunoDAO;
 
 public class AlunoFacade {
 
-    private IAlunoDAO dao;
+    private AlunoDAO dao;
 
     public AlunoFacade() {
         this.dao = new AlunoDAO();

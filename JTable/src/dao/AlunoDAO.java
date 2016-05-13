@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AlunoDAO implements IAlunoDAO {
+public class AlunoDAO {
 
     private static final String SQL_INSERT =
             "insert into ALUNOS (NOME, IDADE, MATRICULA) values (?,?,?)";

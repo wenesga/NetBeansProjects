@@ -1,4 +1,0 @@
-#NOTE: This is an internal implementation file, its format can be changed without prior notice.
-#Sun Apr 03 21:43:37 BRT 2016
-default-http\://repo.maven.apache.org/maven2/.lastUpdated=1459730617636
-http\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.geomajas.plugin\:geomajas-server-plugin-layer-hibernate-javadoc\:pom\:1.18.3 from/to central (http\://repo.maven.apache.org/maven2)\: repo.maven.apache.org
