@@ -1,6 +1,6 @@
-package dao;
+package Dao;
 
-import entidade.Aluno;
+import Entidade.Aluno;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +23,7 @@ public class AlunoDAO {
             "select * from ALUNOS";
 
 
-    public int save(Aluno aluno) {
+    public int salvar(Aluno aluno) {
         Connection conn = Conexao.getConnection();
         PreparedStatement pstm = null;
         int result = 0;
@@ -48,7 +48,7 @@ public class AlunoDAO {
         return result;
     }
 
-    public int update(Aluno aluno) {
+    public int atualizar(Aluno aluno) {
         Connection conn = Conexao.getConnection();
         PreparedStatement pstm = null;
         int result = 0;
@@ -74,7 +74,7 @@ public class AlunoDAO {
         return result;
     }
 
-    public int remove(Long id) {
+    public int excluir(Long id) {
         Connection conn = Conexao.getConnection();
         PreparedStatement pstm = null;
         int result = 0;
@@ -97,7 +97,7 @@ public class AlunoDAO {
         return result;
     }
 
-    public List<Aluno> findAll() {
+    public List<Aluno> listar() {
         Connection conn = Conexao.getConnection();
         PreparedStatement pstm = null;
         List<Aluno> alunos = new ArrayList<Aluno>();

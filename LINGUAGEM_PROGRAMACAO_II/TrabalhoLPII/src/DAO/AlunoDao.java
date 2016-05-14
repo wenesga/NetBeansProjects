@@ -17,7 +17,7 @@ public class AlunoDao {
     public TableModel ListaAlunos() {
         DefaultTableModel tm = new DefaultTableModel();
         try {
-            tm = conn.ConfiguraConsulata("Select * from Aluno");
+            tm = conn.ConfiguraConsulata("Select * from banco_aluno");
         } catch (SQLException ex) {
             ex.printStackTrace();
         } finally {

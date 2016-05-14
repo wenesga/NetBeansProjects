@@ -1,20 +1,20 @@
-package table;
+package Apresentacao;
 
-import entidade.Aluno;
+import Entidade.Aluno;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
-public class AlunoTableModel extends AbstractTableModel {
+public class TableModel extends AbstractTableModel {
 
     private static final int COL_ID = 0;
-    private static final int COL_EDITORA = 1;
-    private static final int COL_TITULO = 2;
-    private static final int COL_ISBN = 3;
+    private static final int COL_NOME = 1;
+    private static final int COL_IDADE = 2;
+    private static final int COL_MATRICULA = 3;
 
     private List<Aluno> valores;
 
-    public AlunoTableModel(List<Aluno> valores) {
+    public TableModel(List<Aluno> valores) {
         this.valores = valores;
     }
 
@@ -30,11 +30,11 @@ public class AlunoTableModel extends AbstractTableModel {
         Aluno aluno = valores.get(rowIndex);
         if (columnIndex == COL_ID) {
             return aluno.getId();
-        } else if (columnIndex == COL_EDITORA) {
+        } else if (columnIndex == COL_NOME) {
             return aluno.getNome();
-        } else if (columnIndex == COL_TITULO) {
+        } else if (columnIndex == COL_IDADE) {
             return aluno.getIdade();
-        } else if (columnIndex == COL_ISBN) {
+        } else if (columnIndex == COL_MATRICULA) {
             return aluno.getMatricula();
         }
         return null;
@@ -47,13 +47,13 @@ public class AlunoTableModel extends AbstractTableModel {
             case COL_ID:
                 coluna = "Código";
                 break;
-            case COL_EDITORA:
+            case COL_NOME:
                 coluna = "Nome";
                 break;
-            case COL_TITULO:
+            case COL_IDADE:
                 coluna = "Idade";
                 break;
-            case COL_ISBN:
+            case COL_MATRICULA:
                 coluna = "Matrícula";
                 break;
             default:
@@ -66,11 +66,11 @@ public class AlunoTableModel extends AbstractTableModel {
     public Class<?> getColumnClass(int columnIndex) {
         if (columnIndex == COL_ID) {
             return Long.class;
-        } else if (columnIndex == COL_EDITORA) {
+        } else if (columnIndex == COL_NOME) {
             return String.class;
-        } else if (columnIndex == COL_TITULO) {
+        } else if (columnIndex == COL_IDADE) {
             return String.class;
-        } else if (columnIndex == COL_ISBN) {
+        } else if (columnIndex == COL_MATRICULA) {
             return String.class;
         }
         return null;

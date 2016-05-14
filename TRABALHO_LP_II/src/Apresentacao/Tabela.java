@@ -1,9 +1,6 @@
-package form;
-
-import controller.AlunoControle;
-import entidade.Aluno;
-import table.AlunoCellRenderer;
-import table.AlunoTableModel;
+package Apresentacao;
+import Dao.AlunoDAO;
+import Entidade.Aluno;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import java.awt.*;
@@ -11,16 +8,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import dao.Conexao;
-import form.AlunoForm;
-
-public class AlunoForm extends JFrame {
+/**
+ * @Cometario:  
+ * @author Wenes Gomes Aquino <wenesga@gmail.com>
+ * @date   29/03/2016 - Classe: Tabela
+ */
+public class Tabela extends JFrame {
 
     public static void main(String[] args) {
-        Conexao.createTable();
-        new AlunoForm();
+        new Tabela();
     }
-    
+
     private JLabel lbNome, lbIdade, lbMatricula;
     private JTextField txtNome, txtIdade, txtMatricula;
     private JPanel panelAdd, panelTable, panelButtons;
@@ -28,41 +26,36 @@ public class AlunoForm extends JFrame {
     private JTable table;
     private JScrollPane scrollPane;
 
-    private JLabel nAlunos;
-
     private List<Aluno> alunoList;
     private Long idAluno;
 
-    public AlunoForm() throws HeadlessException {
-        super("Cadastro de Alunos");
+    public Tabela() throws HeadlessException {
+        super("Crud de Alunos");
         setContentPane(new JPanel());
         setLayout(null);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         panelAdd = new JPanel(new MigLayout());
-        panelAdd.setBorder(BorderFactory.createTitledBorder("Adicionar Alunos"));
+        panelAdd.setBorder(BorderFactory.createTitledBorder("Cadastro Alunos"));
         panelAdd.setBounds(5, 0, 480, 100);
 
         lbNome = new JLabel("Nome:");
-        lbIdade = new JLabel("Idade:");
         lbMatricula = new JLabel("Matrícula:");
+        lbIdade = new JLabel("Idade:");
 
-        txtNome = new JTextField(50);
-        txtIdade = new JTextField(50);
-        txtMatricula = new JTextField(15);
+        txtNome = new JTextField(25);
+        txtIdade = new JTextField(5);
+        txtMatricula = new JTextField(10);
 
         panelAdd.add(lbNome);
-        panelAdd.add(txtNome, "span, growx");
-
-        panelAdd.add(lbIdade);
-        panelAdd.add(txtIdade, "span, growx");
-
+        panelAdd.add(txtNome, "wrap");
+        
         panelAdd.add(lbMatricula);
-        panelAdd.add(txtMatricula, "growx");
-
-        nAlunos = new JLabel("0");
-        panelAdd.add(nAlunos, "wrap para");
+        panelAdd.add(txtMatricula, "wrap, ");
+        
+        panelAdd.add(lbIdade);
+        panelAdd.add(txtIdade, "wrap, ");
 
         panelButtons = new JPanel(new MigLayout());
         panelButtons.setBorder(BorderFactory.createEtchedBorder());
@@ -70,11 +63,11 @@ public class AlunoForm extends JFrame {
 
         btnNew = new JButton("Novo");
         btnSave = new JButton("Salvar");
-        btnCancel = new JButton("Cancelar");
+        btnCancel = new JButton("Limpar");
         btnRemove = new JButton("Excluir");
         btnUpdate = new JButton("Editar");
 
-        panelButtons.add(btnNew, "gapleft 37"); // Centraliza os bontões
+        panelButtons.add(btnNew, "gapleft 37");
         panelButtons.add(btnCancel);
         panelButtons.add(btnSave, "gap unrelated");
         panelButtons.add(btnUpdate, "gap unrelated");
@@ -90,8 +83,8 @@ public class AlunoForm extends JFrame {
 
         panelTable.add(scrollPane);
 
-        refreshTable();
-        bloqueiaCampo(false); //Bloqueia os campos
+        carregar();
+        bloqueiaCampo(false);
 
         add(panelAdd);
         add(panelButtons);
@@ -101,7 +94,7 @@ public class AlunoForm extends JFrame {
 
         btnSave.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onSaveAluno();
+                SalvarAluno();
             }
         });
 
@@ -113,59 +106,60 @@ public class AlunoForm extends JFrame {
 
         btnNew.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onNovoAluno();
+                NovoAluno();
             }
         });
 
         btnRemove.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onRemoverAluno();
+                ExcluirAluno();
             }
         });
 
         btnUpdate.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onAlterarAluno();
+                AlterarAluno();
             }
         });
-        this.setLocationRelativeTo(null); // Centraliza janela
+        
+        this.setLocationRelativeTo(null); // Centralizar janela
     }
 
-    private void onRemoverAluno() {
+    private void ExcluirAluno() {
         int rowIndex = table.getSelectedRow();
 
         if (rowIndex == -1) {
-            JOptionPane.showMessageDialog(this, "Selecione o aluno a ser removido!");
+            JOptionPane.showMessageDialog(this, "Selecione o Aluno para Excluir");
             return;
         }
 
-        Aluno aluno = new AlunoTableModel(alunoList).get(rowIndex);
+        Aluno aluno = new TableModel(alunoList).get(rowIndex);
 
-        int confirm = JOptionPane.showConfirmDialog(this, "Confirmar exclusão?", "Excluir Aluno", JOptionPane.YES_NO_OPTION);
+        int confirm = JOptionPane.showConfirmDialog(this, "Deseja excluir o Aluno?", "Excluir Aluno", JOptionPane.YES_NO_OPTION);
 
         if (confirm != 0) {
             return;
         }
 
-        int result = new AlunoControle().excluirAluno(aluno.getId());
+        int result = new AlunoDAO().excluir(aluno.getId());
 
         if (result == 1) {
-            JOptionPane.showMessageDialog(this, "Valor removido com sucesso!");
-            refreshTable();
+            JOptionPane.showMessageDialog(this, "Aluno Excluido com sucesso!");
+            carregar();
         } else {
             JOptionPane.showMessageDialog(this, "Tente novamente!");
         }
     }
 
-    private void onAlterarAluno() {
+    private void AlterarAluno() {
         int rowIndex = table.getSelectedRow();
 
         if (rowIndex == -1) {
-            JOptionPane.showMessageDialog(this, "Selecione o aluno a ser alterado!");
+            JOptionPane.showMessageDialog(this, "Selecione o Aluno para Editar");
             return;
         }
 
-        Aluno aluno = new AlunoTableModel(alunoList).get(rowIndex);
+        Aluno aluno = new TableModel(alunoList).get(rowIndex);
 
         idAluno = aluno.getId();
 
@@ -173,14 +167,14 @@ public class AlunoForm extends JFrame {
         txtIdade.setText(aluno.getIdade() + "");
         txtMatricula.setText(aluno.getMatricula());
 
-        bloqueiaCampo(true); //Libera os campos
+        bloqueiaCampo(true);
     }
 
-    private void onNovoAluno() {
-        bloqueiaCampo(true); //Libera os campos
+    private void NovoAluno() {
+        bloqueiaCampo(true);
     }
 
-    private void onSaveAluno() {
+    private void SalvarAluno() {
         Aluno aluno = new Aluno();
 
         if (txtNome.getText().length() > 0 && txtIdade.getText().length() > 0 && txtMatricula.getText().length() > 0) {
@@ -194,18 +188,18 @@ public class AlunoForm extends JFrame {
 
         int result = 0;
         if (idAluno == null) {
-            result = new AlunoControle().addAluno(aluno);
+            result = new AlunoDAO().salvar(aluno);
         } else {
             aluno.setId(idAluno);
-            result = new AlunoControle().alterarAluno(aluno);
+            result = new AlunoDAO().atualizar(aluno);
             idAluno = null;
         }
 
         if (result == 1) {
-            JOptionPane.showMessageDialog(this, "Valor inserido com sucesso!");
-            bloqueiaCampo(false); //Bloqueia os campos
+            JOptionPane.showMessageDialog(this, "Aluno inserido com sucesso!");
+            bloqueiaCampo(false);
             limpaCampo();
-            refreshTable();
+            carregar();
         } else {
             JOptionPane.showMessageDialog(this, "Tente novamente!");
         }
@@ -215,7 +209,7 @@ public class AlunoForm extends JFrame {
         txtNome.setText("");
         txtIdade.setText("");
         txtMatricula.setText("");
-        bloqueiaCampo(false); //Bloqueia os campos
+        bloqueiaCampo(false);
     }
 
     private void bloqueiaCampo(boolean b) {
@@ -224,12 +218,10 @@ public class AlunoForm extends JFrame {
         txtMatricula.setEnabled(b);
     }
 
-    private void refreshTable() {
-        alunoList = new AlunoControle().findAlunos();
-        nAlunos.setText(String.valueOf(alunoList.size()));
+    private void carregar() {
+        alunoList = new AlunoDAO().listar();
         if (alunoList != null) {
-            table.setModel(new AlunoTableModel(alunoList));
-            table.setDefaultRenderer(Object.class, new AlunoCellRenderer());
+            table.setModel(new TableModel(alunoList));
         }
     }
 }

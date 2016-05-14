@@ -1,4 +1,4 @@
-package entidade;
+package Entidade;
 
 public class Aluno {
     private Long id;
@@ -36,15 +36,5 @@ public class Aluno {
 
     public void setMatricula(String matricula) {
         this.matricula = matricula;
-    }
-
-    @Override
-    public String toString() {
-        return "Aluno{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", idade='" + idade + '\'' +
-                ", matricula='" + matricula + '\'' +
-                '}';
     }
 }
