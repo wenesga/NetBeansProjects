@@ -22,7 +22,7 @@ public class Conexao {
         return null;
     }
 
-    public static void close(Connection conn, PreparedStatement stmt, ResultSet rs) {
+    public static void fecharConexao(Connection conn, PreparedStatement stmt, ResultSet rs) {
         try {
             if (conn != null) {
                 conn.close();

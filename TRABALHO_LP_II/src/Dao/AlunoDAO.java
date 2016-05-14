@@ -41,7 +41,7 @@ public class AlunoDAO {
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }  finally {
-                Conexao.close(conn, pstm, null);
+                Conexao.fecharConexao(conn, pstm, null);
             }
             e.printStackTrace();
         }
@@ -67,7 +67,7 @@ public class AlunoDAO {
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }  finally {
-                Conexao.close(conn, pstm, null);
+                Conexao.fecharConexao(conn, pstm, null);
             }
             e.printStackTrace();
         }
@@ -90,7 +90,7 @@ public class AlunoDAO {
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }  finally {
-                Conexao.close(conn, pstm, null);
+                Conexao.fecharConexao(conn, pstm, null);
             }
             e.printStackTrace();
         }
@@ -122,7 +122,7 @@ public class AlunoDAO {
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }  finally {
-                Conexao.close(conn, pstm, rs);
+                Conexao.fecharConexao(conn, pstm, rs);
             }
             e.printStackTrace();
         }
