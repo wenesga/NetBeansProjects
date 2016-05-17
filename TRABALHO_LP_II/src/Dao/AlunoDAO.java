@@ -16,11 +16,8 @@ import java.util.List;
 public class AlunoDAO {
 
     private static final String INSERT = "insert into ALUNOS (NOME, IDADE, MATRICULA) values (?,?,?)";
-
     private static final String UPDATE = "update ALUNOS set NOME = ?, IDADE = ?, MATRICULA = ? where ID = ?";
-
     private static final String REMOVE = "delete from ALUNOS where ID = ?";
-
     private static final String SELECT = "select * from ALUNOS";
 
     public int salvar(Aluno aluno) {
