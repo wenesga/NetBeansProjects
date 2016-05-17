@@ -8,27 +8,27 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @Cometario:
+ * @author Wenes Gomes Aquino <wenesga@gmail.com>
+ * @date 29/03/2016 - Classe: AlunoDAO
+ */
 public class AlunoDAO {
 
-    private static final String SQL_INSERT =
-            "insert into ALUNOS (NOME, IDADE, MATRICULA) values (?,?,?)";
+    private static final String INSERT = "insert into ALUNOS (NOME, IDADE, MATRICULA) values (?,?,?)";
 
-    private static final String SQL_UPDATE =
-            "update ALUNOS set NOME = ?, IDADE = ?, MATRICULA = ? where ID = ?";
+    private static final String UPDATE = "update ALUNOS set NOME = ?, IDADE = ?, MATRICULA = ? where ID = ?";
 
-    private static final String SQL_REMOVE =
-            "delete from ALUNOS where ID = ?";
+    private static final String REMOVE = "delete from ALUNOS where ID = ?";
 
-    private static final String SQL_FIND_ALL =
-            "select * from ALUNOS";
-
+    private static final String SELECT = "select * from ALUNOS";
 
     public int salvar(Aluno aluno) {
         Connection conn = Conexao.getConnection();
         PreparedStatement pstm = null;
         int result = 0;
         try {
-            pstm = conn.prepareStatement(SQL_INSERT);
+            pstm = conn.prepareStatement(INSERT);
             pstm.setString(1, aluno.getNome());
             pstm.setInt(2, aluno.getIdade());
             pstm.setString(3, aluno.getMatricula());
@@ -40,7 +40,7 @@ public class AlunoDAO {
                 }
             } catch (SQLException e1) {
                 e1.printStackTrace();
-            }  finally {
+            } finally {
                 Conexao.fecharConexao(conn, pstm, null);
             }
             e.printStackTrace();
@@ -53,7 +53,7 @@ public class AlunoDAO {
         PreparedStatement pstm = null;
         int result = 0;
         try {
-            pstm = conn.prepareStatement(SQL_UPDATE);
+            pstm = conn.prepareStatement(UPDATE);
             pstm.setString(1, aluno.getNome());
             pstm.setInt(2, aluno.getIdade());
             pstm.setString(3, aluno.getMatricula());
@@ -66,7 +66,7 @@ public class AlunoDAO {
                 }
             } catch (SQLException e1) {
                 e1.printStackTrace();
-            }  finally {
+            } finally {
                 Conexao.fecharConexao(conn, pstm, null);
             }
             e.printStackTrace();
@@ -79,7 +79,7 @@ public class AlunoDAO {
         PreparedStatement pstm = null;
         int result = 0;
         try {
-            pstm = conn.prepareStatement(SQL_REMOVE);
+            pstm = conn.prepareStatement(REMOVE);
             pstm.setLong(1, id);
             result = pstm.executeUpdate();
         } catch (SQLException e) {
@@ -89,7 +89,7 @@ public class AlunoDAO {
                 }
             } catch (SQLException e1) {
                 e1.printStackTrace();
-            }  finally {
+            } finally {
                 Conexao.fecharConexao(conn, pstm, null);
             }
             e.printStackTrace();
@@ -103,7 +103,7 @@ public class AlunoDAO {
         List<Aluno> alunos = new ArrayList<Aluno>();
         ResultSet rs = null;
         try {
-            pstm = conn.prepareStatement(SQL_FIND_ALL);
+            pstm = conn.prepareStatement(SELECT);
             rs = pstm.executeQuery();
             while (rs.next()) {
                 Aluno aluno = new Aluno();
@@ -121,7 +121,7 @@ public class AlunoDAO {
                 }
             } catch (SQLException e1) {
                 e1.printStackTrace();
-            }  finally {
+            } finally {
                 Conexao.fecharConexao(conn, pstm, rs);
             }
             e.printStackTrace();
@@ -129,4 +129,3 @@ public class AlunoDAO {
         return alunos;
     }
 }
-
