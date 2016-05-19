@@ -1,8 +1,5 @@
 package br.com.vendadireta.dao;
-
 import br.com.vendadireta.entidade.Local;
-
-
 /**
  * @Cometario:
  * @author Wenes Gomes Aquino <wenesga@gmail.com>

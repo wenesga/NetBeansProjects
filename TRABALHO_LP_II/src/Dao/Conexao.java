@@ -2,6 +2,11 @@ package Dao;
 
 import java.sql.*;
 
+/**
+ * @Cometario:
+ * @author Wenes Gomes Aquino <wenesga@gmail.com>
+ * @date 29/03/2016 - Classe: Conexao
+ */
 public class Conexao {
 
     private static final String URL = "jdbc:mysql://localhost/alunos";

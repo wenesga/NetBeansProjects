@@ -1,6 +1,7 @@
 package br.com.vendadireta.dao;
 
 import br.com.vendadireta.entidade.Local;
+import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -17,8 +18,8 @@ public class LocalDAOTest {
     public void salvar(){
         Local local = new Local();
         local.setDescricao("Marcador Teste");
-        local.setLatitude(36.890257);
-        local.setLongitude(36.890257);
+        local.setLatitude(new BigDecimal("-12.9272021"));
+        local.setLongitude(new BigDecimal("-12.9272021"));
         
         LocalDAO localDAO = new LocalDAO();
         localDAO.salvar(local);
@@ -94,8 +95,8 @@ public class LocalDAOTest {
             System.out.println("LOGITUDE = " + local.getLongitude());
             
             local.setDescricao("Goias");
-            local.setLatitude(-12.9272021);
-            local.setLongitude(-46.9450947);
+            local.setLatitude(new BigDecimal("-12.9272021"));
+            local.setLongitude(new BigDecimal("-12.9272021"));
             localDAO.editar(local);
 
             System.out.println("\nRegistro editado - Depois:");
@@ -115,8 +116,8 @@ public class LocalDAOTest {
         Local local = localDAO.buscar(3);
         
         local.setDescricao("Arraias");
-        local.setLatitude(222222222);
-        local.setLongitude(1111111111);
+        local.setLatitude(new BigDecimal("-12.9272021"));
+        local.setLongitude(new BigDecimal("-46.9450947"));
         localDAO.merge(local);
     }
 }

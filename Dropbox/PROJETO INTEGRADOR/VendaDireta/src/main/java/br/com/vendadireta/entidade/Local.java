@@ -1,5 +1,6 @@
 package br.com.vendadireta.entidade;
 
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -14,11 +15,11 @@ public class Local extends GenericEntidade{
     @Column(length = 100, nullable = false)
     private String descricao;
     
-    @Column(nullable = false)
-    private double latitude;
+    @Column(nullable = false, precision = 20, scale = 17)
+    private BigDecimal latitude;
     
-    @Column(nullable = false)
-    private double longitude;
+    @Column(nullable = false, precision = 20, scale = 17)
+    private BigDecimal longitude;    
 
     public String getDescricao() {
         return descricao;
@@ -28,19 +29,19 @@ public class Local extends GenericEntidade{
         this.descricao = descricao;
     }
 
-    public double getLatitude() {
+    public BigDecimal getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(BigDecimal latitude) {
         this.latitude = latitude;
     }
 
-    public double getLongitude() {
+    public BigDecimal getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(BigDecimal longitude) {
         this.longitude = longitude;
-    } 
+    }
 }

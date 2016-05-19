@@ -18,12 +18,17 @@
                              rows="7" paginatorPosition="top">
 
                     <f:facet name="header">
-                        <p:commandButton value="Novo" 
+                        <p:commandButton icon="ui-icon-plusthick" 
                                          actionListener="#{clienteBean.novo}"
                                          oncomplete="PF('dialogo').show();" 
                                          update=":mensagem :formCadastro:painel">
                             <f:actionListener type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
                         </p:commandButton>
+                        
+                        <p:commandButton icon="ui-icon-print" 
+                                         actionListener="#{clienteBean.imprimir}" 
+                                         update=":mensagem :formListagem:tabela"
+                                         ajax="false"/>
                     </f:facet>
 
                     <p:column headerText="Nome" filterMatchMode="contains"
@@ -39,20 +44,17 @@
                     </p:column>
 
                     <p:column headerText="Endereço"
-                              filterBy="#{cliente.endereco}"
                               sortBy="#{cliente.endereco}"> 
                         <h:outputText value="#{cliente.endereco}" />
                     </p:column>
 
                     <p:column headerText="Telefone" style="width: 10%;"
-                              filterBy="#{cliente.cpf}"
                               sortBy="#{cliente.cpf}"> 
                         <h:outputText value="#{cliente.cpf}" />
                     </p:column>
 
 
                     <p:column headerText="Cidade" style="width: 18%;"
-                              filterBy="#{cliente.cidade.nome}"
                               sortBy="#{cliente.cidade.nome}">
                         <h:outputText value="#{cliente.cidade.nome}"/>
                         <h:outputText value=" - "/>

@@ -25,7 +25,10 @@
                             <f:actionListener type="org.omnifaces.eventlistener.ResetInputAjaxActionListener"/>
                         </p:commandButton>  
                         
-                        <p:commandButton icon="ui-icon-print" actionListener="#{produtoBean.imprimir}"/>
+                        <p:commandButton onclick="this.form.target='_blank'" 
+                                         actionListener="#{produtoBean.imprimir}"
+                                         update=":mensagem :formListagem:tabela"
+                                         ajax="false"/>
                     </f:facet>
 
                     <p:column headerText="Nome" filterMatchMode="contains"

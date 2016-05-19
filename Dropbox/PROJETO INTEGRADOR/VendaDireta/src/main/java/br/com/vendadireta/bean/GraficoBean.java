@@ -88,8 +88,8 @@ public class GraficoBean implements Serializable {
     private void createPieModel1() {
         pieModel1 = new PieChartModel();
          
-        pieModel1.set("Brand 1", 540);
-        pieModel1.set("Brand 2", 325);
+        pieModel1.set("Vendas", 50);
+        pieModel1.set("Compras", 50);
         pieModel1.set("Brand 3", 702);
         pieModel1.set("Brand 4", 421);
          
@@ -98,8 +98,8 @@ public class GraficoBean implements Serializable {
     }
  
     public void itemSelect(ItemSelectEvent event) {
-        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Item selected",
-                        "Item Index: " + event.getItemIndex() + ", Series Index:" + event.getSeriesIndex());
+        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Item Selecionado",
+                        "Índice Item: " + event.getItemIndex() + ", Índice de série:" + event.getSeriesIndex());
          
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }

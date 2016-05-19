@@ -1,17 +1,20 @@
 package Apresentacao;
 
 import Entidade.Aluno;
-
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
+/**
+ * @Cometario:
+ * @author Wenes Gomes Aquino <wenesga@gmail.com>
+ * @date 29/03/2016 - Classe: TableModel
+ */
 public class TableModel extends AbstractTableModel {
 
-    private static final int COL_ID = 0;
-    private static final int COL_NOME = 1;
-    private static final int COL_IDADE = 2;
-    private static final int COL_MATRICULA = 3;
-
+    private static final int COL_NOME = 0;
+    private static final int COL_IDADE = 1;
+    private static final int COL_MATRICULA = 2;
+    private static final int COL_ID = 3;
     private List<Aluno> valores;
 
     public TableModel(List<Aluno> valores) {
@@ -23,7 +26,7 @@ public class TableModel extends AbstractTableModel {
     }
 
     public int getColumnCount() {
-        return 4;
+        return 3;
     }
 
     public Object getValueAt(int rowIndex, int columnIndex) {
@@ -44,9 +47,9 @@ public class TableModel extends AbstractTableModel {
     public String getColumnName(int column) {
         String coluna = "";
         switch (column) {
-            case COL_ID:
-                coluna = "Código";
-                break;
+//            case COL_ID:
+//                coluna = "Código";
+//                break;
             case COL_NOME:
                 coluna = "Nome";
                 break;

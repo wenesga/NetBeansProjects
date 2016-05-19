@@ -1,4 +1,5 @@
 package Apresentacao;
+
 import Dao.AlunoDAO;
 import Entidade.Aluno;
 import net.miginfocom.swing.MigLayout;
@@ -9,9 +10,9 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
- * @Cometario:  
+ * @Cometario:
  * @author Wenes Gomes Aquino <wenesga@gmail.com>
- * @date   29/03/2016 - Classe: Tabela
+ * @date 29/03/2016 - Classe: Tabela
  */
 public class Tabela extends JFrame {
 
@@ -22,7 +23,7 @@ public class Tabela extends JFrame {
     private JLabel lbNome, lbIdade, lbMatricula;
     private JTextField txtNome, txtIdade, txtMatricula;
     private JPanel panelAdd, panelTable, panelButtons;
-    private JButton btnNew, btnSave, btnUpdate, btnRemove, btnCancel;
+    private JButton btnNew, btnSave, btnRemove, btnCancel;
     private JTable table;
     private JScrollPane scrollPane;
 
@@ -30,7 +31,7 @@ public class Tabela extends JFrame {
     private Long idAluno;
 
     public Tabela() throws HeadlessException {
-        super("Crud de Alunos");
+        super("Alunos");
         setContentPane(new JPanel());
         setLayout(null);
         setResizable(false);
@@ -44,18 +45,28 @@ public class Tabela extends JFrame {
         lbMatricula = new JLabel("Matrícula:");
         lbIdade = new JLabel("Idade:");
 
-        txtNome = new JTextField(25);
-        txtIdade = new JTextField(5);
-        txtMatricula = new JTextField(10);
+        txtNome = new JTextField(20);
+        //txtIdade = new JTextField(10);
+        try {
+            javax.swing.text.MaskFormatter idade = new javax.swing.text.MaskFormatter("##");
+            txtIdade = new javax.swing.JFormattedTextField(idade);
+        } catch (Exception e) {
+        }
+        //txtMatricula = new JTextField(10);
+        try {
+            javax.swing.text.MaskFormatter idade = new javax.swing.text.MaskFormatter("******");
+            txtMatricula = new javax.swing.JFormattedTextField(idade);
+        } catch (Exception e) {
+        }
 
         panelAdd.add(lbNome);
-        panelAdd.add(txtNome, "wrap");
-        
+        panelAdd.add(txtNome, "span, growx");
+
         panelAdd.add(lbMatricula);
-        panelAdd.add(txtMatricula, "wrap, ");
-        
+        panelAdd.add(txtMatricula, "span, grow");
+
         panelAdd.add(lbIdade);
-        panelAdd.add(txtIdade, "wrap, ");
+        panelAdd.add(txtIdade, "grow");
 
         panelButtons = new JPanel(new MigLayout());
         panelButtons.setBorder(BorderFactory.createEtchedBorder());
@@ -65,12 +76,12 @@ public class Tabela extends JFrame {
         btnSave = new JButton("Salvar");
         btnCancel = new JButton("Limpar");
         btnRemove = new JButton("Excluir");
-        btnUpdate = new JButton("Editar");
+//        btnUpdate = new JButton("Editar");
 
-        panelButtons.add(btnNew, "gapleft 37");
+        panelButtons.add(btnNew, "gapleft 82");
         panelButtons.add(btnCancel);
-        panelButtons.add(btnSave, "gap unrelated");
-        panelButtons.add(btnUpdate, "gap unrelated");
+        panelButtons.add(btnSave, "gap");
+//        panelButtons.add(btnUpdate, "gap unrelated");
         panelButtons.add(btnRemove);
 
         panelTable = new JPanel(new MigLayout());
@@ -116,12 +127,11 @@ public class Tabela extends JFrame {
             }
         });
 
-        btnUpdate.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                AlterarAluno();
-            }
-        });
-        
+//        btnUpdate.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                AlterarAluno();
+//            }
+//        });
         this.setLocationRelativeTo(null); // Centralizar janela
     }
 
@@ -151,25 +161,24 @@ public class Tabela extends JFrame {
         }
     }
 
-    private void AlterarAluno() {
-        int rowIndex = table.getSelectedRow();
-
-        if (rowIndex == -1) {
-            JOptionPane.showMessageDialog(this, "Selecione o Aluno para Editar");
-            return;
-        }
-
-        Aluno aluno = new TableModel(alunoList).get(rowIndex);
-
-        idAluno = aluno.getId();
-
-        txtNome.setText(aluno.getNome());
-        txtIdade.setText(aluno.getIdade() + "");
-        txtMatricula.setText(aluno.getMatricula());
-
-        bloqueiaCampo(true);
-    }
-
+//    private void AlterarAluno() {
+//        int rowIndex = table.getSelectedRow();
+//
+//        if (rowIndex == -1) {
+//            JOptionPane.showMessageDialog(this, "Selecione o Aluno para Editar");
+//            return;
+//        }
+//
+//        Aluno aluno = new TableModel(alunoList).get(rowIndex);
+//
+//        idAluno = aluno.getId();
+//
+//        txtNome.setText(aluno.getNome());
+//        txtIdade.setText(aluno.getIdade() + "");
+//        txtMatricula.setText(aluno.getMatricula());
+//
+//        bloqueiaCampo(true);
+//    }
     private void NovoAluno() {
         bloqueiaCampo(true);
     }

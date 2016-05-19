@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="br.com.vendadireta.util.HibernateUtilTest" time="5.555" errors="1" skipped="0">
+<testsuite tests="1" failures="0" name="br.com.vendadireta.util.HibernateUtilTest" time="5.987" errors="1" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_51\jre\bin"/>
@@ -63,7 +63,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase classname="br.com.vendadireta.util.HibernateUtilTest" name="conectar" time="5.523">
+  <testcase classname="br.com.vendadireta.util.HibernateUtilTest" name="conectar" time="5.985">
     <error type="java.lang.ExceptionInInitializerError">java.lang.ExceptionInInitializerError
 	at br.com.vendadireta.util.HibernateUtil.criarFabricaDeSessoes(HibernateUtil.java:48)
 	at br.com.vendadireta.util.HibernateUtil.&lt;clinit&gt;(HibernateUtil.java:19)
@@ -137,29 +137,29 @@ Caused by: java.sql.SQLException: Access denied for user &apos;root&apos;@&apos;
 	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:55)
 	... 44 more
 </error>
-    <system-err>mai 11, 2016 6:16:57 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager &lt;clinit&gt;
+    <system-err>mai 18, 2016 9:57:14 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager &lt;clinit&gt;
 INFO: HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
-mai 11, 2016 6:16:57 PM org.hibernate.Version logVersion
+mai 18, 2016 9:57:14 PM org.hibernate.Version logVersion
 INFO: HHH000412: Hibernate Core {4.3.11.Final}
-mai 11, 2016 6:16:57 PM org.hibernate.cfg.Environment &lt;clinit&gt;
+mai 18, 2016 9:57:14 PM org.hibernate.cfg.Environment &lt;clinit&gt;
 INFO: HHH000206: hibernate.properties not found
-mai 11, 2016 6:16:57 PM org.hibernate.cfg.Environment buildBytecodeProvider
+mai 18, 2016 9:57:14 PM org.hibernate.cfg.Environment buildBytecodeProvider
 INFO: HHH000021: Bytecode provider name : javassist
-mai 11, 2016 6:16:57 PM org.hibernate.cfg.Configuration configure
+mai 18, 2016 9:57:15 PM org.hibernate.cfg.Configuration configure
 INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
-mai 11, 2016 6:16:57 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+mai 18, 2016 9:57:15 PM org.hibernate.cfg.Configuration getConfigurationInputStream
 INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
-mai 11, 2016 6:16:58 PM org.hibernate.cfg.Configuration doConfigure
+mai 18, 2016 9:57:15 PM org.hibernate.cfg.Configuration doConfigure
 INFO: HHH000041: Configured SessionFactory: null
-mai 11, 2016 6:16:59 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+mai 18, 2016 9:57:17 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
 WARN: HHH000402: Using Hibernate built-in connection pool (not for production use!)
-mai 11, 2016 6:17:00 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+mai 18, 2016 9:57:17 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://127.0.0.1:3306/venda_direta]
-mai 11, 2016 6:17:00 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+mai 18, 2016 9:57:17 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH000046: Connection properties: {user=root, password=****}
-mai 11, 2016 6:17:00 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+mai 18, 2016 9:57:17 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH000006: Autocommit mode: false
-mai 11, 2016 6:17:00 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+mai 18, 2016 9:57:17 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
 INFO: HHH000115: Hibernate connection pool size: 1 (min=1)
 A fábrica de sessões não pode ser criada.org.hibernate.exception.JDBCConnectionException: Error calling Driver#connect
 </system-err>

@@ -11,7 +11,7 @@ import javax.swing.JTable;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
-import DAO.AlunoDao;
+import DAO.AlunoDAO;
 import DAO.Conexao;
 import java.awt.Container;
 import java.awt.GridBagLayout;
@@ -28,7 +28,7 @@ public class Tabela extends JFrame {
         new Tabela(); //Chamando construtor no metodo main
     }
 
-    AlunoDao alunoDao = new AlunoDao();
+    AlunoDAO alunoDao = new AlunoDAO();
     Conexao conn = new Conexao();
     String matricula;
     JTable resultTable;

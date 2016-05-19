@@ -1,6 +1,12 @@
 package Entidade;
 
+/**
+ * @Cometario:
+ * @author Wenes Gomes Aquino <wenesga@gmail.com>
+ * @date 29/03/2016 - Classe: Aluno
+ */
 public class Aluno {
+
     private Long id;
     private String nome;
     private int idade;

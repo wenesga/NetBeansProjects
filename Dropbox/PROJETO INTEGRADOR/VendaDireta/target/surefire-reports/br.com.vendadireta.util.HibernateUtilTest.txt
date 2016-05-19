@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: br.com.vendadireta.util.HibernateUtilTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 5.555 sec <<< FAILURE!
-conectar(br.com.vendadireta.util.HibernateUtilTest)  Time elapsed: 5.523 sec  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 5.986 sec <<< FAILURE!
+conectar(br.com.vendadireta.util.HibernateUtilTest)  Time elapsed: 5.985 sec  <<< ERROR!
 java.lang.ExceptionInInitializerError
 	at br.com.vendadireta.util.HibernateUtil.criarFabricaDeSessoes(HibernateUtil.java:48)
 	at br.com.vendadireta.util.HibernateUtil.<clinit>(HibernateUtil.java:19)

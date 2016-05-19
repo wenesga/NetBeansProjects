@@ -19,7 +19,10 @@
 
         <div id="geral">
             <div id="topo" class="divTopo">
-                <p:graphicImage library="images" name="banner2.png" 
+                <form name="logado"  style="font-size:20px; font-family: sans-serif">
+                    Usuário: #{autenticacaoBean.usuarioLogado.nome} 
+                </form>
+                <p:graphicImage library="images" name="banner.png" 
                                 styleClass="imagemCentralizada"/>
             </div>
 
@@ -52,7 +55,7 @@
                         <p:submenu label="Movimentações">
                             <p:menuitem value="Venda" url="/pages/venda.xhtml" />
                         </p:submenu>
-                        
+
                         <p:submenu label="Mapa">
                             <p:menuitem value="Clientes" url="/pages/local.xhtml" />
                         </p:submenu>
