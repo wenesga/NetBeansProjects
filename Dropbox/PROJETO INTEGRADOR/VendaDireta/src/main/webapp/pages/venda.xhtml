@@ -6,8 +6,13 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="/templates/modelo.xhtml">
+
+    <f:metadata>
+        <f:viewAction action="#{vendaBean.novo}" />
+    </f:metadata>
+
     <ui:define name="conteudo">      
-        
+
         <h:form id="formulario">
             <p:panel header="Produtos">    
                 <p:dataTable id="tabelaProduto"
@@ -95,10 +100,13 @@
                     <f:convertNumber locale="pt_BR" type="currency" currencySymbol="  R$" />
                 </h:outputText>
                 <br/>
+                
                 <p:commandButton value="Finalizar"
                                  actionListener="#{vendaBean.finalizar}"
                                  update=":mensagem :formularioFinalizar:painelFinalizar"
-                                 oncomplete="PF('dialogo').show();"/>
+                                 oncomplete="PF('dialogo').show();">
+                    <f:actionListener type="org.omnifaces.eventlistener.ResetInputAjaxActionListener"/>
+                </p:commandButton>
             </p:outputPanel>
         </h:form>   
 
@@ -120,12 +128,12 @@
                     <h:outputText value="#{vendaBean.venda.valorTotal}">
                         <f:convertNumber locale="pt_BR" type="currency" currencySymbol="R$" />
                     </h:outputText>
-                    
+
                     <h:outputLabel value="Usuário:"/>
                     <h:outputText value="#{autenticacaoBean.usuarioLogado.nome}"/>
 
                     <p:outputLabel value="Cliente:" />
-                    <p:selectOneMenu value="#{vendaBean.venda.cliente}" style="width:400px"
+                    <p:selectOneMenu value="#{vendaBean.venda.cliente}" style="width:300px"
                                      converter="omnifaces.SelectItemsConverter" 
                                      filter="true" filterMatchMode="contains">
                         <f:selectItem noSelectionOption="true"
@@ -135,13 +143,28 @@
                                        itemValue="#{cliente}" 
                                        itemLabel="#{cliente.nome} - Cod.#{cliente.codigo}" />
                     </p:selectOneMenu>
+
+                    <p:outputLabel  for="formaPagamento" value="Forma de Pagamento:"/>
+                    <p:selectOneMenu id="formaPagamento" value="#{vendaBean.venda.forma_pagamento}" style="width:300px"
+                                     converter="omnifaces.SelectItemsConverter" 
+                                     filter="true" 
+                                     required="true" requiredMessage="O campo 'Forma de Pagamento' é obrigatório">
+                        <f:selectItem noSelectionOption="true"
+                                      itemLabel="Selecione uma forma de pagamento" />
+                        <f:selectItems value="#{vendaBean.formaPagamentos}" 
+                                       var="formaPagamento"
+                                       itemValue="#{formaPagamento}" 
+                                       itemLabel="#{formaPagamento.tipo}" />
+                    </p:selectOneMenu>
                 </h:panelGrid>
 
                 <p:outputPanel style=" text-align:center">
                     <p:commandButton value="Salvar" actionListener="#{vendaBean.salvar}"
-                                     update=":mensagem :formulario:tabelaProduto :formulario:tabelaCesta :formulario:painelFinalizacao" 
-                                     oncomplete="PF('dialogo').hide();" />
+                                     update=":mensagem :formulario:tabelaProduto :formulario:tabelaCesta :formulario:painelFinalizacao"                                       
+                                     oncomplete="PF('dialogo').show();">                  
+                    </p:commandButton>
                     <p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
+                    <p:commandButton value="Imprimir" oncomplete="PF('dialogo').show();"/>
                 </p:outputPanel>
             </h:form>
         </p:dialog>

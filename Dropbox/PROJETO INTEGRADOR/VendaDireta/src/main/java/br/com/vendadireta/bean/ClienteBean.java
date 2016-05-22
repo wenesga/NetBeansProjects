@@ -6,25 +6,15 @@ import br.com.vendadireta.dao.EstadoDAO;
 import br.com.vendadireta.entidade.Cidade;
 import br.com.vendadireta.entidade.Cliente;
 import br.com.vendadireta.entidade.Estado;
-import br.com.vendadireta.relatorio.Relatorio;
-import br.com.vendadireta.util.HibernateUtil;
+import br.com.vendadireta.relatorio.ClienteRelatorio;
 import java.io.Serializable;
-import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.view.JasperViewer;
-import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
-import org.primefaces.component.datatable.DataTable;
 
 /**
  * @Cometario:
@@ -183,42 +173,8 @@ public class ClienteBean implements Serializable {
         }
     }
 
-//    public void imprimir() {
-//        Relatorio relatorio = new Relatorio(Cliente.class);
-//        relatorio.print();
-//    }
-
     public void imprimir() {
-        try {
-            DataTable tabela = (DataTable) Faces.getViewRoot().findComponent("formListagem:tabela");
-            Map<String, Object> filtros = tabela.getFilters();
-            String clienteNome = (String) filtros.get("nome");
-            String clienteCPF = (String) filtros.get("cpf");
-
-            //JasperCompileManager.compileReport("D:/PROJETO INTEGRADOR/VendaDireta/src/main/webapp/relatorio/produto.jrxml");
-            String caminho = Faces.getRealPath("/relatorio/cliente.jasper");
-
-            Map<String, Object> parametros = new HashMap<>();
-
-            if (clienteNome == null) {
-                parametros.put("CLIENTE_NOME", "%%");
-            } else {
-                parametros.put("CLIENTE_NOME", "%"+clienteNome+"%");
-            }
-
-            if (clienteCPF == null) {
-                parametros.put("CLIENTE_CPF", "%%");
-            } else {
-                parametros.put("CLIENTE_CPF", "%"+clienteCPF+"%");
-            }
-
-            Connection conexao = HibernateUtil.getConexao();
-            JasperPrint relatorio = JasperFillManager.fillReport(caminho, parametros, conexao);
-            JasperViewer.viewReport(relatorio, false);
-            //JasperPrintManager.printReport(relatorio, true);
-        } catch (JRException erro) {
-            Messages.addGlobalError("Ocorreu um erro ao tentar gerar o relatório");
-            erro.printStackTrace();
-        }
+        ClienteRelatorio relatorio = new ClienteRelatorio(Cliente.class);
+        relatorio.print();
     }
 }

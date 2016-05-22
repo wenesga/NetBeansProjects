@@ -1,10 +1,12 @@
 package br.com.vendadireta.bean;
 
 import br.com.vendadireta.dao.ClienteDAO;
+import br.com.vendadireta.dao.FormaPagamentoDAO;
 import br.com.vendadireta.dao.ProdutoDAO;
 import br.com.vendadireta.dao.UsuarioDAO;
 import br.com.vendadireta.dao.VendaDAO;
 import br.com.vendadireta.entidade.Cliente;
+import br.com.vendadireta.entidade.FormaPagamento;
 import br.com.vendadireta.entidade.ItemVenda;
 import br.com.vendadireta.entidade.Produto;
 import br.com.vendadireta.entidade.Usuario;
@@ -34,9 +36,35 @@ public class VendaBean implements Serializable {
     private List<ItemVenda> itensVenda;
     private Venda venda;
     private List<Cliente> clientes;
-
+    private List<FormaPagamento> formaPagamentos;
+    private List<Venda> vendas;
+    private ItemVenda itemVenda;
     @ManagedProperty(value = "#{autenticacaoBean}")
     private AutenticacaoBean autenticacaoBean;
+
+    public List<FormaPagamento> getFormaPagamentos() {
+        return formaPagamentos;
+    }
+
+    public void setFormaPagamentos(List<FormaPagamento> formaPagamentos) {
+        this.formaPagamentos = formaPagamentos;
+    }
+
+    public ItemVenda getItemVenda() {
+        return itemVenda;
+    }
+
+    public void setItemVenda(ItemVenda itemVenda) {
+        this.itemVenda = itemVenda;
+    }
+
+    public List<Venda> getVendas() {
+        return vendas;
+    }
+
+    public void setVendas(List<Venda> vendas) {
+        this.vendas = vendas;
+    }
 
     public AutenticacaoBean getAutenticacaoBean() {
         return autenticacaoBean;
@@ -78,7 +106,7 @@ public class VendaBean implements Serializable {
         this.produtos = produtos;
     }
 
-    @PostConstruct
+    //@PostConstruct
     public void novo() {
         try {
             venda = new Venda();
@@ -89,6 +117,16 @@ public class VendaBean implements Serializable {
             itensVenda = new ArrayList<>();
         } catch (RuntimeException erro) {
             Messages.addGlobalError("Ocorreu um erro ao tentar carregar a tela de Venda");
+            erro.printStackTrace();
+        }
+    }
+
+    public void listar() {
+        try {
+            VendaDAO vendaDAO = new VendaDAO();
+            vendas = vendaDAO.listar("horario");
+        } catch (RuntimeException erro) {
+            Messages.addGlobalError("Ocorreu um erro ao tentar carregar a lista de Venda");
             erro.printStackTrace();
         }
     }
@@ -154,13 +192,17 @@ public class VendaBean implements Serializable {
         try {
             venda.setHorario(new Date());
             venda.setCliente(null);
+            venda.setForma_pagamento(null);
             venda.setUsuario(autenticacaoBean.getUsuarioLogado());
 
-            UsuarioDAO usuarioDAO = new UsuarioDAO();
-            Usuario usuario = usuarioDAO.buscar(autenticacaoBean.getUsuarioLogado().getCodigo());
+            //UsuarioDAO usuarioDAO = new UsuarioDAO();
+            //Usuario usuario = usuarioDAO.buscar(autenticacaoBean.getUsuarioLogado().getCodigo());
 
             ClienteDAO clienteDAO = new ClienteDAO();
             clientes = clienteDAO.listar("nome");
+            FormaPagamentoDAO formaPagamentoDAO = new FormaPagamentoDAO();
+            formaPagamentos = formaPagamentoDAO.listar();
+            
 
         } catch (RuntimeException erro) {
             Messages.addGlobalError("Ocorreu um erro ao tentar finalizar a venda");

@@ -17,17 +17,23 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
+import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
+import org.primefaces.component.datatable.DataTable;
 
-public class Relatorio<T> {
+/**
+ * @Cometario:
+ * @author Wenes Gomes Aquino <wenesga@gmail.com>
+ * @date 19/05/2016 - Classe: ClienteRelatorio
+ */
+public class ClienteRelatorio<T> {
 
     private FacesContext context;
     private ByteArrayOutputStream baos;
     private HttpServletResponse response;
-    private Connection con;
     private Class<T> classe;
 
-    public Relatorio(Class<T> classe) {
+    public ClienteRelatorio(Class<T> classe) {
         this.context = FacesContext.getCurrentInstance();
         response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
         this.classe = classe;
@@ -36,31 +42,50 @@ public class Relatorio<T> {
     public void print() {
         try {
             InputStream stream = this.getClass().getClassLoader().getResourceAsStream("relatorio/" + target());
-            InputStream banner = this.getClass().getClassLoader().getResourceAsStream("relatorio/banner.png");
+            //InputStream banner = this.getClass().getClassLoader().getResourceAsStream("relatorio/banner.png");
             Connection conexao = HibernateUtil.getConexao();
-            Map<String, Object> params = new HashMap<String, Object>();
-            params.put("banner", banner);
-            baos = new ByteArrayOutputStream();
 
+            DataTable tabela = (DataTable) Faces.getViewRoot().findComponent("formListagem:tabela");
+            Map<String, Object> filtros = tabela.getFilters();
+
+            // FILTRO CLIENTES
+            String clienteNome = (String) filtros.get("nome");
+            String clienteCpf = (String) filtros.get("cpf");
+
+            Map<String, Object> params = new HashMap<String, Object>();
+            //params.put("banner", banner);
+
+            // IF CLIENTE
+            if (clienteNome == null) {
+                params.put("CLIENTE_NOME", "%%");
+            } else {
+                params.put("CLIENTE_NOME", "%" + clienteNome + "%");
+            }
+
+            if (clienteCpf == null) {
+                params.put("CLIENTE_CPF", "%%");
+            } else {
+                params.put("CLIENTE_CPF", "%" + clienteCpf + "%");
+            }
+ 
+            baos = new ByteArrayOutputStream();
             JasperReport report = (JasperReport) JRLoader.loadObject(stream);
             JasperPrint print = JasperFillManager.fillReport(report, params, conexao);
             JasperExportManager.exportReportToPdfStream(print, baos);
-
             response.reset();
             response.setContentType("application/pdf");
             response.setContentLength(baos.size());
-            response.setHeader("Content-disposition", "inline; filename=produto.pdf");
+            response.setHeader("Content-disposition", "inline; filename=cliente.pdf");
             response.getOutputStream().write(baos.toByteArray());
             response.getOutputStream().flush();
             response.getOutputStream().close();
-
             context.responseComplete();
 
         } catch (JRException erro) {
             Messages.addGlobalError("Ocorreu um erro ao tentar gerar o relatorio");
             erro.printStackTrace();
         } catch (IOException ex) {
-            Logger.getLogger(Relatorio.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClienteRelatorio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -68,8 +93,6 @@ public class Relatorio<T> {
         switch (classe.getSimpleName()) {
             case "Cliente":
                 return "cliente.jasper";
-            case "Produto":
-                return "produto.jasper";
         }
         return null;
     }

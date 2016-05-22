@@ -52,7 +52,7 @@ public class AutenticacaoBean {
                 Messages.addGlobalError("CPF ou Senha incorreto");
                 return;
             } else {
-                Messages.addFlashGlobalInfo("Usuário " + usuarioLogado.getNome() + ", autenticado com sucesso" );
+                Messages.addFlashGlobalInfo("Usuário autenticado com sucesso" );
             }
  
             Faces.redirect("./pages/principal.xhtml");

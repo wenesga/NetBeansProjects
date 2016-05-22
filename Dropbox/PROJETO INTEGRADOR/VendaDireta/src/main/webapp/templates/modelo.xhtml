@@ -6,6 +6,8 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
+    <ui:insert name="metadata" />
+    
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Venda Direta</title>
@@ -19,50 +21,43 @@
 
         <div id="geral">
             <div id="topo" class="divTopo">
-                <form name="logado"  style="font-size:20px; font-family: sans-serif">
+                <form name="logado"  style="font-size:16px; font-family: sans-serif">
                     Usuário: #{autenticacaoBean.usuarioLogado.nome} 
                 </form>
-                <p:graphicImage library="images" name="banner.png" 
-                                styleClass="imagemCentralizada"/>
+                <p:graphicImage library="images" name="banner.png" styleClass="imagemCentralizada"/>
             </div>
 
             <div id="cabecalho" class="divCabecalho">
 
                 <h:form id="formMenu" class="form">
                     <p:menubar>
-                        <p:submenu label="Arquivo" icon="ui-icon-document">
-                            <p:menuitem value="Sair" action="#{autenticacaoBean.sair}" />
-                        </p:submenu>
-
+                        <p:menuitem icon="ui-icon-home" value="Página Inicial" url="/pages/principal.xhtml" />
                         <p:submenu label="Cadastros" icon="ui-icon-newwin">
-                            <p:menuitem value="Categorias" url="/pages/categoria.xhtml"/>
-                            <p:menuitem value="Clientes" url="/pages/cliente.xhtml"/>
+                            <p:menuitem value="Categoria" url="/pages/categoria.xhtml"/>
+                            <p:menuitem value="Cliente" url="/pages/cliente.xhtml"/>
                             <p:menuitem value="Formas de Pagamento" url="/pages/formaPagamento.xhtml"/>
-                            <p:menuitem value="Fornecedores" url="/pages/fornecedor.xhtml"/>
-                            <p:menuitem value="Marcas" url="/pages/marca.xhtml"/>
-                            <p:menuitem value="Pedidos" url="/pages/pedido.xhtml"/>
-                            <p:menuitem value="Produtos" url="/pages/produto.xhtml"/>                          
-                            <p:menuitem value="Produtos Pedido" url="/pages/produtoPedito.xhtml"/>
-                            <p:menuitem value="Usuarios" url="/pages/usuario.xhtml"/>
+                            <p:menuitem value="Fornecedor" url="/pages/fornecedor.xhtml"/>
+                            <p:menuitem value="Marca" url="/pages/marca.xhtml"/>
+                            <p:menuitem value="Produto" url="/pages/produto.xhtml"/>                          
+                            <p:menuitem value="Usuario" url="/pages/usuario.xhtml"/>
                         </p:submenu>
 
-                        <p:submenu label="Relatórios" icon="ui-icon-script">
-                            <p:menuitem value="Vendas por Clientes" />
+                        <p:submenu label="Relatórios" icon="ui-icon-print">
+                            <p:menuitem value="Vendas por Clientes" url="/pages/vendaListagem.xhtml"/>
                             <p:menuitem value="Produtos Vendidos" />
-                            <p:menuitem value="Gráfico" url="/pages/grafico.xhtml" />
                         </p:submenu>
 
-                        <p:submenu label="Movimentações">
-                            <p:menuitem value="Venda" url="/pages/venda.xhtml" />
+                        <p:submenu label="Movimentações" icon="ui-icon-cart">
+                            <p:menuitem value="Vendas " url="/pages/venda.xhtml" />
+                            <p:menuitem value="Pedido - Revista" url="/pages/pedido.xhtml"/>
+                            <p:menuitem value="Produto Pedido - Revista" url="/pages/produtoPedito.xhtml"/>
                         </p:submenu>
 
-                        <p:submenu label="Mapa">
-                            <p:menuitem value="Clientes" url="/pages/local.xhtml" />
+                        <p:submenu label="Mapa" icon="ui-icon-pin-s" >
+                            <p:menuitem value="Marcador - Cliente" url="/pages/local.xhtml" />
                         </p:submenu>
-
-                        <p:submenu label="Ajuda" icon="ui-icon-help">
-                            <p:menuitem value="Sobre" url="/pages/sobre.xhtml"/>
-                        </p:submenu>
+       
+                        <p:menuitem icon="ui-icon-extlink" value="Sair" action="#{autenticacaoBean.sair}" />
                     </p:menubar>
                 </h:form>
             </div>

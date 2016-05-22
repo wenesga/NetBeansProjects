@@ -1,6 +1,7 @@
 br\com\vendadireta\bean\ClienteBean.class
 br\com\vendadireta\dao\CategoriaDAO.class
 br\com\vendadireta\dao\PedidoDAO.class
+br\com\vendadireta\relatorio\ClienteRelatorio.class
 br\com\vendadireta\dao\FormaPagamentoDAO.class
 br\com\vendadireta\dao\ClienteDAO.class
 br\com\vendadireta\entidade\Local.class
@@ -10,6 +11,7 @@ br\com\vendadireta\entidade\Venda.class
 br\com\vendadireta\bean\MarcaBean.class
 br\com\vendadireta\dao\ProdutoDAO.class
 br\com\vendadireta\dao\ProdutoPedidoDAO.class
+br\com\vendadireta\relatorio\ProdutoRelatorio.class
 br\com\vendadireta\bean\UsuarioBean.class
 br\com\vendadireta\bean\PedidoBean.class
 br\com\vendadireta\entidade\ItemVenda.class
@@ -19,7 +21,6 @@ br\com\vendadireta\bean\AutenticacaoBean.class
 br\com\vendadireta\entidade\FormaPagamento.class
 br\com\vendadireta\dao\CidadeDAO.class
 br\com\vendadireta\dao\VendaDAO.class
-br\com\vendadireta\bean\GraficoBean.class
 br\com\vendadireta\bean\ProdutoBean.class
 br\com\vendadireta\dao\LocalDAO.class
 br\com\vendadireta\entidade\Usuario.class
@@ -42,7 +43,6 @@ br\com\vendadireta\entidade\Categoria.class
 br\com\vendadireta\bean\FormaPagamentoBean.class
 br\com\vendadireta\util\HibernateUtil.class
 br\com\vendadireta\entidade\Marca.class
-br\com\vendadireta\relatorio\Relatorio.class
 br\com\vendadireta\bean\ProdutoPedidoBean.class
 br\com\vendadireta\dao\UsuarioDAO.class
 br\com\vendadireta\entidade\Estado.class

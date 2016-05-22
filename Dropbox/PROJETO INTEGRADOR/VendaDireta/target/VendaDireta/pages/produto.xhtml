@@ -18,14 +18,14 @@
                              rows="7" paginatorPosition="top">
 
                     <f:facet name="header">
-                        <p:commandButton icon="ui-icon-plusthick" 
+                        <p:commandButton icon="ui-icon-plusthick" value="Novo" 
                                          actionListener="#{produtoBean.novo}"
                                          oncomplete="PF('dialogo').show();"
                                          update=":mensagem :formCadastro:painel">
                             <f:actionListener type="org.omnifaces.eventlistener.ResetInputAjaxActionListener"/>
                         </p:commandButton>  
                         
-                        <p:commandButton onclick="this.form.target='_blank'" 
+                        <p:commandButton icon="ui-icon-print" onclick="this.form.target='_blank'" value="Imprimir"
                                          actionListener="#{produtoBean.imprimir}"
                                          update=":mensagem :formListagem:tabela"
                                          ajax="false"/>

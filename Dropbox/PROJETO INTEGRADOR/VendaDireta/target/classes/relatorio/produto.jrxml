@@ -2,6 +2,9 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="produto" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7a5c9b49-9dc5-422a-ac69-e92cf61ef530">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Venda Direta"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
@@ -12,6 +15,10 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
+	<parameter name="PRODUTO_NOME" class="java.lang.String"/>
+	<parameter name="PRODUTO_MARCA" class="java.lang.String"/>
+	<parameter name="PRODUTO_FORNECEDOR" class="java.lang.String"/>
+	<parameter name="PRODUTO_CATEGORIA" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT venda_direta.produto.estoque,
 	venda_direta.produto.nome,
@@ -27,15 +34,20 @@ FROM venda_direta.produto
 	INNER JOIN venda_direta.fornecedor ON 
 	 venda_direta.produto.fornecedor_codigo = venda_direta.fornecedor.codigo 
 	INNER JOIN venda_direta.marca ON 
-	 venda_direta.produto.marca_codigo = venda_direta.marca.codigo]]>
+	 venda_direta.produto.marca_codigo = venda_direta.marca.codigo 
+WHERE 
+	 venda_direta.produto.nome LIKE $P{PRODUTO_NOME} 
+	 AND venda_direta.categoria.nome LIKE $P{PRODUTO_CATEGORIA} 
+	 AND venda_direta.fornecedor.nome LIKE $P{PRODUTO_FORNECEDOR} 
+	 AND venda_direta.marca.nome LIKE $P{PRODUTO_MARCA}]]>
 	</queryString>
 	<field name="estoque" class="java.lang.Integer"/>
 	<field name="nome" class="java.lang.String"/>
 	<field name="valor_compra" class="java.math.BigDecimal"/>
 	<field name="valor_venda" class="java.math.BigDecimal"/>
-	<field name="tipo" class="java.lang.String"/>
 	<field name="COLUMN_5" class="java.lang.String"/>
 	<field name="COLUMN_6" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
 	<field name="COLUMN_8" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -44,9 +56,9 @@ FROM venda_direta.produto
 		<band height="102" splitType="Stretch">
 			<frame>
 				<reportElement stretchType="RelativeToTallestObject" mode="Opaque" x="0" y="0" width="802" height="68" backcolor="#AED2D9" uuid="879dc80c-be5f-4734-8d55-2f2f7d132c8d"/>
-				<image>
-					<reportElement x="218" y="6" width="322" height="60" uuid="e217a4ab-29d7-4f0e-bc91-2f41f70b17c3"/>
-					<imageExpression><![CDATA["banner.png"]]></imageExpression>
+				<image hAlign="Center" vAlign="Middle">
+					<reportElement x="163" y="0" width="497" height="68" uuid="2defb19e-ca77-4584-99f5-5ec186355648"/>
+					<imageExpression><![CDATA["D:\\PROJETO INTEGRADOR\\VendaDireta\\src\\main\\resources\\relatorio\\banner.png"]]></imageExpression>
 				</image>
 			</frame>
 			<frame>

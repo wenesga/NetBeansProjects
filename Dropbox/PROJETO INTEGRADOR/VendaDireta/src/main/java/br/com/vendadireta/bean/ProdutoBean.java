@@ -8,14 +8,18 @@ import br.com.vendadireta.entidade.Categoria;
 import br.com.vendadireta.entidade.Fornecedor;
 import br.com.vendadireta.entidade.Marca;
 import br.com.vendadireta.entidade.Produto;
-import br.com.vendadireta.relatorio.Relatorio;
+import br.com.vendadireta.relatorio.ProdutoRelatorio;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
+import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
+import org.primefaces.component.datatable.DataTable;
 
 /**
  * @Cometario:
@@ -163,46 +167,9 @@ public class ProdutoBean implements Serializable {
             erro.printStackTrace();
         }
     }
-    
+
     public void imprimir() {
-        Relatorio relatorio = new Relatorio(Produto.class);
+        ProdutoRelatorio relatorio = new ProdutoRelatorio(Produto.class);
         relatorio.print();
     }
-    
-    
-
-//    public void imprimir() {
-//        try {
-//            DataTable tabela = (DataTable) Faces.getViewRoot().findComponent("formListagem:tabela");
-//            Map<String, Object> filtros = tabela.getFilters();
-//            String proNome = (String) filtros.get("nome");
-//            String fornNome = (String) filtros.get("fornecedor.nome");
-//
-//            //JasperCompileManager.compileReport("D:/PROJETO INTEGRADOR/VendaDireta/src/main/webapp/relatorio/produto.jrxml");
-//            String caminho = Faces.getRealPath("/relatorio/produto.jasper");
-//
-//            Map<String, Object> parametros = new HashMap<>();
-//
-//            if (proNome == null) {
-//                parametros.put("PRODUTO_NOME", "%%");
-//            } else {
-//                parametros.put("PRODUTO_NOME", "%" + proNome + "%");
-//            }
-//
-//            if (fornNome == null) {
-//                parametros.put("PRODUTO_FORNECEDOR", "%%");
-//            } else {
-//                parametros.put("PRODUTO_FORNECEDOR", "%" + fornNome + "%");
-//            }
-//
-//            Connection conexao = HibernateUtil.getConexao();
-//            JasperPrint relatorio = JasperFillManager.fillReport(caminho, parametros, conexao);
-//            JasperViewer.viewReport(relatorio, false);
-//            //JasperPrintManager.printReport(relatorio, true);
-//            
-//        } catch (JRException erro) {
-//            Messages.addGlobalError("Ocorreu um erro ao tentar gerar o relatório");
-//            erro.printStackTrace();
-//        }
-//    }
 }

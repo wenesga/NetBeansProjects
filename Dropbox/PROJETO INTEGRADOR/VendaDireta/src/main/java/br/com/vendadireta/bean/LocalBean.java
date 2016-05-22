@@ -26,9 +26,7 @@ public class LocalBean implements Serializable {
     private Local local;
     private List<Local> locais;
     private String title;
-
     private double lat;
-
     private double lng;
 
     public Local getLocal() {
