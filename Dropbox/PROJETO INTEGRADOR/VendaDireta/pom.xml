@@ -166,8 +166,6 @@
             <artifactId>jasperreports</artifactId>
             <version>6.2.1</version>
         </dependency>
-
-        
     </dependencies>     
     <name>VendaDireta</name>
 </project>

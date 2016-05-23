@@ -61,22 +61,22 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="br.com.vendadireta.dao.EstadoDAOTest" name="buscar" time="0.057">
+  <testcase classname="br.com.vendadireta.dao.EstadoDAOTest" name="buscar" time="0.032">
     <skipped/>
   </testcase>
-  <testcase classname="br.com.vendadireta.dao.EstadoDAOTest" name="excluir" time="0.057">
+  <testcase classname="br.com.vendadireta.dao.EstadoDAOTest" name="excluir" time="0.032">
     <skipped/>
   </testcase>
-  <testcase classname="br.com.vendadireta.dao.EstadoDAOTest" name="editar" time="0.057">
+  <testcase classname="br.com.vendadireta.dao.EstadoDAOTest" name="editar" time="0.032">
     <skipped/>
   </testcase>
-  <testcase classname="br.com.vendadireta.dao.EstadoDAOTest" name="listar" time="0.057">
+  <testcase classname="br.com.vendadireta.dao.EstadoDAOTest" name="listar" time="0.032">
     <skipped/>
   </testcase>
-  <testcase classname="br.com.vendadireta.dao.EstadoDAOTest" name="salvar" time="0.057">
+  <testcase classname="br.com.vendadireta.dao.EstadoDAOTest" name="salvar" time="0.032">
     <skipped/>
   </testcase>
-  <testcase classname="br.com.vendadireta.dao.EstadoDAOTest" name="merge" time="0.057">
+  <testcase classname="br.com.vendadireta.dao.EstadoDAOTest" name="merge" time="0.032">
     <skipped/>
   </testcase>
 </testsuite>

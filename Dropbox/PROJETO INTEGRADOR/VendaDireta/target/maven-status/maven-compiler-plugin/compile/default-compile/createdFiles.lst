@@ -37,6 +37,7 @@ br\com\vendadireta\dao\GenericDAO.class
 br\com\vendadireta\dao\EstadoDAO.class
 br\com\vendadireta\bean\LocalBean.class
 br\com\vendadireta\bean\FornecedorBean.class
+br\com\vendadireta\relatorio\VendaRelatorio.class
 br\com\vendadireta\util\AutenticacaoListener.class
 br\com\vendadireta\entidade\ProdutoPedido.class
 br\com\vendadireta\entidade\Categoria.class

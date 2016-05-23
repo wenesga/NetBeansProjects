@@ -18,14 +18,14 @@
                              rows="7" paginatorPosition="top">
 
                     <f:facet name="header">
-                        <p:commandButton value="Novo" 
+                        <p:commandButton icon="fa fa-plus" value="Novo" 
                                          actionListener="#{clienteBean.novo}"
                                          oncomplete="PF('dialogo').show();" 
                                          update=":mensagem :formCadastro:painel">
                             <f:actionListener type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
                         </p:commandButton>
                         
-                        <p:commandButton onclick="this.form.target='_blank'" value="Imprimir"
+                        <p:commandButton icon="fa fa-print" onclick="this.form.target='_blank'" value="Imprimir"
                                          actionListener="#{clienteBean.imprimir}" 
                                          update=":mensagem :formListagem:tabela"
                                          ajax="false"/>
@@ -62,14 +62,15 @@
                     </p:column>
 
                     <p:column headerText="Opções" class="opcoes" style="width: 17%;">
-                        <p:commandButton icon="ui-icon-trash" 
+                        <p:commandButton icon="fa fa-trash" 
                                          actionListener="#{clienteBean.excluir}" 
                                          update=":mensagem :formListagem:tabela">
-                            <p:confirm rendered="Confirmação" message="Deseja excluir o Cliente?" icon="ui-icon-alert"/>
+                            <p:confirm rendered="Confirmação" message="Deseja excluir o Cliente?" 
+                                       icon="fa fa-warning"/>
                             <f:attribute name="clienteSelecionado" value="#{cliente}"/>
                         </p:commandButton>
 
-                        <p:commandButton icon="ui-icon-pencil" 
+                        <p:commandButton icon="fa fa-edit" 
                                          actionListener="#{clienteBean.editar}" 
                                          update=":mensagem :formCadastro:painel" 
                                          oncomplete="PF('dialogo').show();">
@@ -81,8 +82,10 @@
 
                 <p:confirmDialog global="true">
                     <center>
-                        <p:commandButton value="Sim" type="butoon" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
-                        <p:commandButton value="Não" type="butoon" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                        <p:commandButton value="Sim" type="butoon" styleClass="ui-confirmdialog-yes" 
+                                         icon="fa fa-check"/>
+                        <p:commandButton value="Não" type="butoon" styleClass="ui-confirmdialog-no" 
+                                         icon="fa fa-close"/>
                     </center>
                 </p:confirmDialog>    
 
@@ -146,9 +149,9 @@
                 </h:panelGrid>
 
                 <p:outputPanel style="text-align:center">
-                    <p:commandButton value="Salvar" actionListener="#{clienteBean.salvar}" 
+                    <p:commandButton icon="fa fa-floppy-o" value="Salvar" actionListener="#{clienteBean.salvar}" 
                                      update=":mensagem :formCadastro:painel :formListagem:tabela"/>
-                    <p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
+                    <p:commandButton icon="fa fa-close" value="Fechar" oncomplete="PF('dialogo').hide();" />
                 </p:outputPanel>
             </h:form>
         </p:dialog>

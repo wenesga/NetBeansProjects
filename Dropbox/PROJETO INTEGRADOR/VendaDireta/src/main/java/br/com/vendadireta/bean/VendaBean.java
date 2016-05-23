@@ -11,6 +11,7 @@ import br.com.vendadireta.entidade.ItemVenda;
 import br.com.vendadireta.entidade.Produto;
 import br.com.vendadireta.entidade.Usuario;
 import br.com.vendadireta.entidade.Venda;
+import br.com.vendadireta.relatorio.VendaRelatorio;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -129,6 +130,11 @@ public class VendaBean implements Serializable {
             Messages.addGlobalError("Ocorreu um erro ao tentar carregar a lista de Venda");
             erro.printStackTrace();
         }
+    }
+    
+    public void imprimir() {
+        VendaRelatorio relatorio = new VendaRelatorio(Venda.class);
+        relatorio.print();
     }
 
     public void adicionar(ActionEvent evento) {

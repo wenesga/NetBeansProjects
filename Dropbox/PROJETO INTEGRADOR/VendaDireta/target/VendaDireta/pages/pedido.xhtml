@@ -18,7 +18,7 @@
                              rows="7" paginatorPosition="top">
 
                     <f:facet name="header">
-                        <p:commandButton value="Novo" 
+                        <p:commandButton icon="fa fa-plus" value="Novo" 
                                          actionListener="#{pedidoBean.novo}"
                                          oncomplete="PF('dialogo').show();" 
                                          update=":mensagem :formCadastro:painel">
@@ -46,7 +46,7 @@
                         </h:outputText>
                     </p:column>
 
-                    <p:column headerText="Vencimento" style="width: 10%;"
+                    <p:column headerText="Vencimento" style="width: 10%;" filterMatchMode="contains"
                               filterBy="#{pedido.prazo_pagamento}"
                               sortBy="#{pedido.prazo_pagamento}">
                         <h:outputText value="#{pedido.prazo_pagamento}">
@@ -55,14 +55,15 @@
                     </p:column>
 
                     <p:column headerText="Opções" class="opcoes" style="width: 17%;">
-                        <p:commandButton icon="ui-icon-trash" 
+                        <p:commandButton icon="fa fa-trash" 
                                          actionListener="#{pedidoBean.excluir}" 
                                          update=":mensagem :formListagem:tabela">
-                            <p:confirm rendered="Confirmação" message="Deseja excluir o Pedido?" icon="ui-icon-alert"/>
+                            <p:confirm rendered="Confirmação" message="Deseja excluir o Pedido?" 
+                                       icon="fa fa-warning"/>
                             <f:attribute name="pedidoSelecionado" value="#{pedido}"/>
                         </p:commandButton>
 
-                        <p:commandButton icon="ui-icon-pencil" 
+                        <p:commandButton icon="fa fa-edit" 
                                          actionListener="#{pedidoBean.editar}" 
                                          update=":mensagem :formCadastro:painel" 
                                          oncomplete="PF('dialogo').show();">
@@ -73,8 +74,10 @@
                 </p:dataTable>
                 <p:confirmDialog global="true">
                     <center>
-                        <p:commandButton value="Sim" type="butoon" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
-                        <p:commandButton value="Não" type="butoon" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                        <p:commandButton value="Sim" type="butoon" styleClass="ui-confirmdialog-yes" 
+                                         icon="fa fa-check"/>
+                        <p:commandButton value="Não" type="butoon" styleClass="ui-confirmdialog-no" 
+                                         icon="fa fa-close"/>
                     </center>
                 </p:confirmDialog>
             </p:panel>      
@@ -133,9 +136,9 @@
                 </h:panelGrid>
 
                 <p:outputPanel style=" text-align:center">
-                    <p:commandButton value="Salvar" actionListener="#{pedidoBean.salvar}"
+                    <p:commandButton icon="fa fa-floppy-o" value="Salvar" actionListener="#{pedidoBean.salvar}"
                                      update=":mensagem :formCadastro:painel :formListagem:tabela"/>
-                    <p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
+                    <p:commandButton icon="fa fa-close" value="Fechar" oncomplete="PF('dialogo').hide();" />
                 </p:outputPanel>
             </h:form>
         </p:dialog>

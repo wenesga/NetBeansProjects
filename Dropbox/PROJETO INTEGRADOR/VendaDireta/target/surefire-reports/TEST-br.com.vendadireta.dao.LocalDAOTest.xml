@@ -61,22 +61,22 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="br.com.vendadireta.dao.LocalDAOTest" name="buscar" time="0.057">
+  <testcase classname="br.com.vendadireta.dao.LocalDAOTest" name="buscar" time="0.047">
     <skipped/>
   </testcase>
-  <testcase classname="br.com.vendadireta.dao.LocalDAOTest" name="excluir" time="0.057">
+  <testcase classname="br.com.vendadireta.dao.LocalDAOTest" name="excluir" time="0.047">
     <skipped/>
   </testcase>
-  <testcase classname="br.com.vendadireta.dao.LocalDAOTest" name="editar" time="0.057">
+  <testcase classname="br.com.vendadireta.dao.LocalDAOTest" name="editar" time="0.047">
     <skipped/>
   </testcase>
-  <testcase classname="br.com.vendadireta.dao.LocalDAOTest" name="listar" time="0.057">
+  <testcase classname="br.com.vendadireta.dao.LocalDAOTest" name="listar" time="0.047">
     <skipped/>
   </testcase>
-  <testcase classname="br.com.vendadireta.dao.LocalDAOTest" name="salvar" time="0.057">
+  <testcase classname="br.com.vendadireta.dao.LocalDAOTest" name="salvar" time="0.047">
     <skipped/>
   </testcase>
-  <testcase classname="br.com.vendadireta.dao.LocalDAOTest" name="merge" time="0.057">
+  <testcase classname="br.com.vendadireta.dao.LocalDAOTest" name="merge" time="0.047">
     <skipped/>
   </testcase>
 </testsuite>

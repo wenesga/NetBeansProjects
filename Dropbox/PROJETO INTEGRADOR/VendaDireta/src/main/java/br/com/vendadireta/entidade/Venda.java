@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  * @Cometario:
@@ -35,6 +37,7 @@ public class Venda extends GenericEntidade {
     private Usuario usuario;
     
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "venda")
+    @Fetch(FetchMode.SUBSELECT)
     private List<ItemVenda> itensVenda;
     
     @ManyToOne

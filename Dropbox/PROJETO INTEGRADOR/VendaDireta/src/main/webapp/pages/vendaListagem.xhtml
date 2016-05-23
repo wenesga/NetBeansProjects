@@ -24,19 +24,20 @@
                              rows="5" paginatorPosition="top">
 
                     <f:facet name="header">
-                        <p:commandButton icon="ui-icon-print"  value="Imprimir"
+                        <p:commandButton icon="fa fa-print" onclick="this.form.target='_blank'" value="Imprimir"
+                                         actionListener="#{vendaBean.imprimir}"
                                          update=":mensagem :formListagem:tabela"
                                          ajax="false"/>
                     </f:facet>
 
                     <p:column style="width: 20px;">
-                        <p:rowToggler />
+                        <p:rowToggler/>
                     </p:column>
 
                     <p:column headerText="Data"  
                               sortBy="#{venda.horario}" >
                         <h:outputText value="#{venda.horario}">
-                            <f:convertDateTime locale="pt_BR" pattern="'Dia' dd/MM/yyyy - 'Horário' HH:mm" />
+                            <f:convertDateTime locale="pt_BR" pattern="'Dia' dd/MM/yyyy - 'Horário' HH:mm"/>
                         </h:outputText>
                     </p:column>
 

@@ -18,7 +18,7 @@
                              rows="7" paginatorPosition="top">
 
                     <f:facet name="header">
-                        <p:commandButton value="Novo" 
+                        <p:commandButton icon="fa fa-plus" value="Novo" 
                                          oncomplete="PF('dialogo').show();"
                                          actionListener="#{formaPagamentoBean.novo}"
                                          update="formCadastro:painel">
@@ -44,16 +44,16 @@
                         <h:outputText value="#{formaPagamento.tipo}"/>
                     </p:column>
                     <p:column headerText="Opções" class="opcoes" style="width: 17%;">
-                        <p:commandButton icon="ui-icon-trash"
+                        <p:commandButton icon="fa fa-trash"
                                          actionListener="#{formaPagamentoBean.excluir}" 
                                          update="mensagem :formListagem:tabela" >
                             <p:confirm header="Confirmação" 
                                        message="Deseja excluir a Forma de Pagamento?"
-                                       icon="ui-icon-alert"/>
+                                       icon="fa fa-warning"/>
                             <f:attribute name="formaPagamentoSelecionado" value="#{formaPagamento}"/>
                         </p:commandButton>
 
-                        <p:commandButton icon="ui-icon-pencil" 
+                        <p:commandButton icon="fa fa-edit" 
                                          actionListener="#{formaPagamentoBean.editar}" 
                                          update=":formCadastro:painel"
                                          oncomplete="PF('dialogo').show();" >
@@ -68,11 +68,11 @@
                         <p:commandButton value="Sim" 
                                          type="button" 
                                          styleClass="ui-confirmdialog-yes"
-                                         icon="ui-icon-check"/>
+                                         icon="fa fa-check"/>
                         <p:commandButton value="Não" 
                                          type="button" 
                                          styleClass="ui-confirmdialog-no"
-                                         icon="ui-icon-close"/>
+                                         icon="fa fa-close"/>
                     </center>
                 </p:confirmDialog>         
             </p:panel>
@@ -120,10 +120,10 @@
                 </h:panelGrid>
 
                 <p:outputPanel style=" text-align:center">
-                    <p:commandButton value="Salvar" 
+                    <p:commandButton icon="fa fa-floppy-o" value="Salvar" 
                                      actionListener="#{formaPagamentoBean.salvar}"
                                      update=":mensagem :formCadastro:painel :formListagem:tabela"/>
-                    <p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();" />
+                    <p:commandButton icon="fa fa-close" value="Fechar" oncomplete="PF('dialogo').hide();" />
                 </p:outputPanel>
             </h:form>
         </p:dialog>

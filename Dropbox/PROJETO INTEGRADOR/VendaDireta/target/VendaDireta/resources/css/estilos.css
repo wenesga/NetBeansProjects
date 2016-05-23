@@ -3,6 +3,34 @@
 .ui-widget, .ui-widget .ui-widget {
     font-size: 100% !important;
     font-family: sans-serif;
+    text-shadow: 0 1px white;
+
+}
+.ui-icon {  
+    font-size: 100% !important;
+}
+
+.ui-panel, .ui-panel-titlebar {
+    border-radius:0px;
+    color: #AED2D9;
+    font-size: 20px;
+}
+
+.ui-menubar{
+    border-radius:0px
+}
+
+.ui-datatable-header{
+    border-radius:0px
+} 
+
+.ui-widget-content {
+    border: 1px solid #aaaaaa;
+    background: repeat-y right 0 #f3f3f3;
+}
+
+.ui-dialog{
+    
 }
 
 .imagemCentralizada {
@@ -13,7 +41,8 @@
 
 .divTopo {
     background-color: #AED2D9;
-    border-radius:5px
+    border-radius:0px;
+    text-shadow: 0 1px white;
 }
 
 .divCabecalho {
@@ -39,5 +68,5 @@
 .principalTexto{
     position: relative; 
 }
-    
+
 
