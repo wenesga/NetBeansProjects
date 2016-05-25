@@ -117,7 +117,9 @@
                     <p:inputMask mask="999.999.999-99" id="cpf" size="13" 
                                  value="#{clienteBean.cliente.cpf}" 
                                  required="true" 
-                                 requiredMessage="O campo 'CPF' é obrigatório"/>
+                                 requiredMessage="O campo 'CPF' é obrigatório">
+                        <f:validateBean/>
+                    </p:inputMask>
 
 
                     <p:outputLabel for="telefone" value="Telefone:" />

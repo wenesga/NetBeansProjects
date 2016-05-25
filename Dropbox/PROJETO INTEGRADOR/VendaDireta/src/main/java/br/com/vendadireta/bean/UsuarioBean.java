@@ -54,7 +54,7 @@ public class UsuarioBean implements Serializable {
         usuario = new Usuario();
     }
 
-    public void salvar() {
+    public void salvar() throws Exception {
         try {
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             //usuario.setSenha(DigestUtils.md5Hex(usuario.getSenha()));
@@ -65,8 +65,10 @@ public class UsuarioBean implements Serializable {
 
             Messages.addGlobalInfo("Usuário salvo com sucesso");
         } catch (RuntimeException erro) {
-            Messages.addGlobalError("Ocorreu um erro ao tentar salvar o Usuario");
+            Messages.addGlobalError("Já existe um Usuário com este CPF");
             erro.printStackTrace();
+        } catch (Exception e) {
+            throw new Exception("Já existe esse nome na base");
         }
     }
 
@@ -88,6 +90,6 @@ public class UsuarioBean implements Serializable {
     }
 
     public void editar(ActionEvent evento) {
-        usuario = (Usuario) evento.getComponent().getAttributes().get("usuarioSelecionado");  
+        usuario = (Usuario) evento.getComponent().getAttributes().get("usuarioSelecionado");
     }
 }

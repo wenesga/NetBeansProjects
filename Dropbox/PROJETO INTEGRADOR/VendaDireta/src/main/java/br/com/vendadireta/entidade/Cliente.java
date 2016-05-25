@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import org.hibernate.validator.constraints.br.CPF;
 
 /**
  * @Cometario:
@@ -16,7 +17,8 @@ public class Cliente extends GenericEntidade {
     @Column(length = 100, nullable = false)
     private String nome;
 
-    @Column(length = 14, nullable = false)
+    @CPF(message="O CPF informado é Inválido")
+    @Column(length = 14, nullable = false, unique = true)
     private String cpf;
 
     @ManyToOne

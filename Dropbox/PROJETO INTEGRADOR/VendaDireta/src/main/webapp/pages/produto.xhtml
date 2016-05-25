@@ -116,14 +116,14 @@
             <h:form id="formCadastro">
                 <h:panelGrid id="painel" columns="2">
                     <p:outputLabel for="nome" value="Nome:" />
-                    <p:inputText id="nome" maxlength="100" size="30" 
+                    <p:inputText id="nome" maxlength="100" size="34" 
                                  value="#{produtoBean.produto.nome}"
                                  required="true" 
                                  requiredMessage="O campo 'Nome' é obrigatório"/>
 
 
                     <p:outputLabel for="fornecedor" value="Fornecedor:" />
-                    <p:selectOneMenu id="fornecedor" filter="true" style="width:230px"
+                    <p:selectOneMenu id="fornecedor" filter="true" style="width:314px"
                                      value="#{produtoBean.produto.fornecedor}" 
                                      converter="omnifaces.SelectItemsConverter" 
                                      required="true" 
@@ -133,12 +133,12 @@
                         <f:selectItems value="#{produtoBean.fornecedores}" 
                                        var="fornecedor" 
                                        itemValue="#{fornecedor}" 
-                                       itemLabel="#{fornecedor.nome}"/>
+                                       itemLabel="#{fornecedor.nome} - #{fornecedor.tipo}"/>
                     </p:selectOneMenu>
 
 
                     <p:outputLabel for="categoria" value="Categoria:" />
-                    <p:selectOneMenu id="categoria" filter="true" style="width:230px"
+                    <p:selectOneMenu id="categoria" filter="true" style="width:314px"
                                      value="#{produtoBean.produto.categoria}" 
                                      converter="omnifaces.SelectItemsConverter" 
                                      required="true" 
@@ -153,7 +153,7 @@
 
 
                     <p:outputLabel for="marca" value="Marca:" />
-                    <p:selectOneMenu id="marca" filter="true" style="width:230px"
+                    <p:selectOneMenu id="marca" filter="true" style="width:314px"
                                      value="#{produtoBean.produto.marca}" 
                                      converter="omnifaces.SelectItemsConverter" 
                                      required="true" 

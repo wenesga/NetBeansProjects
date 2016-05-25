@@ -3,6 +3,7 @@ package br.com.vendadireta.entidade;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Transient;
+import org.hibernate.validator.constraints.br.CPF;
 
 /**
  * @Cometario:
@@ -15,7 +16,8 @@ public class Usuario extends GenericEntidade {
     @Column(length = 50, nullable = false)
     private String nome;
 
-    @Column(length = 14)
+    @CPF(message="O CPF informado é inválido")
+    @Column(length = 14, nullable = false, unique = true)
     private String cpf;
 
     @Column(length = 32, nullable = false)

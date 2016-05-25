@@ -120,7 +120,7 @@ public class ClienteBean implements Serializable {
             Messages.addGlobalInfo("Cliente salvo com sucesso");
 
         } catch (RuntimeException erro) {
-            Messages.addGlobalError("Ocorreu um erro ao salvar um novo Cliente");
+            Messages.addGlobalError("Já existe um Cliente com este CPF");
             erro.printStackTrace();
         }
     }
