@@ -352,7 +352,7 @@ O produto é um software que irá auxiliar no processo de controle das vendas e 
 
 \subsection{Slogan}
 \begin{figure}[!htpb]\centering
-	\includegraphics[scale=0.8]{logo.pdf}\caption{Slogan\label{uc}}
+	\includegraphics[scale=0.8]{logo.pdf}\caption{Slogan}
 \end{figure}
 
 
@@ -537,7 +537,7 @@ O produto é um software que irá auxiliar no processo de controle das vendas e 
 \newpage
 
 %==============================tabela2=========================================
-\section{Manter fornecedor de Venda Tradicional e Direta}
+\section{Manter Fornecedor de Venda Tradicional e Direta}
 \begin{table}[!htpb]\centering
 \begin{tabular}{|>{%
 \columncolor[gray]{.9}}l|l|}
@@ -685,7 +685,7 @@ O produto é um software que irá auxiliar no processo de controle das vendas e 
 \newpage
 
 %==============================tabela5=========================================
-\section{Manter Produto Pedido-Revista}
+\section{Manter Produtos Pedido-Revista}
 \begin{table}[!htpb]\centering
 \begin{tabular}{|>{%
 \columncolor[gray]{.9}}l|p{12cm}|}
@@ -702,7 +702,7 @@ O produto é um software que irá auxiliar no processo de controle das vendas e 
 \hline
 \textbf{Pré-condições}               & O usuário deve está logado no sistema\\
 \hline
-\textbf{Pós-condições}               & Um novo produto pedido é cadastrado\\
+\textbf{Pós-condições}               & Um novo produto pedido-revista é cadastrado\\
 \hline
 \rowcolor[gray]{0.9}
 \multicolumn{2}{|c|}{\textbf{Fluxo Principal}}\\
@@ -751,23 +751,23 @@ O produto é um software que irá auxiliar no processo de controle das vendas e 
 \hline
 \textbf{Pré-condições}               & O usuário deve está logado no sistema\\
 \hline
-\textbf{Pós-condições}               & Um novo cliente pedido é cadastrado\\
+\textbf{Pós-condições}               & Um novo cliente é cadastrado\\
 \hline
 \rowcolor[gray]{0.9}
 \multicolumn{2}{|c|}{\textbf{Fluxo Principal}}\\
 \hline
 \multicolumn{2}{|p{15.5cm}|}{
 \begin{enumerate}
-\item O ator solicita a aba “Cadastros”.
-\item O ator seleciona a funcionalidade “Cliente”
-\item O ator seleciona a funcionalidade “Novo”
-\item O sistema exibe tela de cadastro com os campos necessários para preenchimento.
-\item O ator insere as informações necessárias e clica na opção salvar.
-\item O sistema valida os dados e cadastra um novo cliente.
+    \item O ator solicita a aba “Cadastros”.
+    \item O ator seleciona a funcionalidade “Cliente”
+    \item O ator seleciona a funcionalidade “Novo”
+    \item O sistema exibe tela de cadastro com os campos necessários para preenchimento.
+    \item O ator insere as informações necessárias e clica na opção salvar.
+    \item O sistema valida os dados e cadastra um novo cliente.
 \end{enumerate}}\\
 \hline
 \rowcolor[gray]{0.9}
-\multicolumn{2}{|p{15.5cm}|}{\textbf{Fluxo Alternativo:} 6. O sistema valida os dados e cadastra um novo cliente.}\\
+\multicolumn{2}{|c|}{\textbf{Fluxo Alternativo:} 6. O sistema valida os dados e cadastra um novo cliente.}\\
 \hline
 \multicolumn{2}{|p{15.5cm}|}{
 \begin{enumerate}
@@ -792,23 +792,378 @@ O produto é um software que irá auxiliar no processo de controle das vendas e 
 \newpage
 
 
-%==============================tabela7=========================================
+%==============================tabela7====================================
+\section{Emitir relatórios}
+\begin{table}[!htpb]\centering
+\begin{tabular}{|>{%
+\columncolor[gray]{.9}}l|p{12cm}|}
+\hline
+\textbf{Identificador}               & \textbf{UC07}\\
+\hline
+\textbf{Prioridade}                  & Alta\\
+\hline
+\textbf{Nome}                        & Emitir relatórios (lista clientes, lista produtos, lista vendas)\\
+\hline
+\textbf{Ator}                        & Usuário do sistema\\
+\hline
+\textbf{Pré-condições}               & O usuário deve está logado no sistema\\
+\hline
+\textbf{Pós-condições}               & Um novo relatório e gerado\\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|c|}{\textbf{Lista Clientes}}\\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|c|}{\textbf{Fluxo Principal}}\\
+\hline
+\multicolumn{2}{|p{15.5cm}|}{
+\begin{enumerate}
+    \item No menu principal o usuário deverá clicar em "Cadastros";
+    \item O ator seleciona a opção “Cliente”;
+    \item O sistema lista os clientes;
+    \item O usuário clicará no botão "Imprimir";
+    \item O sistema abre uma nova página e exibe o relatório.
+\end{enumerate}}\\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|c|}{\textbf{Fluxo Alternativo:} 3. O sistema lista os clientes; }\\
+\hline
+\multicolumn{2}{|p{15.5cm}|}{
+\begin{itemize}
+\item Se não houver nenhum cliente cadastrado.
+\item O sistema informará ao usuário, “nenhum registro encontrado”.
+\end{itemize}}\\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|c|}{\textbf{Lista Produtos}}\\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|c|}{\textbf{Fluxo Principal}}\\
+\hline
+\multicolumn{2}{|p{15.5cm}|}{
+\begin{enumerate}
+    \item No menu principal o usuário  clicará em "Cadastro";
+    \item O ator seleciona a opção “Produto”;
+    \item O sistema lista os produtos;
+    \item O usuário clicará no botão "Imprimir";
+    \item O sistema abre uma nova página e exibe o relatório;
+\end{enumerate}}\\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|c|}{\textbf{Fluxo Alternativo:} 3. O sistema lista os produtos; }\\
+\hline
+\multicolumn{2}{|p{15.5cm}|}{
+\begin{itemize}
+    \item Se não houver nenhum produto cadastrado.
+    \item O sistema informará ao usuário, “nenhum registro encontrado”.
+\end{itemize}}\\
+\hline
+\end{tabular}\caption{Caso de uso: Emitir relatórios}
+\end{table}
 
+\newpage
 
-%==============================tabela8=========================================
+\begin{table}[!htpb]\centering
+\begin{tabular}{|>{%
+\columncolor[gray]{.9}}l|p{12cm}|}
+\rowcolor[gray]{0.9}
+\hline
+\multicolumn{2}{|c|}{\textbf{Lista Vendas}}\\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|c|}{\textbf{Fluxo Principal}}\\
+\hline
+\multicolumn{2}{|p{15.5cm}|}{
+\begin{enumerate}
+    \item No menu principal o usuário  clicará em "Movimentações";
+    \item O ator seleciona a opção “Relatório Vendas”;
+    \item O sistema lista as vendas;
+    \item O usuário clicará no botão "Imprimir";
+    \item O sistema abre uma nova página e exibe o relatório.
+\end{enumerate}}\\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|c|}{\textbf{Fluxo Alternativo:} 3. O sistema lista as vendas; }\\
+\hline
+\multicolumn{2}{|p{15.5cm}|}{
+\begin{itemize}
+    \item Se não houver nenhuma venda registrada.
+    \item O sistema informará ao usuário, “nenhum registro encontrado”.
+\end{itemize}}\\
+\hline
+\end{tabular}\caption{Caso de uso: Emitir relatórios}
+\end{table}
 
+\newpage
 
-%==============================tabela9=========================================
+%==============================tabela8====================================
+\section{Manter Usuários}
+\begin{table}[!htpb]\centering
+\begin{tabular}{|>{%
+\columncolor[gray]{.9}}l|p{12cm}|}
+\hline
+\textbf{Identificador}               & \textbf{UC08}\\
+\hline
+\textbf{Prioridade}                  & Alta\\
+\hline
+\textbf{Nome}                        & Manter usuários\\
+\hline
+\textbf{Ator}                        & Usuário do sistema\\
+\hline
+\textbf{Entrada}                     & Nome, cpf, senha\\
+\hline
+\textbf{Pré-condições}               & O usuário deve está logado no sistema\\
+\hline
+\textbf{Pós-condições}               & Um novo usuário é cadastrado\\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|c|}{\textbf{Fluxo Principal}}\\
+\hline
+\multicolumn{2}{|p{15.5cm}|}{
+\begin{enumerate}
+    \item No menu principal o usuário deverá clicar em "Cadastros";
+    \item O usuário deverá seleciona a funcionalidade “Usuário”
+    \item O usuário clicará em "Novo";
+    \item O sistema exibe tela de cadastro com os campos necessários para preenchimento.
+    \item O ator insere as informações necessárias e clica na opção salvar.
+    \item O sistema valida os dados e cadastra um novo usuário.
+\end{enumerate}}\\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|c|}{\textbf{Fluxo Alternativo:} 6. O sistema valida os dados e cadastra um novo usuário.}\\
+\hline
+\multicolumn{2}{|p{15.5cm}|}{
+\begin{enumerate}
+    \item  Campo obrigatório em branco.
+        \begin{itemize}
+          \item O sistema retorna uma mensagem informando ao ator que é necessário preencher tal campo.
+          \item O sistema aguarda o preenchimento do campo.
+        \end{itemize}
+    \item  CPF inválido.
+        \begin{itemize}
+          \item Usuário digitou um CPF inválido sistema retorna uma mensagem “O CPF informado é Inválido”
+        \end{itemize}
+    \item CPF já existente no banco.
+        \begin{itemize}
+          \item Usuário digitou um CPF já existente no banco sistema retorna uma mensagem “Já existe um usuário com este CPF”.
+        \end{itemize}
+    \item Senha.
+    \begin{itemize}
+      \item Senha com menos de 4 caracteres sistema retorna uma mensagem “Erro ao confirma Senha, deve ter no mínimo 4 caracteres”
+      \item Voltar ao passo “4”do fluxo principal.
+    \end{itemize}
+\end{enumerate}}\\
+\hline
+\end{tabular}\caption{Caso de uso: Manter usuários}
+\end{table}
 
+%==============================tabela9====================================
+\section{Manter Categorias}
+\begin{table}[!htpb]\centering
+\begin{tabular}{|>{%
+\columncolor[gray]{.9}}l|l|}
+\hline
+\textbf{Identificador}               & \textbf{UC09}\\
+\hline
+\textbf{Prioridade}                  & Alta\\
+\hline
+\textbf{Nome}                        & Manter categorias\\
+\hline
+\textbf{Ator}                        & Usuário do sistema\\
+\hline
+\textbf{Entrada}                     & Nome\\
+\hline
+\textbf{Pré-condições}               & O usuário deve está logado no sistema\\
+\hline
+\textbf{Pós-condições}               & Uma nova categoria é cadastrada \\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|c|}{\textbf{Fluxo Principal}}\\
+\hline
+\multicolumn{2}{|p{15.5cm}|}{
+\begin{enumerate}
+   \item O ator solicita a aba “Cadastros”.
+   \item O ator seleciona a funcionalidade “Categoria”
+   \item O ator seleciona a funcionalidade “Novo”
+   \item O sistema exibe tela de cadastro com o campo necessário para preenchimento.
+   \item O ator insere as informações necessárias e clica na opção salvar.
+   \item O sistema valida os dados e cadastra uma nova categoria.
+\end{enumerate}
+}\\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|c|}{\textbf{Fluxo Alternativo:} 6. O sistema valida os dados e cadastra uma nova categoria. }\\
+\hline
+\multicolumn{2}{|p{15.5cm}|}{
+\begin{itemize}
+\item Campo obrigatório em branco. O sistema identifica que um campo obrigatório não foi preenchido.
+\item O sistema retorna uma mensagem informando ao ator que é necessário preencher tal campo.
+\item O sistema aguarda o preenchimento do campo.
+\item Voltar ao passo “4” do fluxo principal.
+\end{itemize}}\\
+\hline
+\end{tabular}\caption{Caso de uso: Manter categorias}
+\end{table}
 
-%==============================tabela10=========================================
+\newpage
 
+%==============================tabela10===================================
+\section{Manter Marcas}
+\begin{table}[!htpb]\centering
+\begin{tabular}{|>{%
+\columncolor[gray]{.9}}l|l|}
+\hline
+\textbf{Identificador}               & \textbf{UC10}\\
+\hline
+\textbf{Prioridade}                  & Alta\\
+\hline
+\textbf{Nome}                        & Manter marca\\
+\hline
+\textbf{Ator}                        & Usuário do sistema\\
+\hline
+\textbf{Entrada}                     & Nome\\
+\hline
+\textbf{Pré-condições}               & O usuário deve está logado no sistema\\
+\hline
+\textbf{Pós-condições}               & Uma nova marca é cadastrada \\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|c|}{\textbf{Fluxo Principal}}\\
+\hline
+\multicolumn{2}{|p{15.5cm}|}{
+\begin{enumerate}
+   \item O ator solicita a aba “Cadastros”.
+   \item O ator seleciona a funcionalidade “Marca”
+   \item O ator seleciona a funcionalidade “Novo”
+   \item O sistema exibe tela de cadastro com o campo necessário para preenchimento.
+   \item O ator insere as informações necessárias e clica na opção salvar.
+   \item O sistema valida os dados e cadastra uma nova marca.
+\end{enumerate}
+}\\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|c|}{\textbf{Fluxo Alternativo:} 6. O sistema valida os dados e cadastra uma nova marca. }\\
+\hline
+\multicolumn{2}{|p{15.5cm}|}{
+\begin{itemize}
+\item Campo obrigatório em branco. O sistema identifica que um campo obrigatório não foi preenchido.
+\item O sistema retorna uma mensagem informando ao ator que é necessário preencher tal campo.
+\item O sistema aguarda o preenchimento do campo.
+\item Voltar ao passo “4” do fluxo principal.
+\end{itemize}}\\
+\hline
+\end{tabular}\caption{Caso de uso: Manter marcas}
+\end{table}
 
-%==============================tabela11=========================================
+\newpage
 
+%==============================tabela11===================================
+\section{Manter Formas de Pagamento}
+\begin{table}[!htpb]\centering
+\begin{tabular}{|>{%
+\columncolor[gray]{.9}}l|l|}
+\hline
+\textbf{Identificador}               & \textbf{UC11}\\
+\hline
+\textbf{Prioridade}                  & Alta\\
+\hline
+\textbf{Nome}                        & Manter formas de pagamento\\
+\hline
+\textbf{Ator}                        & Usuário do sistema\\
+\hline
+\textbf{Entrada}                     & Entrada, parcelas, tipo\\
+\hline
+\textbf{Pré-condições}               & O usuário deve está logado no sistema\\
+\hline
+\textbf{Pós-condições}               & Uma nova forma de pagamento e cadastrada\\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|c|}{\textbf{Fluxo Principal}}\\
+\hline
+\multicolumn{2}{|p{15.5cm}|}{
+\begin{enumerate}
+   \item O ator solicita a aba “Cadastros”.
+   \item O ator seleciona a funcionalidade “Formas de pagamento”
+   \item O ator seleciona a funcionalidade “Novo”
+   \item O sistema exibe tela de cadastro com o campo necessário para preenchimento.
+   \item O ator insere as informações necessárias e clica na opção salvar.
+   \item O sistema valida os dados e cadastra uma nova forma de pagamento.
+\end{enumerate}
+}\\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|p{15.5cm}|}{\textbf{Fluxo Alternativo:} 6. O sistema valida os dados e cadastra um nova forma de pagamento}\\
+\hline
+\multicolumn{2}{|p{15.5cm}|}{
+\begin{itemize}
+   \item Campo obrigatório em branco. O sistema identifica que um campo obrigatório não foi preenchido.
+   \item O sistema retorna uma mensagem informando ao ator que é necessário preencher tal campo.
+   \item O sistema aguarda o preenchimento do campo.
+   \item Voltar ao passo “4” do fluxo principal.
+\end{itemize}}\\
+\hline
+\end{tabular}\caption{Caso de uso: Manter Formas de Pagamento}
+\end{table}
 
-%==============================tabela12=========================================
+\newpage
 
+%==============================tabela12===================================
+
+\section{Manter Vendas}
+\begin{table}[!htpb]\centering
+\begin{tabular}{|>{%
+\columncolor[gray]{.9}}l|l|}
+\hline
+\textbf{Identificador}               & \textbf{UC12}\\
+\hline
+\textbf{Prioridade}                  & Alta\\
+\hline
+\textbf{Nome}                        & Manter vendas\\
+\hline
+\textbf{Ator}                        & Usuário do sistema\\
+%\hline
+%\textbf{Entrada}                     & Entrada, parcelas, tipo\\
+\hline
+\textbf{Pré-condições}               & O usuário deve está logado no sistema\\
+\hline
+\textbf{Pós-condições}               & Uma nova venda e realizada\\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|c|}{\textbf{Fluxo Principal}}\\
+\hline
+\multicolumn{2}{|p{15.5cm}|}{
+\begin{enumerate}
+    \item O ator solicita a aba “Movimentações”.
+    \item O ator seleciona a funcionalidade “Fazer Vendas”
+    \item O sistema exibe uma lista de produtos e uma cesta de compras
+    \item O ator clicara no botão + para adicionar produto na cesta de compra
+    \item O ator clicara em finalizar
+    \item O sistema exibe uma nova telinha para o usuário escolher o cliente e a forma de pagamento e clica na botão “Salvar”
+    \item O sistema valida os dados e registra uma nova venda.
+\end{enumerate}
+}\\
+\hline
+\rowcolor[gray]{0.9}
+\multicolumn{2}{|p{15.5cm}|}{\textbf{Fluxo Alternativo:} 7. O sistema valida os dados e registra uma nova venda.}\\
+\hline
+\multicolumn{2}{|p{15.5cm}|}{
+    \begin{enumerate}
+        \item Campo obrigatório.
+            \begin{itemize}
+                \item Campo obrigatório em branco. O sistema identifica que um campo obrigatório não foi preenchido.
+                \item O sistema retorna uma mensagem informando ao ator que é necessário preencher tal campo.
+                \item O sistema aguarda o preenchimento do campo.
+                \item Voltar ao passo “6” do fluxo principal.
+            \end{itemize}
+        \item Nenhum produto na lista de compras.
+            \begin{itemize}
+              \item Caso o usuário não adicionou nenhum produto na lista de compra uma mensagem será exibida “Informe pelo menos um item para a venda”
+              \item Voltar ao passo “3”do fluxo principal.
+            \end{itemize}
+    \end{enumerate}}\\
+\hline
+\end{tabular}\caption{Caso de uso: Manter Vendas}
+\end{table}
 
 
 
@@ -820,27 +1175,121 @@ O produto é um software que irá auxiliar no processo de controle das vendas e 
 
 \section{Diagrama de Caso de Uso}
 \begin{figure}[!htpb]\centering
-	\includegraphics[scale=1.02]{caso-de-uso.pdf}\caption{Diagrama de Caso de Uso\label{uc}}
+	\includegraphics[scale=1.2]{uc.pdf}\caption{Diagrama de Caso de Uso}
 \end{figure}
 
 %=================================
 
 \section{Diagrama de Classe}
-\subsection{Atributos}
+\subsection{Atributos - Entidade}
 \begin{figure}[H]\centering
-\includegraphics[scale=1.05]{atributos.pdf}\caption{Atributos\label{atr}}
+\includegraphics[scale=1.31]{atributo.pdf}\caption{Atributos}
 \end{figure}
 
 \newpage
-\subsection{Métodos}
+\subsection{Métodos Dao}
 \begin{figure}[h]\centering
-\includegraphics[scale=0.96]{metodos.pdf}\caption{Métodos\label{met}}
+	\includegraphics[scale=1.45]{metodo-dao.pdf}\caption{Métodos Dao}
 \end{figure}
 
+\newpage
+\subsection{Métodos Bean}
+\begin{figure}[h]\centering
+\includegraphics[scale=1.2]{metodo-bean.pdf}\caption{Métodos Bean}
+\end{figure}
+
+\newpage
+\section{Diagrama de Atividade}
+\subsection{Manter Autenticação}
+\begin{figure}[h]\centering
+	\includegraphics[scale=1.6]{autenticacao.pdf}\caption{Manter autenticação}
+\end{figure}
+
+\newpage
+\subsection{Manter Fornecedor de Venda Tradicional e Direta}
+\begin{figure}[h]\centering
+	\includegraphics[scale=1.6]{fornecedor.pdf}\caption{Manter fornecedor de venda tradicional e direta}
+\end{figure}
+
+
+\newpage
+\subsection{Manter Produto}
+\begin{figure}[h]\centering
+	\includegraphics[scale=1.48]{produto.pdf}\caption{Manter produto}
+\end{figure}
+
+
+\newpage
+\subsection{Manter Pedido - Revista}
+\begin{figure}[h]\centering
+	\includegraphics[scale=1.67]{pedido-revista.pdf}\caption{Manter pedido - revista}
+\end{figure}
+
+
+\newpage
+\subsection{Manter Produto Pedido - Revista}
+\begin{figure}[h]\centering
+	\includegraphics[scale=1.61]{produto-pedido-revista.pdf}\caption{Manter produto pedido - revista}
+\end{figure}
+
+
+\newpage
+\subsection{Manter Cliente}
+\begin{figure}[h]\centering
+	\includegraphics[scale=1.54]{cliente.pdf}\caption{Manter cliente}
+\end{figure}
+
+\newpage
+\subsection{Emitir Relatório}
+\begin{figure}[h]\centering
+	\includegraphics[scale=1.8]{emitir-relatorio.pdf}\caption{Emitir relatório}
+\end{figure}
+
+
+\newpage
+\subsection{Manter Usuário}
+\begin{figure}[h]\centering
+	\includegraphics[scale=1.63]{usuario.pdf}\caption{Manter usuário}
+\end{figure}
+
+\newpage
+\subsection{Manter Categoria}
+\begin{figure}[h]\centering
+	\includegraphics[scale=1.61]{categoria.pdf}\caption{Manter categoria}
+\end{figure}
+
+\newpage
+\subsection{Manter Marca}
+\begin{figure}[h]\centering
+	\includegraphics[scale=1.48]{marca.pdf}\caption{Manter marca}
+\end{figure}
+
+\newpage
+\subsection{Manter Forma de Pagamento}
+\begin{figure}[h]\centering
+	\includegraphics[scale=1.63]{usuario.pdf}\caption{Manter forma de pagamento}
+\end{figure}
+
+\newpage
+\subsection{Manter Venda}
+\begin{figure}[h]\centering
+	\includegraphics[scale=1.29]{venda.pdf}\caption{Manter venda}
+\end{figure}
 %=================================
 
 \chapter{Considerações Finais}
-teste de referencias bibliograficas teste de referencias bibliograficasteste de referencias bibliograficas teste de referencias bibliograficas teste de referencias bibliográficas teste de referencias bibliograficas  teste de referencias bibliograficas
+Diante do que foi exposto, fica evidente que o objetivo desse projeto para desenvolver um sistema de gestão de venda foi alcançado. O mesmo poderá proporcionar inúmeros benefícios ao usuário final, especificamente aos revendedores autônomos nas suas atividades, proporcionando um gerenciamento eficaz nos processos financeiros, armazenamento de informações e, possibilitando a monitoração dos serviços prestados.
+
+Dentro do contexto atual da economia de mercado, na qual há maior movimentação de mercadorias e demanda de clientes, tornou- se necessário à utilização de um sistema informatizado. Com o método tradicional, não seria possível suprir de forma ágil, simples e segura o processo de venda. Assim como foi apontado no início do trabalho, grande parte das informações é registrada manualmente, as quais poderiam ser danificadas ou perdidas facilmente.
+
+O projeto agregou inúmeros conhecimentos a equipe de desenvolvedores tanto na área da programação, engenharia de software e analise de sistemas.
+
+Mesmo que o sistema desenvolvido atualmente possua numerosas e  interessantes funcionalidades para os revendedores, ainda são possíveis futuras expansões. Uma das futuras implementações poderia ser, por exemplo, a disponibilização para o usuário de mapas geográficos com apresentação de localizações de clientes e gráfico de estatísticas das vendas mensais.
+
+Além disso, o sistema futuramente poderia vir apresentar uma integração com o sistema de login e de pagina comerciais do Facebook.
+
+Considerando também o domínio no mercado de dispositivos moveis conectados a internet, seria interessante o desenvolvimento de uma versão para android, ios ou Windows phone. Isto permitiria ao revendedor a portabilidade do sistema e das informações contidas sobre as vendas.
+
 
 
 
@@ -852,15 +1301,12 @@ teste de referencias bibliograficas teste de referencias bibliograficasteste de 
 DEITEL, Paul. J.; DEITEL, Harvey. M. {\em Java: como programar.} 8.ed. São Paulo: Pearson Prentice Hall, 2010.
 \\[0,4cm]
 
-
 ASCENCIO, Ana Fernanda Gomes. {\em Fundamentos da programação de computadores: algoritmos,
 PASCAL, C/C++ (padrão ANSI) e JAVA.} 3.ed. São Paulo: Pearson Education do Brasil, 2012.
 \\[0,4cm]
 
-
 ELMASRI, Ramez; NAVATHE, Shamkant B. {\em Sistemas de banco de dados.} 6.ed. São Paulo: Pearson Addison Wesley, 2011.
 \\[0,4cm]
-
 
 PORTAL EDUCAÇÃO. {O uso de tecnologia em vendas}. Disponivel em: $<$http://www.portaleducacao.com.br/administracao/artigos/36584/o-uso-de-tecnologia-em-vendas$>$. Acesso em: 15 abr. 2016.
 \\[0,4cm]
@@ -874,10 +1320,17 @@ PROGRAMAÇÃO WEB COM JAVA. Sérgio Roberto Delfino. Disponível em: $<$https://
 PRIMEFACES. Disponível em: $<$http://www.primefaces.org/showcase/index.xhtml$>$ Acesso em  05 abr. 2016.
 \\[0,4cm]
 
-
 DEVMEDIA. Padrão de Projeto Facade em Java. Higor Medeiros. Disponível em: $<$http://www.devmedia.com.br/padrao-de-projeto-facade-em-java/26476$>$ Acesso em  20 abr. 2016.
 \\[0,4cm]
 
+AGENDOR. Disponível em: $<$http://www.agendor.com.br/blog/ate-onde-vendas-e-tecnologia-andam-juntas$>$ Acesso em  25 abr. 2016.
+\\[0,4cm]
+
+MARIOPERSONA. Disponível em: $<$http://mariopersona.com.br/entrevista\_vendamais\_tecnologia.html$>$ Acesso em  30 abr. 2016.
+\\[0,4cm]
+
+DOCPLAYER. Sistema de informacao destinado a gestao comercial de uma empresa do ramo alimenticio. Disponível em: $<$http://docplayer.com.br/2423163-Sistema-de-informacao-destinado-a-gestao-comercial-de-uma-empresa-do-ramo-alimenticio.html$>$ Acesso em  14 abr. 2016.
+\\[0,4cm]
 
 \end{thebibliography}
 \end{document}
