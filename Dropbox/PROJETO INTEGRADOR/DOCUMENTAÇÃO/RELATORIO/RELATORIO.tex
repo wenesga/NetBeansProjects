@@ -5,18 +5,18 @@
 %======================================================================
 \documentclass[chapter=TITLE,12pt,oneside,a4paper,english,french,sumario=tradicional,spanish,brazil,]{abntex2}
 
-\usepackage{lmodern}			% Usa a fonte Latin Modern
-\usepackage[T1]{fontenc}		% Seleção de códigos de fonte.
+\usepackage{lmodern}			        % Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		    % Seleção de códigos de fonte.
 \usepackage[utf8]{inputenc}		% Codificação do documento (conversão automática dos acentos)
-\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
-\usepackage{color}				% Controle das cores
-\usepackage{graphicx}			% Inclusão de gráficos
-\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{indentfirst}				% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}						% Controle das cores
+\usepackage{graphicx}					% Inclusão de gráficos
+\usepackage{microtype} 				% para melhorias de justificação
 \usepackage{multicol}
 \usepackage{multirow}
-\usepackage{lipsum}				             % para geração de dummy text
-\usepackage[brazilian]{backref} % Paginas com as citações na bibl
-\usepackage[alf]{abntex2cite}	             % Citações padrão ABNT
+\usepackage{lipsum}				            	% para geração de dummy text
+\usepackage[brazilian]{backref} 				% Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	             	% Citações padrão ABNT
 \usepackage{babel}
 \usepackage{array}
 \usepackage{textcomp}
@@ -25,43 +25,43 @@
 \usepackage{titlesec}
 \usepackage{float}
 \usepackage{placeins}
-\setlength{\parskip}{0.2cm} % Espaçamento entre parágrafos
-\setlength{\parindent}{1cm} % Especifica o tamanho do parágrafo
+\setlength{\parskip}{0.2cm}	% Espaçamento entre parágrafos
+\setlength{\parindent}{1cm} 	% Especifica o tamanho do parágrafo
 \usepackage{tabularx}
 \usepackage{ragged2e}
 \usepackage[table]{xcolor}
+
+% Formatar sumario
 \hypersetup{
 	pdftitle={\@title},
     pdfauthor={\@author},
     pdfsubject={\@title},
     pdfcreator={LaTeX with abnTeX2},
-    colorlinks=true,               % false: boxed links; true: colored links
+    colorlinks=true,                % false: boxed links; true: colored links
     linkcolor=black,                % color of internal links
     citecolor=black,                % color of links to bibliography
-    filecolor=magenta,          % color of file links
+    filecolor=magenta,           % color of file links
     urlcolor=black,
     bookmarksdepth=4
 }
 
-\setlength\afterchapskip{\lineskip}
+% Diminuir espaço entre capitulo e texto
+%\setlength\afterchapskip{\lineskip}
 
 %=================customizer a fonte dos títulos dos capítulos========================
-
 \renewcommand{\ABNTEXchapterfont}{\fontfamily{cmr}\fontseries{b}\selectfont}
 \renewcommand{\ABNTEXchapterfontsize}{\normalsize}
-
 \renewcommand{\ABNTEXsectionfont}{\fontfamily{cmr}\fontseries{b}\selectfont}
 \renewcommand{\ABNTEXsectionfontsize}{\normalsize}
-
 \renewcommand{\ABNTEXsubsectionfont}{\fontfamily{cmr}\fontseries{b}\selectfont}
 \renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
 						
+% Inicio do documento
 %=======================================================================
 \begin{document}\selectlanguage{brazil}\thispagestyle{empty}
-
 \begin{figure}[t]\centering
     \begin{minipage}[t]{0.13\linewidth}
-        \includegraphics[width=\linewidth]{logobr.png}
+        \includegraphics[width=\linewidth]{logobr.pdf}
     \end{minipage}
         \hfill
     \begin{minipage}[t]{0.11\linewidth}
@@ -237,7 +237,7 @@ contribuíram de forma direta ou indireta para realização deste trabalho.
 \textual % Inicia numeração das paginas
 %=========================InícioConteúdo==============================
 
-\chapter*{Introdução}%\addcontentsline{toc}{chapter}{INTRODUÇÃO}
+\chapter*{Introdução}\addcontentsline{toc}{chapter}{Introdução}
 A região de Campos Belos–GO historicamente apresenta uma situação econômica precária. Os fatores que influenciam esse fraco contexto econômico são vários e vão do isolamento geográfico até o esquecimento político. Quem sofre mais com essa situação são as famílias, especialmente as mulheres, as quais para complementar a renda familiar e por falta de perspectiva de trabalho, geralmente recorre ao negócio informal de porta em porta como alternativa honesta e digna de emprego.
 
 Optando pelo sistema de venda direta, essas mulheres revendem seus produtos em contato direto com seus clientes, obtendo êxito nos lucros com benefício de trabalhar em horários flexíveis. É um sistema que oferece vantagem a todos os envolvidos, porém o controle de suas vendas se mostra de certa forma complicada, pois o revendedor não tem uma forma apropriada para armazenar os dados dos clientes, fornecedores, informações sobre o produto, sobre o que e quanto já vendeu, anotando tudo em cadernos, notas promissórias e outros meios.
@@ -247,7 +247,6 @@ Conforme destaca Kotler (2002) os revendedores que melhor sabem dominar a tecnol
 Percebe–se, portanto, que existe uma necessidade de um sistema de gerenciamento de vendas, capaz de suprir essas dificuldades que o revendedor enfrenta no seu dia-a-dia. Neste sentido, fazendo o uso dos avanços tecnológicos e de todo um conhecimento adquirido, buscou-se por meio deste projeto desenvolver um sistema de gestão de vendas direta com o propósito de melhorar e agilizar nas atividades administrativas cotidianas do revendedor com as seguintes funções: manter informações sobre estoques de produtos, gerar relatórios gerenciais e geográficos sobre vendas, armazenar dados dos clientes e fornecedores de forma segura.
 
 \chapter{Objetivos}
-
 \section{Geral}
 Desenvolver um sistema para auxiliar revendedores autônomos nas atividades de controle das vendas e no armazenamento dos dados dos clientes e fornecedores, gerar relatórios gerenciais e geográficos sobre vendas.
 
@@ -279,39 +278,45 @@ Gestão de Venda Direta é um sistema web que poderá ser executado em quaisquer
 Para o seu desenvolvimento foram utilizadas algumas ferramentas e tecnologias para aprimorar e exemplificar a implementação do sistema, como:
 
 \begin{itemize}
-\item \textbf{Maven}: usado para gerenciar dependências, controlar versão de artefatos, gerar relatórios de produtividade, garantir execução de testes, manter nível de qualidade do código dentre outras.
+\item \textbf{Maven}: Usado para gerenciar dependências, controlar versão de artefatos, gerar relatórios de produtividade, garantir execução de testes, manter nível de qualidade do código dentre outras.
 
-\item	\textbf{JavaScript}: é uma linguagem de script incorporada a um documento HTML. Historicamente, trata-se da primeira linguagem de scripts para a web. Esta linguagem é uma linguagem de programação que traz melhorias para a linguagem HTML, permitindo a execução de comandos do cliente, ou seja, em termos do navegador e não do servidor web.
+\item	\textbf{JavaScript}: É uma linguagem de script incorporada a um documento HTML. Historicamente, trata-se da primeira linguagem de scripts para a web. Esta linguagem é uma linguagem de programação que traz melhorias para a linguagem HTML, permitindo a execução de comandos do cliente, ou seja, em termos do navegador e não do servidor web.
 
-\item	\textbf{Java}: é uma linguagem de programação interpretada orientada a objetos. Diferente das linguagens de programação convencionais, que são compiladas para código nativo, a linguagem Java é compilada para um bytecode que é executado por uma máquina virtual.
+\item	\textbf{Java}: É uma linguagem de programação interpretada orientada a objetos. Diferente das linguagens de programação convencionais, que são compiladas para código nativo, a linguagem Java é compilada para um bytecode que é executado por uma máquina virtual.
 
-\item	\textbf{XHTML}: é uma linguagem de construção de páginas na internet criada a partir da linguagem HTML (versão anterior) juntamente com a linguagem XML, transformando-se em uma linguagem padronizada para web.
+\item	\textbf{XHTML}: É uma linguagem de construção de páginas na internet criada a partir da linguagem HTML (versão anterior) juntamente com a linguagem XML, transformando-se em uma linguagem padronizada para web.
 
-\item	\textbf{JSF}: é um framework que permite a elaboração de interfaces de usuário web colocando componentes em um formulário e ligando-os a objetos Java permitindo a separação entre lógica e regras de negócio, navegação, conexões com serviços externos e gerenciamento de configurações.
+\item	\textbf{JSF}: É um framework que permite a elaboração de interfaces de usuário web colocando componentes em um formulário e ligando-os a objetos Java permitindo a separação entre lógica e regras de negócio, navegação, conexões com serviços externos e gerenciamento de configurações.
 
-\item	\textbf{PrimeFaces}: é uma suíte open-source de componentes para JavaServer Faces que conta com mais de 100 componentes completos e de fácil implementação.
+\item	\textbf{PrimeFaces}: É uma suíte open-source de componentes para JavaServer Faces que conta com mais de 100 componentes completos e de fácil implementação.
 
-\item	\textbf{Hibernate}: é um framework para realizar o mapeamento objeto relacional, onde seu principal objetivo é diminuir a complexidade envolvida no desenvolvimento de aplicações que necessitam trabalhar com banco de dados relacional, onde ele realiza a intermediação entre o banco de dados e sua aplicação, poupando o desenvolvedor de ter que se preocupar com instruções SQL para recuperar ou persistir os dados do seu software.
+\item	\textbf{Hibernate}: É um framework para realizar o mapeamento objeto relacional, onde seu principal objetivo é diminuir a complexidade envolvida no desenvolvimento de aplicações que necessitam trabalhar com banco de dados relacional, onde ele realiza a intermediação entre o banco de dados e sua aplicação, poupando o desenvolvedor de ter que se preocupar com instruções SQL para recuperar ou persistir os dados do seu software.
 
-\item	\textbf{OmniFaces}: é uma biblioteca de utilitários que busca facilitar o desenvolvimento JSF para aplicações corporativas. Foi criada por Bauke Scholtz (ou BalusC) e Arjan Tijms, colaboradores regulares no popular site Stack Overflow de perguntas e respostas.
+\item	\textbf{OmniFaces}: É uma biblioteca de utilitários que busca facilitar o desenvolvimento JSF para aplicações corporativas. Foi criada por Bauke Scholtz (ou BalusC) e Arjan Tijms, colaboradores regulares no popular site Stack Overflow de perguntas e respostas.
 
-\item	 \textbf{JasperReports}: é um poderoso framwork open-source escrito em Java para geração de relatórios. Ele permite gerar dinamicamente relatórios em diversos formatos; entre eles: PDF, HTML, XLS, CSV e XML.
+\item	 \textbf{JasperReports}: É um poderoso framwork open-source escrito em Java para geração de relatórios. Ele permite gerar dinamicamente relatórios em diversos formatos; entre eles: PDF, HTML, XLS, CSV e XML.
 
-\item	\textbf{ApacheTomcat}: utilizado  como contêiner/servidor web
+\item	\textbf{ApacheTomcat}: Utilizado  como contêiner/servidor web
 
-\item	\textbf{Mysql Workbench} 5.2 CE : utilizado como banco de dados
+\item	\textbf{Mysql Workbench} 5.2 CE : Utilizado como banco de dados
 
-\item	\textbf{NetBeans IDE 8.1}: usado como ambiente de desenvolvimento
+\item	\textbf{NetBeans IDE 8.1}: Usado como ambiente de desenvolvimento
 
-\item	\textbf{CorelDRAW}: utilizado para fazer desenho vetorial bidimensional para design gráfico
+\item	\textbf{CorelDRAW}: Utilizado para fazer desenho vetorial bidimensional para design gráfico
 
-\item	\textbf{Pencil Project}: usado para criar vários tipos de arquiteturas de sistemas e até mesmo construções de novas telas
+\item	\textbf{Pencil Project}: Usado para criar vários tipos de arquiteturas de sistemas e até mesmo construções de novas telas
 
-\item	\textbf{Astah community}: usado para toda a parte de UML, modelagem do sistema
+\item	\textbf{Astah community}: Usado para toda a parte de UML, modelagem do sistema
 
-\item	\textbf{GitHub} utilizado para o compartilhamento do projeto usando o controle de versão Git
+\item	\textbf{GitHub}: Utilizado para o compartilhamento do projeto usando o controle de versão Git
 
-\item	\textbf{Dropbox}: utilizado para compartilhar arquivos, serviços em nuvens.
+\item	\textbf{Dropbox}: Utilizado para compartilhar arquivos, serviços em nuvens.
+
+\item    \textbf{LaTeX}: Utilizado na edição da documentação.
+O LaTeX fornece um conjunto de macros de alto-nível que torna mais fácil e rápida a produção de documentos em TeX e é utilizado para produzir todo o tipo de documentos como por exemplo livros, relatórios e artigos.
+O LaTeX é  uma linguagem de anotação que permite elaborar documentos de texto e imprimir trabalhos com elevado nível de qualidade tipográfica,
+com um layout profissional pré-definido, possuindo algoritmos poderosos que trabalham o documento de forma que resulte na melhor apresentação  possível,
+fazendo com que o utilizador não tenha que se preocupar com pormenores como quebras de página, posicionamento das imagens, formatação das tabelas, sumário, títulos e subtítulos etc.
 \end{itemize}
 
 \section{Engenharia de Software}
@@ -325,7 +330,6 @@ Data Access Obeject (DAO) quando se faz uso em um projeto do padrão DAO é por 
 
 \subsection{Teste de Software:}
 Junit conhecido também como teste unitário ou teste de unidade. Serve para testar código antes de implementar a interface.
-
 
 \chapter{Plano de Marketing}
 \section{Analise de Mercado}
@@ -364,6 +368,7 @@ O produto é um software que irá auxiliar no processo de controle das vendas e 
 
 
 \chapter{Requisitos}
+\vspace{-0.6cm}
 \section{Requisitos Funcionais}
 \renewcommand\tabularxcolumn[1]{m{#1}}
 \begin{table}[!htpb]
@@ -451,6 +456,7 @@ O produto é um software que irá auxiliar no processo de controle das vendas e 
         \end{tabularx}\caption{Requisitos Funcionais}\label{}
     \end{center}
 \end{table}
+
 
 \newpage
 
@@ -1165,21 +1171,14 @@ O produto é um software que irá auxiliar no processo de controle das vendas e 
 \end{tabular}\caption{Caso de uso: Manter Vendas}
 \end{table}
 
-
-
-
-
 %==================================
-
 \chapter{Visão Funcional}
-
 \section{Diagrama de Caso de Uso}
 \begin{figure}[!htpb]\centering
 	\includegraphics[scale=1.2]{uc.pdf}\caption{Diagrama de Caso de Uso}
 \end{figure}
 
 %=================================
-
 \section{Diagrama de Classe}
 \subsection{Atributos - Entidade}
 \begin{figure}[H]\centering
@@ -1211,13 +1210,11 @@ O produto é um software que irá auxiliar no processo de controle das vendas e 
 	\includegraphics[scale=1.6]{fornecedor.pdf}\caption{Manter fornecedor de venda tradicional e direta}
 \end{figure}
 
-
 \newpage
 \subsection{Manter Produto}
 \begin{figure}[h]\centering
 	\includegraphics[scale=1.48]{produto.pdf}\caption{Manter produto}
 \end{figure}
-
 
 \newpage
 \subsection{Manter Pedido - Revista}
@@ -1225,13 +1222,11 @@ O produto é um software que irá auxiliar no processo de controle das vendas e 
 	\includegraphics[scale=1.67]{pedido-revista.pdf}\caption{Manter pedido - revista}
 \end{figure}
 
-
 \newpage
 \subsection{Manter Produto Pedido - Revista}
 \begin{figure}[h]\centering
 	\includegraphics[scale=1.61]{produto-pedido-revista.pdf}\caption{Manter produto pedido - revista}
 \end{figure}
-
 
 \newpage
 \subsection{Manter Cliente}
@@ -1244,7 +1239,6 @@ O produto é um software que irá auxiliar no processo de controle das vendas e 
 \begin{figure}[h]\centering
 	\includegraphics[scale=1.8]{emitir-relatorio.pdf}\caption{Emitir relatório}
 \end{figure}
-
 
 \newpage
 \subsection{Manter Usuário}
@@ -1275,8 +1269,14 @@ O produto é um software que irá auxiliar no processo de controle das vendas e 
 \begin{figure}[h]\centering
 	\includegraphics[scale=1.29]{venda.pdf}\caption{Manter venda}
 \end{figure}
-%=================================
 
+\newpage
+\section{Diagrama de Entidades e Relacionamentos}
+\begin{figure}[h]\centering
+	\includegraphics[scale=1.29]{der.pdf}\caption{DER – Diagrama de Entidades e Relacionamentos}
+\end{figure}
+
+%=================================
 \chapter{Considerações Finais}
 Diante do que foi exposto, fica evidente que o objetivo desse projeto para desenvolver um sistema de gestão de venda foi alcançado. O mesmo poderá proporcionar inúmeros benefícios ao usuário final, especificamente aos revendedores autônomos nas suas atividades, proporcionando um gerenciamento eficaz nos processos financeiros, armazenamento de informações e, possibilitando a monitoração dos serviços prestados.
 
@@ -1290,63 +1290,41 @@ Além disso, o sistema futuramente poderia vir apresentar uma integração com o
 
 Considerando também o domínio no mercado de dispositivos moveis conectados a internet, seria interessante o desenvolvimento de uma versão para android, ios ou Windows phone. Isto permitiria ao revendedor a portabilidade do sistema e das informações contidas sobre as vendas.
 
-
-
-
-
-
 %============================================================================
 %\renewcommand{\bibname}{REFERÊNCIAS}
 \begin{thebibliography}{99}
-DEITEL, Paul. J.; DEITEL, Harvey. M. {\em Java: como programar.} 8.ed. São Paulo: Pearson Prentice Hall, 2010.
-\\[0,4cm]
-
-ASCENCIO, Ana Fernanda Gomes. {\em Fundamentos da programação de computadores: algoritmos,
-PASCAL, C/C++ (padrão ANSI) e JAVA.} 3.ed. São Paulo: Pearson Education do Brasil, 2012.
-\\[0,4cm]
-
-ELMASRI, Ramez; NAVATHE, Shamkant B. {\em Sistemas de banco de dados.} 6.ed. São Paulo: Pearson Addison Wesley, 2011.
-\\[0,4cm]
-
-PORTAL EDUCAÇÃO. {O uso de tecnologia em vendas}. Disponivel em: $<$http://www.portaleducacao.com.br/administracao/artigos/36584/o-uso-de-tecnologia-em-vendas$>$. Acesso em: 15 abr. 2016.
-\\[0,4cm]
-
+\vspace{-0.5cm}
 ABEVD, Venda direta. Disponível em: $<$http://www.abevd.org.br/venda-direta$>$. Acesso em  23 mar. 2016.
-\\[0,4cm]
-
-PROGRAMAÇÃO WEB COM JAVA. Sérgio Roberto Delfino. Disponível em: $<$https://www.youtube.com/channel/UCJdtabTp9TXaHxdYrAa2j0A$>$. Acesso em  01 abr. 2016.
-\\[0,4cm]
-
-PRIMEFACES. Disponível em: $<$http://www.primefaces.org/showcase/index.xhtml$>$ Acesso em  05 abr. 2016.
-\\[0,4cm]
-
-DEVMEDIA. Padrão de Projeto Facade em Java. Higor Medeiros. Disponível em: $<$http://www.devmedia.com.br/padrao-de-projeto-facade-em-java/26476$>$ Acesso em  20 abr. 2016.
 \\[0,4cm]
 
 AGENDOR. Disponível em: $<$http://www.agendor.com.br/blog/ate-onde-vendas-e-tecnologia-andam-juntas$>$ Acesso em  25 abr. 2016.
 \\[0,4cm]
 
-MARIOPERSONA. Disponível em: $<$http://mariopersona.com.br/entrevista\_vendamais\_tecnologia.html$>$ Acesso em  30 abr. 2016.
+CIRIACO, F. Textos Técnicos com LaTeX: Disciplina de Trabalho de Conclusão de Curso. Disponivel em: $<$https://www.passeidireto.com/arquivo/3561661/apostila$>$. Acesso em: 01 mar. 2016.
+\\[0,4cm]
+
+DEITEL, Paul. J.; DEITEL, Harvey. M. {\em Java: como programar.} 8.ed. São Paulo: Pearson Prentice Hall, 2010.
+\\[0,4cm]
+
+DEVMEDIA. Padrão de Projeto Facade em Java. Higor Medeiros. Disponível em: $<$http://www.devmedia.com.br/padrao-de-projeto-facade-em-java/26476$>$ Acesso em  20 abr. 2016.
 \\[0,4cm]
 
 DOCPLAYER. Sistema de informacao destinado a gestao comercial de uma empresa do ramo alimenticio. Disponível em: $<$http://docplayer.com.br/2423163-Sistema-de-informacao-destinado-a-gestao-comercial-de-uma-empresa-do-ramo-alimenticio.html$>$ Acesso em  14 abr. 2016.
 \\[0,4cm]
 
+ELMASRI, Ramez; NAVATHE, Shamkant B. {\em Sistemas de banco de dados.} 6.ed. São Paulo: Pearson Addison Wesley, 2011.
+\\[0,4cm]
+
+MARIOPERSONA. Disponível em: $<$http://mariopersona.com.br/entrevista\_vendamais\_tecnologia.html$>$ Acesso em  30 abr. 2016.
+\\[0,4cm]
+
+PRIMEFACES. Disponível em: $<$http://www.primefaces.org/showcase/index.xhtml$>$ Acesso em  05 abr. 2016.
+\\[0,4cm]
+
+PORTAL EDUCAÇÃO. {O uso de tecnologia em vendas}. Disponivel em: $<$http://www.portaleducacao.com.br/administracao/artigos/36584/o-uso-de-tecnologia-em-vendas$>$. Acesso em: 15 abr. 2016.
+\\[0,4cm]
+
+PROGRAMAÇÃO WEB COM JAVA. Sérgio Roberto Delfino. Disponível em: $<$https://www.youtube.com/channel/UCJdtabTp9TXaHxdYrAa2j0A$>$. Acesso em  01 abr. 2016.
+\\[0,4cm]
 \end{thebibliography}
-\end{document}
-
-
-
-
-
-
-
-
-
-
-
-%CONTROLA ESPAÇO ENTRE TABELAS
-%\FloatBarrier
-%\pagebreak
-%\clearpage
-%\newpage 
+\end{document} 

@@ -1,15 +1,16 @@
 \changetocdepth {4}
 \select@language {brazil}
 \select@language {brazil}
+\contentsline {chapter}{Introdu\IeC {\c c}\IeC {\~a}o}{9}{chapter*.4}
 \contentsline {chapter}{\chapternumberline {1}Objetivos}{10}{chapter.1}
 \contentsline {section}{\numberline {1.1}Geral}{10}{section.1.1}
 \contentsline {section}{\numberline {1.2}Espec\IeC {\'\i }fico}{10}{section.1.2}
 \contentsline {chapter}{\chapternumberline {2}Justificativa}{11}{chapter.2}
 \contentsline {chapter}{\chapternumberline {3}Descri\IeC {\c c}\IeC {\~a}o do Sistema}{12}{chapter.3}
 \contentsline {section}{\numberline {3.1}Ferramentas e Tecnologias}{12}{section.3.1}
-\contentsline {section}{\numberline {3.2}Engenharia de Software}{13}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Metodologia \IeC {\'A}gil:}{13}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Padr\IeC {\~a}o de Projeto:}{13}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.2}Engenharia de Software}{14}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Metodologia \IeC {\'A}gil:}{14}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Padr\IeC {\~a}o de Projeto:}{14}{subsection.3.2.2}
 \contentsline {subsection}{\numberline {3.2.3}Teste de Software:}{14}{subsection.3.2.3}
 \contentsline {chapter}{\chapternumberline {4}Plano de Marketing}{15}{chapter.4}
 \contentsline {section}{\numberline {4.1}Analise de Mercado}{15}{section.4.1}
@@ -54,5 +55,6 @@
 \contentsline {subsection}{\numberline {7.3.10}Manter Marca}{45}{subsection.7.3.10}
 \contentsline {subsection}{\numberline {7.3.11}Manter Forma de Pagamento}{46}{subsection.7.3.11}
 \contentsline {subsection}{\numberline {7.3.12}Manter Venda}{47}{subsection.7.3.12}
-\contentsline {chapter}{\chapternumberline {8}Considera\IeC {\c c}\IeC {\~o}es Finais}{48}{chapter.8}
-\contentsline {chapter}{Refer\^encias}{49}{section*.6}
+\contentsline {section}{\numberline {7.4}Diagrama de Entidades e Relacionamentos}{48}{section.7.4}
+\contentsline {chapter}{\chapternumberline {8}Considera\IeC {\c c}\IeC {\~o}es Finais}{49}{chapter.8}
+\contentsline {chapter}{Refer\^encias}{50}{section*.6}
