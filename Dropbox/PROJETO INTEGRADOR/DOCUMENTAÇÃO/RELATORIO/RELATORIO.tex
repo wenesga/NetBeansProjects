@@ -1,22 +1,22 @@
 %======================================================================
-% Institulo Federal Goiano - Câmpus: Campos Belos Goiás
+% Instituto Federal Goiano - Campus: Campos Belos Goiás
 % Relatório Técnico (PI) - Sistema de Gestão de Vendas Domiciliares
 % Criado por: WENES GOMES AQUINO - 12/03/2016 <wenesga@gmail.com>
 %======================================================================
 \documentclass[chapter=TITLE,12pt,oneside,a4paper,english,french,sumario=tradicional,spanish,brazil,]{abntex2}
 
 \usepackage{lmodern}			        % Usa a fonte Latin Modern
-\usepackage[T1]{fontenc}		    % Seleção de códigos de fonte.
-\usepackage[utf8]{inputenc}		% Codificação do documento (conversão automática dos acentos)
+\usepackage[T1]{fontenc}		        % Seleção de códigos de fonte.
+\usepackage[utf8]{inputenc}             % Codificação do documento (conversão automática dos acentos)
 \usepackage{indentfirst}				% Indenta o primeiro parágrafo de cada seção.
 \usepackage{color}						% Controle das cores
 \usepackage{graphicx}					% Inclusão de gráficos
-\usepackage{microtype} 				% para melhorias de justificação
+\usepackage{microtype} 				    % para melhorias de justificação
 \usepackage{multicol}
 \usepackage{multirow}
-\usepackage{lipsum}				            	% para geração de dummy text
-\usepackage[brazilian]{backref} 				% Paginas com as citações na bibl
-\usepackage[alf]{abntex2cite}	             	% Citações padrão ABNT
+\usepackage{lipsum}				        % para geração de dummy text
+\usepackage[brazilian]{backref} 	    % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	        % Citações padrão ABNT
 \usepackage{babel}
 \usepackage{array}
 \usepackage{textcomp}
@@ -25,7 +25,7 @@
 \usepackage{titlesec}
 \usepackage{float}
 \usepackage{placeins}
-\setlength{\parskip}{0.2cm}	% Espaçamento entre parágrafos
+\setlength{\parskip}{0.2cm}	    % Espaçamento entre parágrafos
 \setlength{\parindent}{1cm} 	% Especifica o tamanho do parágrafo
 \usepackage{tabularx}
 \usepackage{ragged2e}
@@ -40,7 +40,7 @@
     colorlinks=true,                % false: boxed links; true: colored links
     linkcolor=black,                % color of internal links
     citecolor=black,                % color of links to bibliography
-    filecolor=magenta,           % color of file links
+    filecolor=magenta,              % color of file links
     urlcolor=black,
     bookmarksdepth=4
 }
@@ -236,7 +236,7 @@ contribuíram de forma direta ou indireta para realização deste trabalho.
 \end{SingleSpace}
 \textual % Inicia numeração das paginas
 %=========================InícioConteúdo==============================
-
+\setcounter{page}{7}  % inicia numeração da introdução
 \chapter*{Introdução}\addcontentsline{toc}{chapter}{Introdução}
 A região de Campos Belos–GO historicamente apresenta uma situação econômica precária. Os fatores que influenciam esse fraco contexto econômico são vários e vão do isolamento geográfico até o esquecimento político. Quem sofre mais com essa situação são as famílias, especialmente as mulheres, as quais para complementar a renda familiar e por falta de perspectiva de trabalho, geralmente recorre ao negócio informal de porta em porta como alternativa honesta e digna de emprego.
 
@@ -244,19 +244,20 @@ Optando pelo sistema de venda direta, essas mulheres revendem seus produtos em c
 
 Conforme destaca Kotler (2002) os revendedores que melhor sabem dominar a tecnologia são aqueles que tornam melhor o seu trabalho de forma transparente e eficiente. A tecnologia assume, neste novo milênio, relevante papel nas áreas de administração. Desequilibra a competitividade e é imprescindível para a obtenção de qualidade e produtividade. O estilo atual do modelo de gerenciamento é o maior causador de desperdícios, provocando grandes perdas, cuja gravidade não pode ser avaliada ou medida.
 
-Percebe–se, portanto, que existe uma necessidade de um sistema de gerenciamento de vendas, capaz de suprir essas dificuldades que o revendedor enfrenta no seu dia-a-dia. Neste sentido, fazendo o uso dos avanços tecnológicos e de todo um conhecimento adquirido, buscou-se por meio deste projeto desenvolver um sistema de gestão de vendas direta com o propósito de melhorar e agilizar nas atividades administrativas cotidianas do revendedor com as seguintes funções: manter informações sobre estoques de produtos, gerar relatórios gerenciais e geográficos sobre vendas, armazenar dados dos clientes e fornecedores de forma segura.
+Percebe–se, portanto, que existe uma necessidade de um sistema de gerenciamento de vendas, capaz de suprir essas dificuldades que o revendedor enfrenta no seu dia-a-dia. Neste sentido, fazendo o uso dos avanços tecnológicos e de todo um conhecimento adquirido, buscou-se por meio deste projeto desenvolver um sistema de gestão de vendas direta com o propósito de melhorar e agilizar nas atividades administrativas cotidianas do revendedor com as seguintes funções: manter informações sobre estoques de produtos, produtos vendidos, armazenamento dos dados dos clientes e fornecedores, gerar relatórios de vendas, lista de produtos em estoque e lista de clientes.
+
 
 \chapter{Objetivos}
 \section{Geral}
-Desenvolver um sistema para auxiliar revendedores autônomos nas atividades de controle das vendas e no armazenamento dos dados dos clientes e fornecedores, gerar relatórios gerenciais e geográficos sobre vendas.
+Desenvolver um sistema para auxiliar os revendedores autônomos nos processos de controle das venda, armazenar dados dos clientes e fornecedores, fornecer relatórios de vendas, lista de produtos em estoque e lista de clientes.
 
 \section{Específico}
 \begin{itemize}
-  \item	Manter informações sobre estoque de produtos;
-  \item	Auxiliar nas atividades administrativas cotidianas do revendedor;
-  \item	Gerar relatórios gerenciais e geográficos sobre as vendas;
-  \item	Armazenar dados dos clientes e fornecedores;
-  \item	Gerar relatório por filtro.
+    \item Manter informações sobre estoque de produtos;
+    \item Auxiliar nas atividades administrativas cotidianas do revendedor;
+    \item Gerar relatórios de vendas, lista de produtos em estoque e lista de clientes;
+    \item Armazenar dados dos clientes e fornecedores;
+    \item Gerar relatório por filtro.
 \end{itemize}
 
 
@@ -323,13 +324,20 @@ fazendo com que o utilizador não tenha que se preocupar com pormenores como que
 O "Sistema de Gestão de Venda Direta" utilizou parte da engenharia de software como:
 
 \subsection{Metodologia Ágil:}
-Scrum que nada mais é que as reuniões curtas diárias que a equipe realizava no decorrer do desenvolvimento de todo o projeto.
+Scrum é uma metodologia ágil para gestão e planejamento de projetos de software. Essa metodologia possui numerosas características interessantes como por exemplo: ciclos de desenvolvimento chamado Sprint, Lista de desejos (Product BackLog), reuniões diárias.
+
+No caso desse projeto foram utilizado apenas parte das características do scrum como, por exemplo, reuniões diárias com o coorientador, presencialmente como também a distancia (Facebook, WhatsApp). Também foi utilizado o conceito de Product BackLog para nortear no desenvolvimento do levantamento de requisitos.
+
 
 \subsection{Padrão de Projeto:}
 Data Access Obeject (DAO) quando se faz uso em um projeto do padrão DAO é por que existe a necessidade em separar as regras de negócios das regras de persistência de dados. O objetivo principal disto é promover o isolamento entre classes de objetivos distintos (persistência/negócio/interface) e a flexibilidade quando se deseja, por exemplo, utilizar diferentes SGBDs (Sistema Gerenciador de Banco de Dados).
 
 \subsection{Teste de Software:}
 Junit conhecido também como teste unitário ou teste de unidade. Serve para testar código antes de implementar a interface.
+
+\subsection{Versionamento}
+O projeto foi desenvolvido utilizando versionamento de código. Em linhas gerais o foco principal é documentar as alterações de código ao longo do tempo e criar um histórico da documentação e do próprio código. Para fazer isto foram utilizadas duas ferramentas GitHub e Dropbox para versionamento de código e documentação respectivamente.
+
 
 \chapter{Plano de Marketing}
 \section{Analise de Mercado}
@@ -1261,7 +1269,7 @@ O produto é um software que irá auxiliar no processo de controle das vendas e 
 \newpage
 \subsection{Manter Forma de Pagamento}
 \begin{figure}[h]\centering
-	\includegraphics[scale=1.63]{usuario.pdf}\caption{Manter forma de pagamento}
+	\includegraphics[scale=1.6]{fornecedor.pdf}\caption{Manter forma de pagamento}
 \end{figure}
 
 \newpage
